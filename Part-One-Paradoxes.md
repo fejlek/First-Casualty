@@ -64,10 +64,7 @@ kidney_stones_aggr
 To compare these two treatments, we compute the risk difference (Ding
 2024)
 ``` math
-\begin{split}
-P[\text{Outcome} = \text{Succes} \mid \text{Treatment} = \text{Open Surgery}] - \\
-P[\text{Outcome} = \text{Succes} \mid \text{Treatment} &= \text{Percutaneous Nephrolithotomy}]
-\end{split}
+P[\text{Outcome} = \text{Succes} \mid \text{Treatment} = \text{Open Surgery}] - P[\text{Outcome} = \text{Succes} \mid \text{Treatment} = \text{Percutaneous Nephrolithotomy}]
 ```
 
 ``` r
@@ -278,10 +275,7 @@ and provided that there are no other hidden (unobserved) confounders
 do-probabilities
 
 ``` math
-\begin{split}
-P[\text{Outcome} = \text{Success} &\mid \text{Treatment} = \text{Open Surgery}, \text{ Size}] =\\
-P[\text{Outcome} &= \text{Success} \mid \text{do} (\text{Treatment} = \text{Open Surgery}), \text{ Size]},
-\end{split}
+P[\text{Outcome} = \text{Success} \mid \text{Treatment} = \text{Open Surgery}, \text{ Size}] = P[\text{Outcome} = \text{Success} \mid \text{do} (\text{Treatment} = \text{Open Surgery}), \text{ Size]},
 ```
 i.e., the effect of **Treatment** estimated in the model corresponds to
 the *causal* effect.
