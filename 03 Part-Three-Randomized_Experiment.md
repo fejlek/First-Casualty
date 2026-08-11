@@ -995,7 +995,7 @@ an universal solution. First, we cannot lock the whole world into an
 experimental box. There are many things that we cannot directly control
 but their causal effects are of interest. Secondly, sometime a
 randomized experiment would be immoral or illegal, e.g., we cannot just
-infect peaople with dangerous diases to see what happen … Thirdly,
+infect people with dangerous diases to see what happen … Thirdly,
 picking random individuals from a population might not be feasiable in
 practice. After all, people have to agree to be a part of the experiment
 in the first place … This is already source of a bias. The randomized
