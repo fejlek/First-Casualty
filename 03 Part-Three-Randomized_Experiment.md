@@ -7,18 +7,12 @@ Jiří Fejlek
 2026-08-11
 <br/>
 
+<br/> In the Third Part of this series, we take a step back and look at the
+problem of causal inference from a different viewpoint: potential
+outcomes and counterfactuals. We will also introduce a randomized
+experiment, a gold-standard experimental design used for estimating
+causal effects.<br/> 
 
----
-author: Jiří Fejlek
-bibliography: first_casualty.bib
-code_folding: hide
-date: 2025-08-10
-output:
-  md_document:
-    toc: true
-    variant: GFM
-title: "The First Casualty of Statistics: Part Three"
----
 ## Table of Contents
 
 - [Potential Outcomes](#potential-outcomes)
@@ -29,7 +23,6 @@ title: "The First Casualty of Statistics: Part Three"
   Experiments](#limitations-of-randomized-experiments)
 
 
-
 ``` r
 library(tidyr)
 library(dplyr)
@@ -38,12 +31,6 @@ library(patchwork)
 library(dagitty)
 library(ggdag)
 ```
-
-In the Third Part of this series, we take a step back and look at the
-problem of causal inference from a different viewpoint: potential
-outcomes and counterfactuals. We will also introduce a randomized
-experiment, a gold-standard experimental design used for estimating
-causal effects.
 
 ## Potential Outcomes
 
