@@ -21,6 +21,7 @@ causal effects.<br/>
   Dataset](#transcranial-direct-current-stimulation-tcds-dataset)
 - [Limitations of Randomized
   Experiments](#limitations-of-randomized-experiments)
+- [References](#references)  
 
 
 ``` r
