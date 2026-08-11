@@ -990,28 +990,9 @@ This happens to be our case as well.
 
 ## Limitations of Randomized Experiments
 
-Randomization is a powerful tool to suppress confounding, but it is not
-an universal solution. First, we cannot lock the whole world into an
-experimental box. There are many things that we cannot directly control
-but their causal effects are of interest. Secondly, sometime a
-randomized experiment would be immoral or illegal, e.g., we cannot just
-infect people with dangerous diases to see what happen … Thirdly,
-picking random individuals from a population might not be feasiable in
-practice. After all, people have to agree to be a part of the experiment
-in the first place … This is already source of a bias. The randomized
-experiments is also based on the SUTVA assumption, which might be
-violated. Sample sizes of a randomized experiment also have to be large
-enough so that the counfoudning balances out. In does not matter,
-whether the treatment was assigned randomly when the realization of the
-randomization produced imbalanced treatment and control groups. Which
-brings us to the last point, randomized experiments are more expensive
-and laborious than observational studies. Randomized experiment also
-usually takes much more time, since we have to wait for the outcome.
+Randomization is a powerful tool to suppress confounding, but it is not a universal solution. First, we cannot lock the whole world into an experimental box. There are many things that we cannot directly control, but their causal effects are of interest. Secondly, sometimes a randomized experiment would be immoral or illegal, e.g., we cannot just infect people with dangerous diseases to see what happens… Thirdly, picking random individuals from a population might not be feasible in practice. After all, people have to agree to be part of the experiment in the first place... This is already a source of bias. The randomized experiment is also based on the SUTVA assumption, which might be violated. Sample sizes of a randomized experiment also have to be large enough so that confounding balances out. It does not matter whether the treatment was assigned randomly when the realization of the randomization produced imbalanced treatment and control groups. Which brings us to the last point: randomized experiments are more expensive and laborious than observational studies. Randomized experiments also usually take much more time, since we have to wait for the outcome.
 
-Overall, we have the same conclusion as the last time. Randomized
-experiments are an essential tool but far too restrictive to be the
-exclusive one.
-
+Overall, we have the same conclusion as the last time. Randomized experiments are an essential tool but far too restrictive to be the exclusive one.
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
