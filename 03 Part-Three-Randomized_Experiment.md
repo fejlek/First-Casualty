@@ -476,7 +476,7 @@ tDCS
     ## 19                     2        1
     ## 20                     6        1
 
-For simplicity, we will ignore Polarity in evaluateing the effect of the treatemnt.
+For simplicity, we will ignore **Polarity** in evaluating the effect of the treatment.
 Let’s first look at how randomized the treatment actually was. Let’s
 regress the treatment on the pre-treatment covariates. Let us try a
 logistic model with no interactions first.
