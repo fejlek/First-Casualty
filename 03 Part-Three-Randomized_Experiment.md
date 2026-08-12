@@ -81,7 +81,8 @@ There is also *average treatment effect on the untreated* (ATU)
  \text{ATU} = \mathbb{E}(Y(1)- Y(0) \mid  T = 0).
 ```
 Let’s simulate some simple data in which the counterfactuals are
-actually observed
+actually observed. We will assume that treatment is assigned randomly 
+to half of the units.
 
 ``` r
 set.seed(123)
@@ -111,7 +112,7 @@ trt_effect_table
     ## 19   19         1 -2  6
     ## 20   20         1 -5  2
 
-and thus, we can compute ATE, ATT, and ATU directly.
+We can compute ATE, ATT, and ATU directly.
 
 ``` r
 # ATE
@@ -590,8 +591,10 @@ ggpairs(pre_treat_cov, aes(color = Gender, alpha = 0.5)) + theme(axis.text = ele
 
 We observe very little correlation between covariates. Hence, for
 comparison, let us simulate new datasets and perform the regression on
-the treatment. We can then check what kind of discrimination we can
-expect.
+the treatment. We assume an even split between the treatment group and the
+control group as in the original data.
+
+We can now check what kind of discrimination we can expect.
 
 ``` r
 n_sim <- 10000
