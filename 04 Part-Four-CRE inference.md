@@ -373,9 +373,9 @@ using regression methods. We want to include covariates in the
 inference, even for CRE. First, as we discussed in the past, including
 strong covariates decreases the model uncertainty, making the estimates
 of the treatment effect more accurate. And more importantly, it allows
-us to estimate the conditional ATE (CATE), which is arguably more
-important than ATE. We are not just interested in how a drug affects a
-person on average; we are interested in how it affects a *sick* person.
+us to estimate the conditional ATE (CATE), which can be as important as 
+ATE. We are not just interested in how a drug affects a person on average; 
+we are interested in how it affects a *sick* person.
 
 ## References
 
