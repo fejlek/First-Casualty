@@ -353,29 +353,6 @@ summary(lm(post_treat_effect ~ treatment + pre_treat_effect, data = trt_effect_t
 Of course, the correction would not be as easy in practice, since there
 would probably be some hidden confounders lurking around.
 
-The estimate we compute here is known as *conditional average treatment
-effect* (CATE) (Chernozhukov et al. 2024). Provided that we perform a
-randomized experiment, the treatment needs to be independent of both
-potential outcomes and pre-determined covariates $`X`$, i.e.,
-``` math
- T \perp (Y(0), Y(1), X).
-```
-Then (Chernozhukov et al. 2024),
-``` math
- \text{CATE} = \mathbb{E}(Y(1)-Y(0)\mid X) = \mathbb{E}(Y\mid T = 1, X) - \mathbb{E}(Y\mid T = 0, X).
-```
-
-It might be tempting to use so-called *post-treatment* covariates.
-However, treatment may have a causal effect on these, and hence the
-independence assumption is violated; this means that the post-treatment
-effects may be mediators and (worse) colliders.
-
-We should note that since we randomize the treatment with respect to
-covariates $`X`$, the distribution of covariates should be the same
-under both the treated group and the control group. We can test this
-randomization of the treatment with respect to $`X`$ via a regression
-$`T \sim X`$ (Chernozhukov et al. 2024).
-
 ## Transcranial Direct Current Stimulation (tCDS) Dataset
 
 Let us consider a simulated data representing randomized experiment

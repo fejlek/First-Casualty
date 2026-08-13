@@ -447,7 +447,7 @@ structures:
 - Fork $`A \leftarrow B \rightarrow C`$: the path is *open* by default
   ($`A \not\perp C`$) and conditioning on $`B`$ *blocks* the path
   ($`A \perp C \mid B`$)
-- Collider \$ A B C$`: the path is *closed* by default (`$A C\$) and
+- Collider $`A \rightarrow B \leftarrow C`$: the path is *closed* by default ($`A \perp C`$) and
   conditioning on $`B`$ (or any descendant $`Z`$:
   $`B \rightarrow \dots \rightarrow Z`$) *opens* the path
   ($`A \not\perp C \mid B`$)

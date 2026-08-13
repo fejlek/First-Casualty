@@ -335,18 +335,7 @@ computing Eicker–Huber–White (HC0) errors (Ding 2024).
 ``` r
 library(sandwich)
 library(lmtest)
-```
 
-    ## Loading required package: zoo
-
-    ## 
-    ## Attaching package: 'zoo'
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     as.Date, as.Date.numeric
-
-``` r
 model <- lm(re78~treat, data = lalonde)
 coeftest(model, vcov. = vcovHC(model, type = "HC0"))
 ```
