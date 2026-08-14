@@ -32,10 +32,9 @@ library(ggdag)
 
 ## Fisher Randomization Test
 
-Let’s assume a so-called *completely randomized experiment* (CRE) (Imbens and Rubin 2015). 
-We assume $`n`$ units, $`n_1`$ receive the treatment and $`n_0`$
+Let’s assume a so-called *completely randomized experiment* (CRE) (Imbens and Rubin 2015).  We assume $`n`$ units, $`n_1`$ receive the treatment and $`n_0`$
 do not ($`n_1`$ and $`n_0`$ are both fixed). Let us denote the
-$`treatment assignment`$ for $`n`$ units as
+*treatment assignment* for $`n`$ units as
 ``` math
  \text{T} = (t_1, \ldots,t_n),
 ```
