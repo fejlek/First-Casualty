@@ -16,8 +16,8 @@ randomization test and Neyman inference. <br/>
 ## Table of Contents
 
 - [Fisher Randomization Test](#fisher-randomization-test)
-- [Neymanian Repeated Sampling
-  Inference](#neymanian-repeated-sampling-inference)
+- [Neyman Repeated Sampling
+  Inference](#neyman-repeated-sampling-inference)
 - [Regression Approach](#regression-approach)
 - [References](#references)
 
@@ -213,9 +213,9 @@ main drawback is that strictly speaking, the output from the Fisher
 randomization test is just a p-value, which by itself does not tell much
 about the treatment effect.
 
-## Neymanian Repeated Sampling Inference
+## Neyman Repeated Sampling Inference
 
-Neymanian inference is based on the difference in observed means. Let us
+Neyman inference is based on the difference in observed means. Let us
 denote
 ``` math
 \hat Y(1) = \frac{1}{n_1}\sum_{i = 1}^{n_1} t_iY_i
