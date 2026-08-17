@@ -1,7 +1,6 @@
 # The First Casualty of Statistics: Part Five
 <big>**Stratification and Rerandomization**</big>
 
-
 <br/>
 Jiří Fejlek
 
