@@ -579,8 +579,8 @@ predicts much greater error than the estimator actually exhibits.
 The fact that the Lin estimator performs comparably to the matching
 estimator also indicates that the benefit lies in having these close
 pairs systematically in the dataset (as if we were observing
-counterfactuals). Provided that we generate the pairs and shuffle them.
-The estimators still perform as well.
+counterfactuals). Provided that we generate the pairs and distrupt them
+by shuffling, the estimators still perform as well.
 
 ``` r
 set.seed(123)
