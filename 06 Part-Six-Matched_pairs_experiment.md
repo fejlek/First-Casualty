@@ -21,7 +21,7 @@ matching strategies in observational studies. <br/>
   MPE](#fisher-randomization-test-for-mpe)
 - [Neyman Inference for MPE and Regression
   Approach](#neyman-inference-for-mpe-and-regression-approach)
-- [Covariate adjustments](#covariate-adjustments)
+- [Covariate Adjustments](#covariate-adjustments)
 - [References](#references)
 
 ``` r
@@ -288,7 +288,7 @@ summary(lm(traffic_paired$Y1-traffic_paired$Y0~1))
     ## 
     ## Residual standard error: 7.571 on 58 degrees of freedom
 
-## Covariate adjustments
+## Covariate Adjustments
 
 In MRE, two individuals that are paired should be as similar as
 possible. But naturally, they will not be the same. Hence, it is
