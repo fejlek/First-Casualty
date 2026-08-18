@@ -186,7 +186,7 @@ the so-called *average predictive effect* (Chernozhukov et al. 2024)
 ```
 Can we do that? Well, it turns out that (Cunningham 2021)
 ``` math
- \text{APE} = \text{ATE} + \text{selection bias} + \text{heterogenous treatement bias},
+ \text{APE} = \text{ATE} + \text{selection bias} + \text{heterogenous treatment bias},
 ```
 where
 ``` math
@@ -195,7 +195,7 @@ where
 and where ($`\pi`$ denotes the expected proportion of those that receive
 treatment)
 ``` math
-\text{heterogenous treatement bias} = (1-\pi)(\text{ATT} - \text{ATU}).
+\text{heterogenous treatment bias} = (1-\pi)(\text{ATT} - \text{ATU}).
 ```
 
 Thus, provided that the bias terms are zero, we can estimate ATE from
@@ -219,11 +219,22 @@ control group), provided that no treatment would be applied. And if we
 further assume that the expected effect of the treatment is the same for
 both groups (ATT = ATU), then APE also estimates ATE.
 
+For now and in the near future, we will assume that the treatment effect is 
+(approximately) homogeneous, i.e., the same for each individual. Thus, there 
+will be no heterogeneous treatment bias we will worry about, and APE will 
+estimate ATE under no selection bias. The reason is that ATE makes the most 
+sense under homogeneous treatment effects; otherwise, its value depends on the 
+distribution of other covariates in the population, and this distribution will 
+probably differ between the experimental population and the general population 
+of interest.  If we do not account for this difference, ATE has very little 
+meaning as an estimate of treatment effect. We will discuss how to deal with the 
+heterogeneous treatment effects in later parts.
+
 ## Randomized Experiment
 
-We learned that we can use APE to estimate the causal effect provided
-that there is no bias. A straightforward way to remove bias is by
-balancing the treatment group and the control group via a random
+Let us assume a homogeneous treatment effect. We learned that we can use APE to 
+estimate the causal effect provided that there is no selection bias.  A straightforward way 
+to reduce bias is to balance the treatment group  and the control group via a random 
 assignment of the treatment
 ``` math
  T \perp (Y(0),Y(1)),
