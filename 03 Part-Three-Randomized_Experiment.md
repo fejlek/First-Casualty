@@ -859,23 +859,6 @@ a bootstrap).
 library(sandwich)
 library(lmtest)
 ```
-
-    ## Loading required package: zoo
-
-    ## 
-    ## Attaching package: 'zoo'
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     as.Date, as.Date.numeric
-
-    ## 
-    ## Attaching package: 'lmtest'
-
-    ## The following object is masked from 'package:rms':
-    ## 
-    ##     lrtest
-
 ``` r
 coefci(risk_ratio_poisson, vcov = sandwich::vcovHC(risk_ratio_poisson, type = "HC0"))
 ```
