@@ -833,7 +833,7 @@ results
     ## mean 1.0064270 1.0040664 1.0040162
     ## sd   0.2839087 0.1292599 0.1293246
 
-We observe that even when the linear adjustment is mis-specified, it
+We observe that even when the linear adjustment is misspecified, it
 helps improve precision. Again, we can get a similarly accurate estimate
 via rerandomization.
 
@@ -1071,7 +1071,7 @@ We observe a massive increase in the accuracy of the estimate.
 
 What this small experiment showed us is that we should adjust when we
 can and rerandomize/stratify when we can. Even if our adjustment is
-mis-specified, there is no cost to the accuracy of the estimates
+misspecified, there is no cost to the accuracy of the estimates
 compared to unadjusted marginal effects. These observations are
 consistent with more extensive simulation experiments, such as those in
 (Tackney et al. 2023). Provided that the number of observations is
