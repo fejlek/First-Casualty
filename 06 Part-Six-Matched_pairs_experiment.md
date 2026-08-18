@@ -59,7 +59,7 @@ sharp null hypothesis
 ```
 Let us denote
 ``` math
-\hat \tau_i = S_i(Y_{i1}-Y_{i0}),
+\hat \tau_i = S_i(Y_{i1}-Y_{i2}),
 ```
 where $`S_i`$ is a sign that depends on the treatment assignments
 $`T_i`$. As a statistic for FRT, we can use the paired t-statistic (Ding
