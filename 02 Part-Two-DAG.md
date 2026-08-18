@@ -482,6 +482,7 @@ ggdag_status(dag) + theme_dag() + theme(legend.position = "none")
 ```
 
 ![](Part-Two_files/figure-GFM/unnamed-chunk-23-1.png)<!-- -->
+
 and let’s assume that $`A \sim N(0, 1)`$, $`B \sim N(- 2A,1)`$ and
 $`C \sim N(2A + B, 1)`$
 
