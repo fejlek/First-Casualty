@@ -347,16 +347,13 @@ coeftest(model, vcov. = vcovHC(model, type = "HC0"))
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-This brings us to an important point. The Fisher randomization test and Neyman inference are built on the assumptions of CRE design and make no further distributional assumptions (we only need distributional assumptions to establish the asymptotic normality of the observed APE). On the other hand, regression models make strong distributional assumptions that are not justified by CRE alone and may be severely violated, rendering the inference possibly invalid.  
+This brings us to an important point. The Fisher randomization test and Neyman inference are built on the assumptions of CRE design and make no further distributional assumptions (we only need distributional assumptions to establish the asymptotic normality of the observed APE). On the other hand, regression models make strong distributional assumptions that are not justified by CRE alone.  
 
 We should note that the differences run much deeper. Fisher/Neyman approaches are based on the potential outcome framework. The source of randomness is the treatment assignment, and the potential outcomes for each individual are fixed. However, when using regression, we usually assume that the model matrix (i.e., the treatment assignment) is fixed, and the source of randomness is the outcomes themselves. This is because, in regression, we assume that individuals are sampled from a superpopulation in each experimental realization (Ding 2024).
 
 These observations led to some criticism of using regression for inference for CRE, especially when covariates are involved (Freedman 2008). This is because, in addition to problems with variance estimation, covariate adjustments via linear regression yield biased ATE estimates in small samples (the bias is of order $1/n$). We will discuss this more in the next part.
 
 However, dealing with covariates is much more straightforward using regression methods. We want (and need) to include covariates in the inference, even for CRE. First, as we discussed previously, including strong covariates reduces model uncertainty, making treatment effect estimates more accurate. Secondly, it allows us to estimate the conditional ATE (CATE), which can be as important as the ATE, provided that there is an interaction between the treatment effect and some covariates (i.e., a so-called *heterogeneity of treatment effect*). After all, we are not just interested in how a drug affects a person on average;  we are interested in how it affects a *sick* person. And lastly, there is the issue of the noncollapsibility of odds ratios and hazard ratios (if we go beyond linear regression), which we discussed in the previous part, that makes the marginal effects hard to interpret (https://www.fharrell.com/post/marg/ and https://www.fharrell.com/post/robcov/).
-
-
-
 
 ## References
 
