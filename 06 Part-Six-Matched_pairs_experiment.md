@@ -463,7 +463,7 @@ sd(betas_boot)
 
     ## [1] 0.450244
 
-We observe that we got a value that corresponds to the Lin estimator.
+We observe that we got a value that corresponds to Lin's estimator.
 However, let us now respect the matching used to generate the dataset
 and bootstrap *over matched pairs*.
 
@@ -552,7 +552,7 @@ results
     ## adj. MRE    0.9862106 0.1144994
     ## Lin postSRE 0.9831345 0.1190339
 
-We observe that the adjusted MRE estimate and the Lin estimator perform
+We observe that the adjusted MRE estimate and Lin's estimator perform
 about the same. The unadjusted estimate is noticeably worse. Let’s check
 estimates of the standard error.
 
@@ -572,11 +572,11 @@ results
     ## adj. MRE    0.1119902 0.01801550
     ## Lin postSRE 0.5044303 0.05717444
 
-We observe that the standard error estimate of the Lin estimator is
+We observe that the standard error estimate of Lin's estimator is
 severely overestimated, as expected; i.e., the standard error estimate
 predicts much greater error than the estimator actually exhibits.
 
-The fact that the Lin estimator performs comparably to the matching
+The fact that Lin's estimator performs comparably to the matching
 estimator also indicates that the benefit lies in having these close
 pairs systematically in the dataset (as if we were observing
 counterfactuals). Provided that we generate the pairs and distrupt them
@@ -740,7 +740,7 @@ results
 We observe that the standard errors of the estimates are much larger,
 and the estimated errors correspond to the observed ones. We can also
 notice that the observed standard errors now correspond to the
-“shuffled” errors and to the error estimates that the Lin estimator was
+“shuffled” errors and to the error estimates that Lin's estimator was
 giving under MRE.
 
 So we conclude from our little experiment that matching can greatly

@@ -378,7 +378,7 @@ enough $`n`$. Freedman also showed that adjusting can lead to a less
 precise (i.e., less efficient) estimate in imbalanced designs.
 
 However, we can do a bit better and obtain a more precise estimate. The
-method is known as the Lin estimator (Lin 2013). First, we need to
+method is known as Lin's estimator (Lin 2013). First, we need to
 center the covariates.
 
 ``` r
@@ -583,7 +583,7 @@ results
 We observe that all three estimates are unbiased estimates of the
 treatment effect. But the unadjusted estimate has almost twice the
 standard deviation of the two adjusted estimates. The difference between
-the standard adjusted OLS and the Lin estimator is, in this example,
+the standard adjusted OLS and Lin's estimator is, in this example,
 negligible.
 
 ## Rerandomization
@@ -638,10 +638,10 @@ observe that rerandomization can increase the accuracy of ATE
 estimation, depending on the magnitude of $`R^2`$.
 
 (Li et al. 2018) derived an estimate of $`R^2`$, but it is more
-straightforward to employ the regression approach using the Lin
-estimator. It can be shown that, provided the Lin estimator uses the
+straightforward to employ the regression approach using Lin's
+estimator. It can be shown that, provided Lin's estimator uses the
 same covariates as ReM and $`a`$ is small, the asymptotic distribution
-of the Lin estimator is almost identical to that of $`\hat \ tau`$ under
+of Lin's estimator is almost identical to that of $`\hat \ tau`$ under
 ReM (Li and Ding 2020).
 
 Let’s perform some simulations. We consider a model with two covariates
@@ -697,7 +697,7 @@ results
 We observe that estimates of the treatment effect are unbiased. However,
 adjusting for $`X_1`$ and $`X_2`$ provides a much more accurate
 estimate. Again, the difference between a simple adjusting OLS estimator
-and the Lin estimator is small. Let’s consider the same problem, but we
+and Lin's estimator is small. Let’s consider the same problem, but we
 will employ rerandomization instead of CRE.
 
 We will choose the constant $`a`$ based on a quantile of the
