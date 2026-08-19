@@ -867,7 +867,8 @@ ggplot(data = results, aes(x = treat_coef))  + geom_histogram(bins = 100) + xlab
 
 We see that most of the models perform quite poorly at estimating the
 treatment effect. The model that predicts best is quite close to the
-full model (**hispan** is dropped).
+full model (**hispan** is dropped), and thus, it would be a decent 
+choice.
 
 ``` r
 # best model based on AIC
