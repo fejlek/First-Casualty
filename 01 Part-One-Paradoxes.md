@@ -9,16 +9,16 @@ Jiří Fejlek
 
 <br/> This is the first part of a series of short presentations on *causal
 inference*. Causal inference is a crucial piece of the puzzle for
-providing interpretations of models. Statistical models (or machine
-learning models if you want) are all pretty good at approximating
-$`P(Y \mid X)`$, i.e., what is the distribution of $`Y`$ when we
-*observed* $`X`$. However, these models can be hilariously wrong at
-determining the distribution of $`Y`$ when we act, *intervene* on $`X`$,
-which is often denoted as $`P(Y \mid \text{do}(X))`$.
+interpreting models. Statistical models (or machine learning models if
+you want) are all good at approximating $`P(Y \mid X)`$, i.e., what is
+the distribution of $`Y`$ when we *observed* $`X`$? However, these
+models can be hilariously wrong in determining the distribution of $`Y`$
+when we act, *interven*e on $`X`$, which is often denoted as
+$`P(Y \mid \text{do}(X))`$.
 
-The thing is that we do not want to sit back there and watch and
-predict. We want to act. We need to act. Causal inference provides us
-with a framework that helps us decide whether $`P(Y \mid X)`$ and
+The thing is, we do not want to sit back there, watch, and predict. We
+want to act. We need to act. Causal inference provides us with a
+framework that helps us decide whether $`P(Y \mid X)`$ and
 $`P(Y \mid \text{do}(X))`$ coincide, i.e., whether actions based on the
 model’s predictions are justified.
 
@@ -33,7 +33,6 @@ bias*, respectively, which often go wrong. <br/>
 - [Dataset cps1re74](#dataset-cps1re74)
 - [References](#references)
 
-
 ``` r
 library(tidyr)
 library(dplyr)
@@ -43,10 +42,11 @@ library(patchwork)
 
 ## Simpson’s Paradox
 
-It is decreed by law that any introductory course on statistics
-eventually covers the Kidney stone dataset from 1986 (Charig et al.
-1986). The dataset compares two treatment method success rates (open
-surgery and percutaneous nephrolithotomy) across about 700 patients.
+It is a legal requirement that any introductory statistics course
+eventually cover the Kidney stone dataset from 1986 (Charig et al.
+1986). The dataset compares the success rates of two treatment methods
+(open surgery and percutaneous nephrolithotomy) across about 700
+patients.
 
 ``` r
 kidney_stones_aggr <- as.data.frame(matrix(c('Open Surgery', 273, 77, 'Percutaneous Nephrolithotomy', 289, 61), nrow = 2, ncol = 3, byrow = TRUE)) 
@@ -85,17 +85,16 @@ kidney_stones_aggr
     ## 1                 Open Surgery     273      77         78.0
     ## 2 Percutaneous Nephrolithotomy     289      61         82.6
 
-It seems that **Percutaneous Nephrolithotomy** is a better treatment
-than open surgery. However, these data are not the result of a
-*randomized clinical trial*, in which treatment is assigned randomly to
-patients. These data come from an *observational study*; therefore,
-treatment assignment was not controlled. This means that there might be
-a *confounder*, a common cause, that influences both what treatment was
-assigned to a patient and whether the treatment was successful.
+It seems that **Percutaneous Nephrolithotomy** s a better treatment than
+open surgery. However, these data are not from a *randomized clinical
+trial*, in which treatment is assigned at random to patients. These data
+come from an *observational study*; therefore, treatment assignment was
+not controlled. This means that there might be a *confounder*, a common
+cause, that influences both what treatment was assigned to a patient and
+whether the treatment was successful.
 
-Fortunately, those who gathered the data thought ahead about this
-problem and also measured the severity of kidney stones in terms of
-their size.
+Fortunately, those who gathered the data anticipated this problem and
+also measured the severity of kidney stones by their size.
 
 ``` r
 kidney_stones <- data.frame(
@@ -162,7 +161,7 @@ g2 <- ggplot(kidney_stones_aggr, aes(x = Treatment, y = Success_Rate, fill = Tre
 What happened here is that patients with smaller kidney stones, which
 are more likely to be treated successfully, are also more likely to be
 assigned less invasive **Percutaneous Nephrolithotomy**. **Open
-Surgery** is more often used to treat the patients with larger kidney
+Surgery** is more often used to treat patients with larger kidney
 stones, and since their condition is more severe, it is less likely that
 the procedure will be successful.
 
@@ -242,7 +241,11 @@ that everything else stays the same). We denote this probability as
 ```
 
 To estimate this probability, we have to remove the confounding by
-including **Size** in the model
+including
+``` math
+Size
+```
+in the model
 
 ``` r
 summary_table$Treatment <- relevel(as.factor(summary_table$Treatment), 'Percutaneous Nephrolithotomy')
@@ -289,16 +292,15 @@ also be caused by *including* some variables.
 
 Simpson’s paradox is tied to a hidden confounder, a common cause of the
 outcome and the treatment (the variable of interest). The solution is to
-condition on the confound, i.e., to include it in the model. Berkson’s
+condition on the confounder, i.e., to include it in the model. Berkson’s
 paradox is not as famous as Simpson’s paradox, but just as dangerous. It
-is caused by including in (or conditioning on) a *collider*, a variable
-that is caused by the treatment and the outcome.
+is caused by including (or conditioning on) a *collider* variable that
+is caused by both the treatment and the outcome.
 
 To illustrate collider bias, let’s first consider the data from (Sackett
-1979). We will have a look at the relation between people with disease
-of bones and organs of movement and with respiratory disease. The
-crucial detail is that all people in the study were in the hospital in
-the prior 6 months.
+1979). We will look at the relationship between people with bone and
+joint diseases and respiratory disease. The crucial detail is that all
+participants in the study had been hospitalized in the prior 6 months.
 
 ``` r
 hospital_data <- as.data.frame(matrix(c('Yes', 5, 15, 'No', 18, 219), nrow = 2, ncol = 3, byrow = TRUE)) 
@@ -340,7 +342,7 @@ summary(glm(cbind(DBaOM_Yes, DBaOM_No) ~ Respiratory_Disease, data = hospital_da
     ## Number of Fisher Scoring iterations: 3
 
 We observe that people with respiratory disease have an increased
-probability of having disease of bones and organs of movement
+probability of having bone and movement disorders
 ($`\text{OR} = \exp(1.4001) \approx 4.06`$). However, when the data was
 taken from the whole population, the association between the diseases
 disappears.
@@ -527,7 +529,7 @@ g2 <- ggplot(population_data, aes(x = Allergic_metabolic, y = Rate, fill = Aller
 ![](Part-One_files/figure-GFM/unnamed-chunk-20-1.png)<!-- -->
 
 The issue with these examples is that being in the hospital is a clear
-*collider* (having a disease causes visiting a hospital).
+*collider* (having a disease causes hospital visits)..
 
 ``` r
 dag <- dagify(Dis1 ~ Dis2, Hosp ~ Dis1+Dis2,  exposure = 'Dis1', outcome = 'Dis2')
@@ -541,7 +543,7 @@ An intuitive way to understand that a collider induces a bias is to
 think of two conditions, at least one of which must be met for a subject
 to be part of the analysis. For example, think of students of some
 private school. To get into the school, students have to be talented or
-their family wealthy. Hence, it is likely that there will be a negative
+have wealthy families. Hence, it is likely that there will be a negative
 correlation between students’ talent and their families’ wealth (because
 it is less likely that a student will meet both conditions).
 
@@ -645,9 +647,9 @@ on this model with some stakes on the line …
 
 ## Dataset cps1re74
 
-As the last step of this part, we will do a bit of a teaser and look at
-the famous *cps1re74* dataset about the effect of a job training program
-on earnings (Ding 2024).
+As the final step in this part, we will give a brief teaser and look at
+the famous *cps1re74* dataset on the effect of a job training program on
+earnings (Ding 2024).
 
 ``` r
 cps1re74 <- read.csv("C:/Users/elini/Desktop/first casualty/cps1re74.csv")
@@ -665,7 +667,7 @@ cps1re74
     ## 8        1  32   11     1      0       0        1     0.0000     0.00000    8472.1580
     ## 9        1  22   16     1      0       0        0     0.0000     0.00000    2164.0220
     ## 10       1  33   12     0      0       1        0     0.0000     0.00000   12418.0700
-
+ 
 What is interesting about this dataset is the fact that it is based on a
 randomized experiment (i.e., the causal effect of the treatment could
 have been estimated). However, the original control group was
@@ -675,9 +677,9 @@ the original randomization is compromised. The goal is to test whether
 some method can recover the causal effect.
 
 At this point we are not ready to tackle this. But let’s do some
-regressing. For reference, the effect of treatment determined by the
-randomized experiment was \$1,794. Let us start with simple regression
-with merely treatment **treat**.
+regressing. For reference, the estimated treatment effect from the
+randomized experiment is about 1,580 to 1,800, depending on the method
+used. Let us start with a simple regression using only the treatment.
 
 ``` r
 summary(lm(re78 ~ treat, data = cps1re74))
@@ -735,7 +737,8 @@ summary(lm(re78 ~ ., data = cps1re74))
     ## Multiple R-squared:  0.4761, Adjusted R-squared:  0.4758 
     ## F-statistic:  1632 on 9 and 16167 DF,  p-value: < 2.2e-16
 
-We are getting closer. Let’s add all interaction terms.
+We are getting closer, but still nowhere near the actual effect. Let’s
+add all interaction terms.
 
 ``` r
 summary(lm(re78 ~ (.-treat)^2 + treat, data = cps1re74))
@@ -796,9 +799,9 @@ summary(lm(re78 ~ (.-treat)^2 + treat, data = cps1re74))
     ## Multiple R-squared:  0.4845, Adjusted R-squared:  0.4833 
     ## F-statistic: 421.3 on 36 and 16140 DF,  p-value: < 2.2e-16
 
-Almost there. For fun, let’s try every simple linear regression with
-treat as a predictor (other covariates enter linearly with all possible
-interactions).
+This is actually pretty close. For fun, let’s try every simple linear
+regression with the treatment as a predictor (other covariates enter
+linearly with all possible interactions).
 
 ``` r
 outcome <- "re78"
@@ -857,39 +860,14 @@ for (i in 1:length(all_combinations)) {
 Let’s plot the estimates of the treatment effects.
 
 ``` r
-ggplot(data = results, aes(x = treat_coef))  + geom_histogram(bins = 100) + xlab('Estimated Treatment Effect') + geom_vline(xintercept = 1794., color = "red", linetype = "dashed", linewidth = 1)
+ggplot(data = results, aes(x = treat_coef))  + geom_histogram(bins = 100) + xlab('Estimated Treatment Effect') + geom_vline(xintercept = 1794., color = "red", linetype = "dashed", linewidth = 1) + geom_vline(xintercept = 1580, color = "red", linetype = "dashed", linewidth = 1)
 ```
 
 ![](Part-One_files/figure-GFM/unnamed-chunk-31-1.png)<!-- -->
 
-There may be a “correct answer” among the models after all.
-
-``` r
-results$treat_coef[which.min((results$treat_coef-1794)^2)]
-```
-
-    ## [1] 1806.396
-
-``` r
-results$formula[which.min((results$treat_coef-1794)^2)]
-```
-
-    ## [1] "re78 ~ treat + (black + nodegree + re74 + re75)^2"
-
-But again, it is not the model that *predicts best*.
-
-``` r
-# best model based on ajd. R^2
-results$treat_coef[which.max(results$adj_r2)]
-```
-
-    ## [1] 1543.484
-
-``` r
-results$formula[which.max(results$adj_r2)]
-```
-
-    ## [1] "re78 ~ treat + (age + educ + black + hispan + married + nodegree +      re74 + re75)^2"
+We see that most of the models perform quite poorly at estimating the
+treatment effect. The model that predicts best is quite close to the
+full model (**hispan** is dropped).
 
 ``` r
 # best model based on AIC
@@ -904,7 +882,7 @@ results$formula[which.min(results$aic)]
 
     ## [1] "re78 ~ treat + (age + educ + black + married + nodegree + re74 +      re75)^2"
 
-##  References
+## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 

@@ -102,9 +102,7 @@ mean(lalonde$re78[lalonde$treat == 1]) - mean(lalonde$re78[lalonde$treat == 0])
 
     ## [1] 1794.343
 
-By the way, this is the estimate used as a benchmark for methods that
-estimate causal effect from the *cps1re74* dataset. Let us perform the
-Fisher randomization test. There are too many permutations, and hence,
+Let us perform the Fisher randomization test. There are too many permutations, and hence,
 we will approximate the test by randomly sampling just a few of them.
 
 ``` r
