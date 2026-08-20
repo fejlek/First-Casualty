@@ -15,6 +15,7 @@ it helps us improve the accuracy of estimating the treatment effect. <br/>
 ## Table of Contents
 
 - [Stratification](#stratification)
+  - [Fisher Randomization Test for SRE](#fisher-randomization-test-for-sre)
   - [Neyman Inference for SRE](#neyman-inference-for-sre)
   - [Regression Approach](#regression-approach)
   - [Post-stratification](#post-stratification)
@@ -65,7 +66,7 @@ and we can compute the overall treatment effect as
 ``` math
  \text{ATE} = \frac{1}{n} \sum_{k = 1}^K n_{[k]}\tau_{{[k]}} = \sum_{k = 1}^K \pi_{[k]}\tau_{[k]}
 ```
-\### Fisher Randomization Test for SRE
+### Fisher Randomization Test for SRE
 
 Fisher randomization test (FRT) generalizes to an SRE. We only need to
 remember that the permutations must respect the experimental design,
