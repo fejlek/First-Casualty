@@ -51,7 +51,7 @@ The crucial property of propensity scores is that
 T \perp (Y(0),Y(1)) \mid X \Rightarrow T \perp (Y(0),Y(1)) \mid e(X),
 ```
 i.e., the propensity scores can serve as a *dimensionality-reduction
-tool* from $`X`$ to a scalar vector of conditional probabilities.
+tool* from $`X`$ to a vector of conditional probabilities.
 
 ## Stratification via Propensity Scores
 
