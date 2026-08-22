@@ -570,7 +570,7 @@ The most straightforward way to estimate ATE is to assume an OLS model
 ```
 If this model is correct, then
 ``` math
- \text{ATE} = \mathbb{E}_X(\beta_0 + X\beta_X + \beta - \beta_0 + X\beta_X) = \beta.
+ \text{ATE} = \mathbb{E}_X(\beta_0 + X\beta_X + \beta - \beta_0 - X\beta_X) = \beta.
 ```
 
 In other words, we can estimate the treatment effect the same way as for
