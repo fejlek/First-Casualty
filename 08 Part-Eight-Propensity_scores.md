@@ -517,7 +517,7 @@ prop_scores3 <- pmin(pmax(prop_scores, 0.05),0.95)
 prop_scores4 <- pmin(pmax(prop_scores, 0.1),0.9)
 
 
-iws_est <- cbind(
+ipw_est <- cbind(
 c(mean((sch_meal*bmi/prop_scores-(1-sch_meal)*bmi/(1-prop_scores))),
 mean((sch_meal*bmi/prop_scores2-(1-sch_meal)*bmi/(1-prop_scores2))),
 mean((sch_meal*bmi/prop_scores3-(1-sch_meal)*bmi/(1-prop_scores3))),
@@ -533,9 +533,9 @@ sum((sch_meal*bmi/prop_scores3))/sum(((sch_meal/prop_scores3))) - sum(((1-sch_me
 sum((sch_meal*bmi/prop_scores4))/sum(((sch_meal/prop_scores4))) - sum(((1-sch_meal)*bmi/(1-prop_scores4)))/sum((((1-sch_meal)/(1-prop_scores4))))))
 
 
-colnames(iws_est) <- c('Horvitz–Thompson','Hájek')
-rownames(iws_est) <- c('(0,1)', '(0.01,0.99)', '(0.05,0.95)', '(0.1,0.9)')   
-iws_est
+colnames(ipw_est) <- c('Horvitz–Thompson','Hájek')
+rownames(ipw_est) <- c('(0,1)', '(0.01,0.99)', '(0.05,0.95)', '(0.1,0.9)')   
+ipw_est
 ```
 
     ##             Horvitz–Thompson       Hájek
@@ -552,7 +552,7 @@ bootstrap.
 set.seed(123)
 nb <- 1000
 
-iws_ests <- matrix(0,nb,8)
+ipw_ests <- matrix(0,nb,8)
   
 for(i in 1:nb){
 
@@ -568,21 +568,21 @@ for(i in 1:nb){
   prop_scores_new4 <- pmin(pmax(prop_scores_new, 0.1),0.9)
   
   
-  iws_ests[i,1] <- mean((sch_meal_new*bmi_new/prop_scores_new-(1-sch_meal_new)*bmi_new/(1-prop_scores_new)))
-  iws_ests[i,2] <- mean((sch_meal_new*bmi_new/prop_scores_new2-(1-sch_meal_new)*bmi_new/(1-prop_scores_new2)))
-  iws_ests[i,3] <- mean((sch_meal_new*bmi_new/prop_scores_new3-(1-sch_meal_new)*bmi_new/(1-prop_scores_new3)))
-  iws_ests[i,4] <- mean((sch_meal_new*bmi_new/prop_scores_new4-(1-sch_meal_new)*bmi_new/(1-prop_scores_new4)))
+  ipw_ests[i,1] <- mean((sch_meal_new*bmi_new/prop_scores_new-(1-sch_meal_new)*bmi_new/(1-prop_scores_new)))
+  ipw_ests[i,2] <- mean((sch_meal_new*bmi_new/prop_scores_new2-(1-sch_meal_new)*bmi_new/(1-prop_scores_new2)))
+  ipw_ests[i,3] <- mean((sch_meal_new*bmi_new/prop_scores_new3-(1-sch_meal_new)*bmi_new/(1-prop_scores_new3)))
+  ipw_ests[i,4] <- mean((sch_meal_new*bmi_new/prop_scores_new4-(1-sch_meal_new)*bmi_new/(1-prop_scores_new4)))
 
-  iws_ests[i,5] <- sum((sch_meal_new*bmi_new/prop_scores_new))/sum(((sch_meal_new/prop_scores_new))) - sum(((1-sch_meal_new)*bmi_new/(1-prop_scores_new)))/sum((((1-sch_meal_new)/(1-prop_scores_new))))
+  ipw_ests[i,5] <- sum((sch_meal_new*bmi_new/prop_scores_new))/sum(((sch_meal_new/prop_scores_new))) - sum(((1-sch_meal_new)*bmi_new/(1-prop_scores_new)))/sum((((1-sch_meal_new)/(1-prop_scores_new))))
   
-  iws_ests[i,6] <- sum((sch_meal_new*bmi_new/prop_scores_new2))/sum(((sch_meal_new/prop_scores_new2))) - sum(((1-sch_meal_new)*bmi_new/(1-prop_scores_new2)))/sum((((1-sch_meal_new)/(1-prop_scores_new2))))
+  ipw_ests[i,6] <- sum((sch_meal_new*bmi_new/prop_scores_new2))/sum(((sch_meal_new/prop_scores_new2))) - sum(((1-sch_meal_new)*bmi_new/(1-prop_scores_new2)))/sum((((1-sch_meal_new)/(1-prop_scores_new2))))
   
-  iws_ests[i,7] <- sum((sch_meal_new*bmi_new/prop_scores_new3))/sum(((sch_meal_new/prop_scores_new3))) - sum(((1-sch_meal_new)*bmi_new/(1-prop_scores_new3)))/sum((((1-sch_meal_new)/(1-prop_scores_new3))))
+  ipw_ests[i,7] <- sum((sch_meal_new*bmi_new/prop_scores_new3))/sum(((sch_meal_new/prop_scores_new3))) - sum(((1-sch_meal_new)*bmi_new/(1-prop_scores_new3)))/sum((((1-sch_meal_new)/(1-prop_scores_new3))))
   
-  iws_ests[i,8] <- sum((sch_meal_new*bmi_new/prop_scores_new4))/sum(((sch_meal_new/prop_scores_new4))) - sum(((1-sch_meal_new)*bmi_new/(1-prop_scores_new4)))/sum((((1-sch_meal_new)/(1-prop_scores_new4))))
+  ipw_ests[i,8] <- sum((sch_meal_new*bmi_new/prop_scores_new4))/sum(((sch_meal_new/prop_scores_new4))) - sum(((1-sch_meal_new)*bmi_new/(1-prop_scores_new4)))/sum((((1-sch_meal_new)/(1-prop_scores_new4))))
 }
 
-results <- apply(iws_ests, 2, function (x) quantile(x, c(0.025,0.975)))
+results <- apply(ipw_ests, 2, function (x) quantile(x, c(0.025,0.975)))
 colnames(results) <- c('HT 0','HT 0.01','HT 0.05','HT 0.1','H 0','H 0.01','H 0.05','H 0.1')
 results
 ```

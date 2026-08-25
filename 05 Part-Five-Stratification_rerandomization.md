@@ -379,8 +379,11 @@ enough $`n`$. Freedman also showed that adjusting can lead to a less
 precise (i.e., less efficient) estimate in imbalanced designs.
 
 However, we can do a bit better and obtain a more precise estimate. The
-method is known as Lin's estimator (Lin 2013). First, we need to
-center the covariates.
+method is known as Lin's estimator (Lin 2013). The authors showed that 
+with this modification adjustment will never increase asymptotic variance 
+compared to unadjusted estimate, i.e., adjusting will never do harm. 
+
+First, we need to center the covariates. 
 
 ``` r
 model_matrix <- scale(model.matrix(lm_penn)[,c(-1,-2)], center = TRUE, scale = TRUE)
