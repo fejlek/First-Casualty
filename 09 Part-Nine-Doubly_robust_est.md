@@ -773,7 +773,7 @@ balancing the covariates.
 
 Now that we have the propensity score model, we can compute the IPW
 estimators (Horvitz–Thompson and Hájek) from the previous part. We will
-again compute the estimators for several trimming bounds.
+again compute the estimators for several truncating bounds.
 
 ``` r
 bweight <- cattaneo2$bweight

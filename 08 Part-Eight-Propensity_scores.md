@@ -496,7 +496,7 @@ Horvitz–Thompson estimator is not invariant even to a simple
 transformation $`Y \rightarrow Y + C`$. In addition, it can be quite
 unstable provided that some propensity scores are close to 0 or 1 (the
 “engineering” solution is to truncate the propensity scores away from
-zero (Ding 2024)).
+zero or remove the corresponding observations (Ding 2024)).
 
 The alternative estimator that proved to be more stable in finite
 samples is the Hájek estimator
