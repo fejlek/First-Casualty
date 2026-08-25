@@ -46,11 +46,9 @@ data; however, the average treatment effect, which is the main object of
 interest under the assumption of homogeneous treatment effect, cannot be
 estimated from the data in general. We stated that (Cunningham 2021)
 ``` math
-\text{APE} = \text{ATE} + \text{selection bias} + \text{heterogenous treatement bias}.
+\text{APE} = \text{ATE} + \text{selection bias}.
 ```
-Now, the heterogeneous treatment bias is not yet a concern, since we
-assume a homogeneous treatment effect. But the selection bias definitely
-is. It equals
+The selection bias equals
 ``` math
 \text{selection bias} = \mathbb{E}(Y(0)\mid T = 1) -\mathbb{E}(Y(0)\mid T = 0).
 ```
