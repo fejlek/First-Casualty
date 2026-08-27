@@ -1240,7 +1240,7 @@ effect is homogeneous, this is not ATE nor ATT. This is an estimate of
 the treatment effect for the population in the overlap, i.e., those with
 treatment assignment probabilities close to 0.5 under the propensity
 score model. This might be useful in some cases, but definitely not
-always …
+always…
 
 Average treatment effect in the overlap population provides an important
 strategy for estimating the treatment effect by picking a subpopulation
