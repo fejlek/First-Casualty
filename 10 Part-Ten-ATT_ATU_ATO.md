@@ -422,7 +422,7 @@ accurately than the main effects
 (<https://statmodeling.stat.columbia.edu/2018/03/15/need16/> and
 <https://statmodeling.stat.columbia.edu/2023/11/09/you-need-16-times-the-sample-size-to-estimate-an-interaction-than-to-estimate-a-main-effect-explained/>).
 This implies that an experiment or a study designed around having enough
-power toe estimate the treatment main effect (e.g., ATE or ATT) will be
+power to estimate the treatment main effect (e.g., ATE or ATT) will be
 most likely underpowered to estimate interactions.
 
 ### Estimating ATE For Observational Study under Heterogeneity
@@ -471,7 +471,7 @@ results
     ## ATU                   6.556479 0.10493048
     ## treatment_probability 0.302708 0.02149644
 
-We observe that, unlike CRE, ATE, ATT and ATU are no longer identical.
+We observe that, unlike for CRE, ATE, ATT and ATU are no longer identical.
 The average treatment effect for a given group depends on the
 distribution of covariates in that group. Since the treatment assignment
 is no longer independent of the covariates, the treated and untreated
@@ -756,10 +756,7 @@ results
     ## lin_reg 4.745748 0.2380188
     ## GAM     4.745436 0.2384826
 
-What we did there was use the control group to fit a model of potential
-outcomes without treatment, which we then used to predict the potential
-outcomes for the treated group. Notice that the linear regression is
-doing a fine job, since the model without treatment is almost linear.
+We used the control group to fit a model of potential outcomes without treatment, which we then used to predict the potential outcomes for the treated group. Notice that the linear regression is doing a fine job, since the model without treatment is almost linear.
 
 We can also use the weighted estimator (Ding 2024)
 ``` math
