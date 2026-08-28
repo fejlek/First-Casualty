@@ -760,13 +760,13 @@ We used the control group to fit a model of potential outcomes without treatment
 
 We can also use the weighted estimator (Ding 2024)
 ``` math
-\text{IPW}_\text{ATT} = \frac{1}{n_1}\sum_{i = 1}^n T_iY_i - \frac{1}{n_1}\sum_{i=1}^n \frac{\hat e(X_i)}{1-\hat e(X_i)}(1-T_i)Y_i,
+ \hat\tau^\text{IPW}_\text{ATT} = \frac{1}{n_1}\sum_{i = 1}^n T_iY_i - \frac{1}{n_1}\sum_{i=1}^n \frac{\hat e(X_i)}{1-\hat e(X_i)}(1-T_i)Y_i,
 ```
 i.e., instead of weights $`1/\hat e(X_i)`$ and $`1/(1-\hat e(X_i))`$, we
 must use weights $`1`$ and $`\hat e(X_i)/(1-\hat e(X_i))`$. In addition,
 there is again the Hájek variant (Ding 2024)
 ``` math
- \text{IPW}^{\text{Hájek}}_\text{ATT} = \frac{1}{n_1}\sum_{i = 1}^n T_iY_i - \frac{\sum_{i=1}^n \frac{\hat e(X_i)}{1-\hat e(X_i)}(1-T_i)Y_i}{\sum_{i=1}^n \frac{\hat e(X_i)}{1-\hat e(X_i)}}.
+ \hat\tau_\text{ATT}^\text{IPW, Hájek} = \frac{1}{n_1}\sum_{i = 1}^n T_iY_i - \frac{\sum_{i=1}^n \frac{\hat e(X_i)}{1-\hat e(X_i)}(1-T_i)Y_i}{\sum_{i=1}^n \frac{\hat e(X_i)}{1-\hat e(X_i)}}.
 ```
 
 ``` r
@@ -853,7 +853,7 @@ Doubly robust estimators are analogous as well. The AIPW estimator is as
 follows.
 
 ``` math
-\text{AIPW}_\text{ATT}  = \frac{1}{n_1}\sum_{i=1}^n T_i(Y_i - \mu_0(X_i, \hat \beta_0)) - \frac{1}{n_1}\sum_{i=1}^n (1-T_i)\frac{\hat e(X_i)}{1-\hat e(X_i)}(Y_i - \mu_0(X_i, \hat \beta_0)) 
+\hat \tau^\text{AIPW}_\text{ATT}  = \frac{1}{n_1}\sum_{i=1}^n T_i(Y_i - \mu_0(X_i, \hat \beta_0)) - \frac{1}{n_1}\sum_{i=1}^n (1-T_i)\frac{\hat e(X_i)}{1-\hat e(X_i)}(Y_i - \mu_0(X_i, \hat \beta_0)) 
 ```
 
 ``` r
