@@ -1106,7 +1106,7 @@ p1 <- bal.plot(prop_scores_model, var = c('X1'))
 p2 <- bal.plot(prop_scores_model, var = c('X2'))
 p3 <- bal.plot(prop_scores_model, var = c('X3'))
 
-(p1 + p2 + p3) + plot_layout(ncol = 3)
+(p1 + p2 + p3) + plot_layout(ncol = 2)
 ```
 
 ![](Part-Ten_files/figure-GFM/unnamed-chunk-27-1.png)<!-- -->
