@@ -249,6 +249,8 @@ summary(prop_scores_model)
     ## 
     ## Number of Fisher Scoring iterations: 4
 
+Let us briefly check the model.
+
 ``` r
 library(rms)
 val.prob(predict(prop_scores_model, type = 'response'),as.numeric(nhanes_bmi$School_meal))
@@ -265,6 +267,14 @@ val.prob(predict(prop_scores_model, type = 'response'),as.numeric(nhanes_bmi$Sch
     ##           Eavg            S:z            S:p 
     ##   9.965884e-01  -2.560354e+01  1.393126e-144
 
+``` r
+library(DHARMa)
+simulationOutput <- simulateResiduals(fittedModel = prop_scores_model)
+plot(simulationOutput)
+```
+
+![](Part-Eight_files/figure-GFM/unnamed-chunk-15-1.png)<!-- -->
+
 We observe that the propensity score model is clearly discriminative
 (ROC = 0.8), which indicates that the treatment assignment is far from
 random.
@@ -278,7 +288,7 @@ ggplot(data, aes(x = prop_scores, fill = School_meal)) +
   theme_minimal()
 ```
 
-![](Part-Eight_files/figure-GFM/unnamed-chunk-15-1.png)<!-- -->
+![](Part-Eight_files/figure-GFM/unnamed-chunk-16-1.png)<!-- -->
 
 Then, we stratify the data by the quantiles of the propensity scores.
 
@@ -311,7 +321,7 @@ cov <- nhanes_bmi_ext[,c(3,4,5,6, 14)]
 ggduo(data = cov, aes(color = nhanes_bmi_ext$School_meal, alpha = 0.5), columnsX = c(5), columnsY = c(1,2,3,4)) + theme(axis.text = element_text(size = 5), strip.text = element_text(size = 6))
 ```
 
-![](Part-Eight_files/figure-GFM/unnamed-chunk-17-1.png)<!-- -->
+![](Part-Eight_files/figure-GFM/unnamed-chunk-18-1.png)<!-- -->
 
 ``` r
 nhanes_bmi_ext <- nhanes_bmi
@@ -321,7 +331,7 @@ cov <- nhanes_bmi_ext[,c(7,8,9,10, 14)]
 ggduo(data = cov, aes(color = nhanes_bmi_ext$School_meal, alpha = 0.5), columnsX = c(5), columnsY = c(1,2,3,4)) + theme(axis.text = element_text(size = 5), strip.text = element_text(size = 6))
 ```
 
-![](Part-Eight_files/figure-GFM/unnamed-chunk-18-1.png)<!-- -->
+![](Part-Eight_files/figure-GFM/unnamed-chunk-19-1.png)<!-- -->
 
 ``` r
 nhanes_bmi_ext <- nhanes_bmi
@@ -331,7 +341,7 @@ cov <- nhanes_bmi_ext[,c(11,12,13, 14)]
 ggduo(data = cov, aes(color = nhanes_bmi_ext$School_meal, alpha = 0.5), columnsX = c(4), columnsY = c(1,2,3)) + theme(axis.text = element_text(size = 5), strip.text = element_text(size = 6))
 ```
 
-![](Part-Eight_files/figure-GFM/unnamed-chunk-19-1.png)<!-- -->
+![](Part-Eight_files/figure-GFM/unnamed-chunk-20-1.png)<!-- -->
 
 Intuitively, this makes sense, since we modeled the probability of
 treatment assignment as a function of $`X`$; individuals with similar
@@ -436,7 +446,7 @@ library(sjPlot)
 plot_model(gam_ps_nhanes_bmi, type = "pred", terms = c('prop_scores')) + geom_point(data = nhanes_bmi, aes(x = prop_scores, y = BMI), size = 0.5)  + labs(x = 'Propensity Scores', y = '')
 ```
 
-![](Part-Eight_files/figure-GFM/unnamed-chunk-24-1.png)<!-- -->
+![](Part-Eight_files/figure-GFM/unnamed-chunk-25-1.png)<!-- -->
 
 There is not much of a trend to speak of. Still, we can notice that
 children with very low propensity scores (i.e., low probability of
