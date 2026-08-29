@@ -408,6 +408,15 @@ val.prob(predict(prop_scores_model, type = 'response'),as.numeric(cattaneo2$mbsm
     ##          Eavg           S:z           S:p 
     ##  9.994236e-01  1.982310e+02  0.000000e+00
 
+``` r
+library(DHARMa)
+simulationOutput <- simulateResiduals(fittedModel = prop_scores_model)
+plot(simulationOutput)
+```
+
+![](Part-Nine_files/figure-GFM/unnamed-chunk-20-1.png)<!-- -->
+
+
 We should note that we can also compute the propensity scores using the
 package *WeightIt*.
 
@@ -479,7 +488,7 @@ p2 <- ggplot(cattaneo2, aes(x = alcohol, weight = ips_weights, fill = mbsmoke)) 
 (p1 + p2) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nine_files/figure-GFM/unnamed-chunk-23-1.png)<!-- -->
+![](Part-Nine_files/figure-GFM/unnamed-chunk-24-1.png)<!-- -->
 
 ``` r
 p1 <-  ggplot(cattaneo2, aes(x = mage, fill = mbsmoke)) +
@@ -505,7 +514,7 @@ p2 <-  ggplot(cattaneo2, aes(x = mage, weight = ips_weights, fill = mbsmoke)) +
 (p1 + p2) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nine_files/figure-GFM/unnamed-chunk-24-1.png)<!-- -->
+![](Part-Nine_files/figure-GFM/unnamed-chunk-25-1.png)<!-- -->
 
 We see that the adjusted proportions/densities are much more balanced
 (i.e., similar) for the treated and the untreated groups. We do not have
@@ -526,7 +535,7 @@ p4 <- bal.plot(treat ~ covs, weights = ips_weights, var = c('alcohol'))
 (p1 + p2 + p3 + p4) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nine_files/figure-GFM/unnamed-chunk-25-1.png)<!-- -->
+![](Part-Nine_files/figure-GFM/unnamed-chunk-26-1.png)<!-- -->
 
 ``` r
 p1 <- bal.plot(prop_scores_model2, var = c('deadkids'))
@@ -537,7 +546,7 @@ p4 <- bal.plot(prop_scores_model2, var = c('monthslb'))
 (p1 + p2 + p3 + p4) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nine_files/figure-GFM/unnamed-chunk-26-1.png)<!-- -->
+![](Part-Nine_files/figure-GFM/unnamed-chunk-27-1.png)<!-- -->
 
 ``` r
 p1 <- bal.plot(prop_scores_model2, var = c('mrace'))
@@ -546,7 +555,7 @@ p3 <- bal.plot(prop_scores_model2, var = c('prenatal1'))
 (p1 + p2 + p3) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nine_files/figure-GFM/unnamed-chunk-27-1.png)<!-- -->
+![](Part-Nine_files/figure-GFM/unnamed-chunk-28-1.png)<!-- -->
 
 We can also compute the adjusted difference in the means.
 
