@@ -38,6 +38,7 @@ is only in the treatment (provided there is no unobserved confounding). <br/>
   Score](#covariate-balancing-propensity-score)
 - [Entropy Balancing](#entropy-balancing)
 - [Energy Balancing](#energy-balancing)
+- [References](#references)
 
 
 ``` r
@@ -3280,6 +3281,8 @@ bal_ebs2$Balance[order(bal_ebs2$Balance$Diff.Adj, decreasing = TRUE)[1:10],]
 We see that energy balancing did a much better job at balancing
 interactions than CBPS and entropy balancing. The nonparametric approach
 proved to be clearly superior in this case.
+
+## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 
