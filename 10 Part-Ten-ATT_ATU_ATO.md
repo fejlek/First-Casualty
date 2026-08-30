@@ -19,10 +19,10 @@ we are using an appropriate estimator. <br/>
 
 ## Table of Contents
 
-- [Estimating ATE For Randomized Experiments under
-  Heterogeneity](#estimating-ate-for-randomized-experiments-under-heterogeneity)
-- [Estimating ATE For Observational Study under
-  Heterogeneity](#estimating-ate-for-observational-study-under-heterogeneity)
+- [Estimating ATE for a Randomized Experiments under
+  Heterogeneity](#estimating-ate-for-a-randomized-experiments-under-heterogeneity)
+- [Estimating ATE for an Observational Study under
+  Heterogeneity](#estimating-ate-for-an-observational-study-under-heterogeneity)
 - [Estimating ATT](#estimating-att)
 - [Average Treatment Effect in the Overlap
   Population](#average-treatment-effect-in-the-overlap-population)
@@ -43,7 +43,7 @@ library(cobalt)
 library(mgcv)
 ```
 
-### Estimating ATE For Randomized Experiments under Heterogeneity
+### Estimating ATE for a Randomized Experiments under Heterogeneity
 
 Let’s assume a simulated completely randomized experiment, where the
 potential outcomes are
@@ -425,7 +425,7 @@ This implies that an experiment or a study designed around having enough
 power to estimate the treatment main effect (e.g., ATE or ATT) will be
 most likely underpowered to estimate interactions.
 
-### Estimating ATE For Observational Study under Heterogeneity
+### Estimating ATE for an Observational Study under Heterogeneity
 
 Let’s now assume that the treatment assignment is no longer independent
 of covariates.
@@ -471,7 +471,7 @@ results
     ## ATU                   6.556479 0.10493048
     ## treatment_probability 0.302708 0.02149644
 
-We observe that, unlike for CRE, ATE, ATT and ATU are no longer identical.
+We observe that, unlike for CRE, ATE, ATT, and ATU are no longer identical.
 The average treatment effect for a given group depends on the
 distribution of covariates in that group. Since the treatment assignment
 is no longer independent of the covariates, the treated and untreated
@@ -1057,10 +1057,12 @@ abstract because it does not correspond to a precisely defined subgroup
 in the population, but, roughly speaking, it consists of individuals
 with a propensity score close to $`0.5`$.
 
-Formally, it is given by the weights $`w_i = 1 - \hat e(X_i)`$ for
-individuals who received the treatment and $`w_i = \hat e(X_i)`$ for
-those who did not receive the treatment (Ding 2024). We can compute
-these weights either manually or with the *WeightIt* package.
+Formally, it is given by the weights
+$`w_i = (1 - \hat e(X_i))T_i + \hat e(X_i)(1-T_i)`$, i.e.,
+$`w_i = 1 - \hat e(X_i)`$ for individuals who received the treatment and
+$`w_i = \hat e(X_i)`$ for those who did not receive the treatment (Ding
+2024). We can compute these weights either manually or with the
+*WeightIt* package.
 
 ``` r
 prop_scores_model <- weightit(Tr ~ . - Y, data = data, method = "glm", estimand = "ATO")
@@ -1127,7 +1129,7 @@ We can compute the average treatment effect in the overlap population
 \hat\tau^\text{Hájek}_\text{ATO} = \frac{\sum_{i=1}^n T_iY_i(1-\hat e(X_i))}{\sum_{i=1}^n T_i(1-\hat e(X_i))} - \frac{\sum_{i=1}^n (1-T_i)Y_i\hat e(X_i)}{\sum_{i=1}^n (1-T_i)\hat e(X_i)}
 ```
 which we can also compute using weighted regression of the treatment on
-the outcome. Thus is also equivalent to the linear regression of the
+the outcome. Thus, it is also equivalent to the linear regression of the
 treatment and the propensity scores on the outcome $`Y`$ (Ding 2024):
 ``` math
  \mathbb{E}Y = T+ e(X).
@@ -1150,7 +1152,11 @@ This last estimate is doubly robust; however, we have to keep in mind
 that the population is given by the misspecified propensity score model,
 provided that the propensity model is wrong. In other words, this
 estimate consistently estimates a treatment effect, but for a “wrong”
-overlap population. Let’s compute all the estimates.
+overlap population. We can also compute the IPWRA variant, in which we
+compute the average treatment effect for the overlap population using
+the regression weighted by
+$`w_i = (1 - \hat e(X_i))T_i + \hat e(X_i)(1-T_i)`$. Let’s compute all
+the estimates.
 
 ``` r
 ATO_h_ests <-  numeric(nsim)
@@ -1160,6 +1166,8 @@ ATO_dr1 <- numeric(nsim)
 ATO_dr2 <- numeric(nsim)
 ATO_linreg <- numeric(nsim)
 ATO_gam <- numeric(nsim)
+ATO_IPWRA_linreg <- numeric(nsim)
+ATO_IPWRA_gam <- numeric(nsim)
 
 for (i in 1:nsim){
   
@@ -1170,9 +1178,7 @@ for (i in 1:nsim){
   prop_scores <- glm(Tr ~ . - Y, family = binomial, data = data)$fitted.values
   
   ps_weights  <- (1 - prop_scores)*data$Tr + (1-data$Tr)*(prop_scores)
-  w0 <- ((1 - prop_scores)*prop_scores)[data$Tr == 0]
-  w1 <- ((1 - prop_scores)*prop_scores)[data$Tr == 1]
-  
+
   ATO_h_ests[i] <- sum(Y*data$Tr*(1-prop_scores))/sum(data$Tr*(1-prop_scores)) - sum(prop_scores*(Y*(1-data$Tr)))/sum(prop_scores*(1-data$Tr))
   
   ATO_h_ests2[i] <- coefficients(lm(Y ~ Tr, weights = ps_weights, data = data))[2]
@@ -1183,7 +1189,12 @@ for (i in 1:nsim){
   modelreg1_now <- lm(Y ~  X1 + X2 + X3, data = data[data$Tr == 1,])
   modelgam0_now <- gam(Y ~  s(X1) + s(X2) + s(X3), data = data[data$Tr == 0,])
   modelgam1_now <- gam(Y ~  s(X1) + s(X2) + s(X3), data = data[data$Tr == 1,])
-
+  
+  modelreg0_w <- lm(Y ~  X1 + X2 + X3, data = data[data$Tr == 0,], weights = ps_weights[data$Tr == 0])
+  modelreg1_w <- lm(Y ~  X1 + X2 + X3, data = data[data$Tr == 1,], weights = ps_weights[data$Tr == 1])
+  modelgam0_w <- gam(Y ~  s(X1) + s(X2) + s(X3), data = data[data$Tr == 0,], weights = ps_weights[data$Tr == 0])
+  modelgam1_w <- gam(Y ~  s(X1) + s(X2) + s(X3), data = data[data$Tr == 1,], weights = ps_weights[data$Tr == 1])
+  
    ATO_dr1[i] <- 
      sum((1 - prop_scores)*prop_scores*(predict(modelreg1_now,data) - predict(modelreg0_now,data)))/sum((1 - prop_scores)*prop_scores) +
      sum(data$Tr*(1-prop_scores)*(Y-predict(modelreg1_now,data)))/sum((1-prop_scores)*data$Tr) - 
@@ -1196,6 +1207,10 @@ for (i in 1:nsim){
    
    ATO_linreg[i] <-  sum((1 - prop_scores)*prop_scores*(predict(modelreg1_now,data) - predict(modelreg0_now,data)))/sum((1 - prop_scores)*prop_scores)
    ATO_gam[i] <-  sum((1 - prop_scores)*prop_scores*(predict(modelgam1_now,data) - predict(modelgam0_now,data)))/sum((1 - prop_scores)*prop_scores)
+   
+   
+   ATO_IPWRA_linreg[i] <- sum((predict(modelreg1_w,data) - predict(modelreg0_w ,data))*(1 - prop_scores)*(prop_scores))/sum((1 - prop_scores)*(prop_scores))
+   ATO_IPWRA_gam[i] <- sum((predict(modelgam1_w,data) - predict(modelgam0_w ,data))*(1 - prop_scores)*(prop_scores))/sum((1 - prop_scores)*(prop_scores))
 }
 
 results <- rbind(
@@ -1205,11 +1220,13 @@ results <- rbind(
   c(mean(ATO_linreg), sd((ATO_linreg))),  
   c(mean(ATO_gam), sd((ATO_gam))),
   c(mean(ATO_dr1), sd((ATO_dr1))),
-  c(mean(ATO_dr2), sd((ATO_dr2)))
+  c(mean(ATO_dr2), sd((ATO_dr2))),
+  c(mean(ATO_IPWRA_linreg), sd((ATO_IPWRA_linreg))),
+  c(mean(ATO_IPWRA_gam), sd((ATO_IPWRA_gam)))
 )
 
 colnames(results) <- c('mean','sd')
-rownames(results) <- c('Hájek', 'Hájek via reg', 'Reg on PS', 'lin_reg', 'GAM', 'Aug. Hájek (lin_reg)', 'Aug. Hájek (GAM)')
+rownames(results) <- c('Hájek', 'Hájek via reg', 'Reg on PS', 'lin_reg', 'GAM', 'Aug. Hájek (lin_reg)', 'Aug. Hájek (GAM)', 'IPWRA (lin_reg)', 'IPWRA (GAM)')
 results
 ```
 
@@ -1221,6 +1238,8 @@ results
     ## GAM                  5.518082 0.1801528
     ## Aug. Hájek (lin_reg) 5.518346 0.1834946
     ## Aug. Hájek (GAM)     5.519496 0.1802017
+    ## IPWRA (lin_reg)      5.518456 0.1825453
+    ## IPWRA (GAM)          5.519744 0.1809425
 
 All the estimates are almost the same except the estimator based on
 linear regression, which is slightly biased due to model
@@ -1239,12 +1258,12 @@ treatment assignment probabilities close to 0.5 under the propensity
 score model. This might be useful in some cases, but definitely not
 always…
 
-Average treatment effect in the overlap population provides an important
-strategy for estimating the treatment effect by picking a subpopulation
-for which the observed covariates are as balanced as possible, thereby
-allowing us to accurately estimate the treatment effect with, hopefully,
-very little selection bias. We explore this strategy in more depth when
-we discuss *matching* in Part Twelve.
+Average treatment effect in the overlap population demonstrates an important 
+strategy for estimating the treatment effect by creating treatment and control 
+populations for which the observed covariates are as balanced as possible, 
+thereby allowing us to estimate the treatment effect accurately with, hopefully, 
+very little selection bias. We explore this strategy in more depth when we 
+discuss weighting and matching in Part Eleven and Part Twelve.
 
 ## References
 
