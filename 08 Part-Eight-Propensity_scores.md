@@ -157,7 +157,7 @@ datasummary_skim(nhanes_bmi[,-1])
 <td>4.0</td>
 <td>10.0</td> 
 <td>17.0</td> 
-<td><img src="Part-Eight_files/9db27e69355536c7163a4d842d135ee217b56120.png" />
+<td><img src="Part-Eight_files/9db27e69355536c7163a4d842d135ee217b56120.png" height="16" />
 </tr>
 <tr>
 <td>RefAge</td> 
