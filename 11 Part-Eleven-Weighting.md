@@ -1468,7 +1468,7 @@ plot(simulationOutput)
 
 ![](Part-Eleven_files/figure-GFM/unnamed-chunk-16-1.png)<!-- -->
 
-The propensity scores model seems reasonably specified and is clearly
+The propensity scores model seems well-specified and is clearly
 discriminative; thus, we can expect that the naive ATE estimate is
 biased. Let us check the overlap.
 
@@ -1478,7 +1478,7 @@ bal.plot(prop_scores_model_ATE, var.name = "prop.score", which = "un", type = "d
 
 ![](Part-Eleven_files/figure-GFM/unnamed-chunk-17-1.png)<!-- -->
 
-We have a reasonable overlap between the treatment and control groups;
+We have a nice overlap between the treatment and control groups;
 hence, we should be able to obtain a reasonable estimate of ATE with
 respect to the observed covariates. Let us check the balance of
 covariates in terms of adjusted means.
@@ -1607,7 +1607,7 @@ result
     ## naive ATE  5.162104 0.7145751
     ## IPW ATE    2.858327 0.8554132
 
-The naive ATE is likely to be noticeably biased. The inverse propensity
+Indeed, the naive ATE was significantly biased. The inverse propensity
 score weighting improved balance, but even in covariate means there are
 still some imbalances, suggesting that there could be some remaining
 selection bias. So, let’s move to other methods.
