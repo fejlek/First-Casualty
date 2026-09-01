@@ -10,7 +10,7 @@ Jiří Fejlek
 <br/> A matched-pairs experiment (MPE) is an extreme version of a stratified
 randomized experiment, in which each stratum consists of merely two
 individuals. The idea is that provided paired individuals are similar to each
-other, we can estimate the treatment effect more acurately by comparing the
+other, we can estimate the treatment effect more accurately by comparing the
 differences in paired outcomes. <br/>
 
 ## Table of Contents
