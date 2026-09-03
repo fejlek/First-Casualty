@@ -39,7 +39,8 @@ something more akin to ATO. <br/>
 - [Matching (without Replacement)](#matching-without-replacement)
   - [Nearest Neighbor Matching (Greedy
     Matching)](#nearest-neighbor-matching-greedy-matching)
-  - [Mahalanobis Distance Matching](#mahalanobis-distance-matching)
+    - [Mahalanobis Distance Matching](#mahalanobis-distance-matching)
+    - [Propensity Score Matching](#propensity-score-matching)
   - [Nearest Neighbor Matching (with
     Caliper)](#nearest-neighbor-matching-with-caliper)
   - [Optimal Pair Matching](#optimal-pair-matching)
@@ -1153,7 +1154,7 @@ There is no clear consensus on which ordering is best, because
 ultimately what matters is the result, i.e., whether the result leads to
 the best balance in covariates.
 
-### Mahalanobis Distance Matching
+#### Mahalanobis Distance Matching
 
 Let us start with greedy matching based on Mahalanobis distance
 (Euclidean distance weighted by sample covariance). We will order the
