@@ -1239,7 +1239,7 @@ on the risk ratio and risk difference scales is almost always inherently
 heterogeneous despite being constant on the odds ratio scale. This implies that the marginal risk ratio and risk difference will depend heavily on the population they were computed on and might not be easily generalizable to another population. Let’s investigate the influence of one important characteristic of any population with respect to a binary outcome, the *prevalence* of $`Y`$.
 
 First, we will assume a homogeneous population. i.e., everyone has the
-same baseline risk $`P[Y(0)=1 \mid \text{Treatment}]`$. Further, we will
+same baseline risk $`P[Y(0)=1]`$. Further, we will
 assume that the treatment effect, in terms of conditional odds ratios,
 is constant. We will now change the baseline risk (prevalence in the
 non-treated group) and plot marginal effects.
