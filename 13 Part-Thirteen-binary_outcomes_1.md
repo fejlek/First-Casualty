@@ -1316,7 +1316,7 @@ More extreme conditional odds skew the maximum toward 0 or 1.
 ggplot(data = stat_table, aes(x = Prevalence, y = MOR, color = COR, group = COR)) +
   geom_line(linewidth = 1.1) +
   labs(x = "Prevalence in Untreated Group",
-       y = "Marginal Risk Difference",
+       y = "Marginal Odds Ratio",
        color = "Conditional Odds Ratio") + theme_minimal()
 ```
 
