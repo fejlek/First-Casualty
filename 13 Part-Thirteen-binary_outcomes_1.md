@@ -57,11 +57,13 @@ heterogeneity of the treatment effect. <br/>
 - [Completely Randomized Experiment with
   Covariates](#completely-randomized-experiment-with-covariates)
 - [On Interpretation of Marginal
-    Effects](#on-interpretation-of-marginal-effects)
+  Effects](#on-interpretation-of-marginal-effects)
 - [Conditional Effects](#conditional-effects)
 - [Influence of Prevalence on Marginal
   Effects](#influence-of-prevalence-on-marginal-effects)
 - [References](#references)
+
+Binary Outcomes I
 
 ``` r
 library(tidyr)
@@ -85,7 +87,7 @@ library(marginaleffects)
 Let’s assume a binary outcome $`Y_i(0), Y_i(1) \in {0,1}`$ for all
 $`i = 1, \ldots, n`$. Then,
 ``` math
-\mathbb{E}Y(t) = P[Y=1 \mid T = t]
+\mathbb{E}Y(t) = P[Y(t) = 1]
 ```
 and hence,
 ``` math
@@ -338,7 +340,7 @@ models.
 Let’s complicate things a bit more and assume that not all individuals
 are the same. We assume that individual probabilities are
 ``` math
- P[Y_i = 1] = \text{ilogit}(0.5X_1 + 0.75X_2 + 2X_3 + \text{Treatement} - 2)
+P[Y_i = 1] = \text{ilogit}(0.5X_1 + 0.75X_2 + 2X_3 + \text{Treatement} - 2)
 ```
 and we generate the covariates as $`X_1 \sim \text{Uniform}(-5,5)`$,
 $`X_2 \sim N(1, 6.25)`$, and $`X_3 \sim \text{Bernoulli}(0.25)`$. We
@@ -424,20 +426,22 @@ results <- rbind(
 
 results_RD <- rbind(
   c(mean(p1) - mean(p0), NA),
+  c(mean(y1) - mean(y0), NA),
   t(results[,c(1,4,7,10)])
 )
 
 colnames(results_RD) <-  c('RD Estimate', 'sd')
-rownames(results_RD) <-  c('True Marginal RD', 'Unadj. RD', 'Linear Regression', 'Poisson Regression', 'Logistic Regression')
+rownames(results_RD) <-  c('True Marginal RD (expected)', 'True Marginal RD (population)', 'Unadj. RD', 'Linear Regression', 'Poisson Regression', 'Logistic Regression')
 results_RD
 ```
 
-    ##                     RD Estimate          sd
-    ## True Marginal RD      0.1475964          NA
-    ## Unadj. RD             0.1455340 0.008451271
-    ## Linear Regression     0.1454069 0.006092160
-    ## Poisson Regression    0.1454343 0.006770548
-    ## Logistic Regression   0.1454212 0.005873179
+    ##                               RD Estimate          sd
+    ## True Marginal RD (expected)     0.1475964          NA
+    ## True Marginal RD (population)   0.1457000          NA
+    ## Unadj. RD                       0.1455340 0.008451271
+    ## Linear Regression               0.1454069 0.006092160
+    ## Poisson Regression              0.1454343 0.006770548
+    ## Logistic Regression             0.1454212 0.005873179
 
 We observe that all four estimates are approaching the true value
 (computed from $`p_0`$ and $`p_1`$) and are very similar to each other.
@@ -447,40 +451,44 @@ Let’s compute marginal risk ratios next.
 ``` r
 results_RR <- rbind(
   c(mean(p1)/mean(p0), NA),
+  c(mean(y1)/mean(y0), NA),
   t(results[,c(2,5,8,11)])
 )
 
 colnames(results_RR) <-  c('Estimate RR', 'sd')
-rownames(results_RR) <-  c('True Marginal RR', 'Unadj. RR', 'Linear Regression', 'Poisson Regression', 'Logistic Regression')
+rownames(results_RR) <-  c('True Marginal RR (expected)', 'True Marginal RR (population)', 'Unadj. RR', 'Linear Regression', 'Poisson Regression', 'Logistic Regression')
 results_RR
 ```
 
-    ##                     Estimate RR         sd
-    ## True Marginal RR       1.268864         NA
-    ## Unadj. RR              1.266179 0.01668087
-    ## Linear Regression      1.265880 0.01181666
-    ## Poisson Regression     1.265942 0.01312772
-    ## Logistic Regression    1.265900 0.01139242
+    ##                               Estimate RR         sd
+    ## True Marginal RR (expected)      1.268864         NA
+    ## True Marginal RR (population)    1.266459         NA
+    ## Unadj. RR                        1.266179 0.01668087
+    ## Linear Regression                1.265880 0.01181666
+    ## Poisson Regression               1.265942 0.01312772
+    ## Logistic Regression              1.265900 0.01139242
 
 The same story.
 
 ``` r
 results_OR <- rbind(
   c((mean(p1)/mean(1-p1))/(mean(p0)/mean(1-p0)), NA),
+  c((mean(y1)/mean(1-y1))/(mean(y0)/mean(1-y0)), NA),
   t(results[,c(3,6,9,12)])
 )
 
 colnames(results_OR) <-  c('Estimate OR', 'sd')
-rownames(results_OR) <-  c('True Marginal OR', 'Unadj. OR', 'Linear Regression', 'Poisson Regression', 'Logistic Regression')
+rownames(results_OR) <-  c('True Marginal OR (expected)', 'True Marginal OR (population)', 'Unadj. OR', 'Linear Regression', 'Poisson Regression', 'Logistic Regression')
 results_OR
 ```
 
-    ##                     Estimate OR         sd
-    ## True Marginal OR       1.886052         NA
-    ## Unadj. OR              1.866900 0.07122010
-    ## Linear Regression      1.865102 0.05185587
-    ## Poisson Regression     1.865541 0.05765738
-    ## Logistic Regression    1.865173 0.05000088
+    ##                               Estimate OR         sd
+    ## True Marginal OR (expected)      1.886052         NA
+    ## True Marginal OR (population)    1.866535         NA
+    ## Unadj. OR                        1.866900 0.07122010
+    ## Linear Regression                1.865102 0.05185587
+    ## Poisson Regression               1.865541 0.05765738
+    ## Logistic Regression              1.865173 0.05000088
 
 And the same story for the marginal odds ratio. To conclude, even in the
 absence of confounding, we want to adjust to increase the precision of
@@ -554,13 +562,13 @@ hence.
 \text{RD} = \mathbb{E}Y(1) - \mathbb{E}Y(0) = \mathbb{E} (Y(1) - Y(0)
 ```
 This might seem trivial but an important consequence of this is that
-marginal risk difference
+observed marginal risk difference
 
 ``` r
-results_RD[1,1]
+results_RD[2,1]
 ```
 
-    ## [1] 0.1475964
+    ## [1] 0.1457
 
 is equal to the average of *individual* risk differences in the
 population.
@@ -589,7 +597,8 @@ ggplot(data.frame(rd_indiv), aes(x = rd_indiv)) +  geom_histogram(bins = 100) + 
 We see that the distribution is extremely skewed (as is often the case
 for heterogeneous populations), and the spread of actual individual risk
 differences is quite wide. In addition, since the treatment effect on
-the risk difference is heterogeneous, the marginal risk difference value will depend on the population.
+the risk difference is heterogeneous, the marginal risk difference value
+will depend on the population.
 
 Since there is clearly heterogeneity of the effect on the risk
 difference scale, there should be significant interactions in the linear
@@ -818,10 +827,10 @@ individual predictions.
 
 ``` r
 # marginal risk ratio
-results_RR[1,1]
+results_RR[2,1]
 ```
 
-    ## [1] 1.268864
+    ## [1] 1.266459
 
 ``` r
 # average of individual risk ratios
@@ -897,10 +906,10 @@ individual odds ratios.
 
 ``` r
 # marginal odds ratio
-results_OR[1,1]
+results_OR[2,1]
 ```
 
-    ## [1] 1.886052
+    ## [1] 1.866535
 
 ``` r
 # average of individual odds ratios
@@ -989,6 +998,16 @@ c_odds
     ##                     mean        sd
     ## Treatment coef. 2.704408 0.1144561
 
+We should recognize this value from the last figure; this is the effect
+of the treatment on individual odds ratios. We will refer to this value
+as the *conditional odds ratio*, since it provides the effect of
+treatment in terms of the odds ratio *conditioned* on the covariates
+$`X`$.
+
+However, there is a slight difficulty in estimating conditional odds
+ratios. Let’s demonstrate it by fitting several logistic models on our
+data: one with only treatment, one with treatment and $``X_1``$, one
+with treatment and $`X_1`$ and $`X_2`$, and lastly the full model.
 
 ``` r
 set.seed(123)
@@ -1063,21 +1082,21 @@ results2 <- rbind(
 
 
 results_RD2 <- rbind(
-  c(mean(p1) - mean(p0), NA),
+  c(mean(y1) - mean(y0), NA),
   t(results2[,c(5,6,7,8)])
 )
 
 colnames(results_RD2) <-  c('RD Estimate', 'sd')
-rownames(results_RD2) <-  c('True Marginal RD', 'LogReg Tr', 'LogReg Tr+X1', 'LogReg Tr+X1-2', 'LogReg Tr+X1-3')
+rownames(results_RD2) <-  c('True Marginal RD (population)', 'LogReg Tr', 'LogReg Tr+X1', 'LogReg Tr+X1-2', 'LogReg Tr+X1-3')
 results_RD2
 ```
 
-    ##                  RD Estimate          sd
-    ## True Marginal RD   0.1475964          NA
-    ## LogReg Tr          0.1458381 0.008169442
-    ## LogReg Tr+X1       0.1458171 0.006768441
-    ## LogReg Tr+X1-2     0.1457509 0.006315613
-    ## LogReg Tr+X1-3     0.1457294 0.005873547
+    ##                               RD Estimate          sd
+    ## True Marginal RD (population)   0.1457000          NA
+    ## LogReg Tr                       0.1458381 0.008169442
+    ## LogReg Tr+X1                    0.1458171 0.006768441
+    ## LogReg Tr+X1-2                  0.1457509 0.006315613
+    ## LogReg Tr+X1-3                  0.1457294 0.005873547
 
 We observe that all four give the same estimate of marginal risk
 difference. The only difference is that the more accurate models have
@@ -1085,41 +1104,41 @@ lower standard errors. The same is true for marginal risk ratio
 
 ``` r
 results_RR2 <- rbind(
-  c(mean(p1)/mean(p0), NA),
+  c(mean(y1)/mean(y0), NA),
   t(results2[,c(9,10,11,12)])
 )
 
 colnames(results_RR2) <-  c('RR Estimate', 'sd')
-rownames(results_RR2) <-  c('True Marginal RR', 'LogReg Tr', 'LogReg Tr+X1', 'LogReg Tr+X1-2', 'LogReg Tr+X1-3')
+rownames(results_RR2) <-  c('True Marginal RR (population)', 'LogReg Tr', 'LogReg Tr+X1', 'LogReg Tr+X1-2', 'LogReg Tr+X1-3')
 results_RR2
 ```
 
-    ##                  RR Estimate         sd
-    ## True Marginal RR    1.268864         NA
-    ## LogReg Tr           1.266769 0.01611819
-    ## LogReg Tr+X1        1.266699 0.01325022
-    ## LogReg Tr+X1-2      1.266562 0.01232456
-    ## LogReg Tr+X1-3      1.266516 0.01139507
+    ##                               RR Estimate         sd
+    ## True Marginal RR (population)    1.266459         NA
+    ## LogReg Tr                        1.266769 0.01611819
+    ## LogReg Tr+X1                     1.266699 0.01325022
+    ## LogReg Tr+X1-2                   1.266562 0.01232456
+    ## LogReg Tr+X1-3                   1.266516 0.01139507
 
 and the marginal odds ratio.
 
 ``` r
 results_OR2 <- rbind(
-  c((mean(p1)/mean(1-p1))/(mean(p0)/mean(1-p0)), NA),
+  c((mean(y1)/mean(1-y1))/(mean(y0)/mean(1-y0)), NA),
   t(results2[,c(13,14,15,16)])
 )
 
 colnames(results_OR2) <-  c('OR Estimate', 'sd')
-rownames(results_OR2) <-  c('True Marginal OR', 'LogReg Tr', 'LogReg Tr+X1', 'LogReg Tr+X1-2', 'LogReg Tr+X1-3')
+rownames(results_OR2) <-  c('True Marginal OR (population)', 'LogReg Tr', 'LogReg Tr+X1', 'LogReg Tr+X1-2', 'LogReg Tr+X1-3')
 results_OR2
 ```
 
-    ##                  OR Estimate         sd
-    ## True Marginal OR    1.886052         NA
-    ## LogReg Tr           1.869365 0.06900552
-    ## LogReg Tr+X1        1.868736 0.05743446
-    ## LogReg Tr+X1-2      1.868045 0.05360871
-    ## LogReg Tr+X1-3      1.867741 0.05006562
+    ##                               OR Estimate         sd
+    ## True Marginal OR (population)    1.866535         NA
+    ## LogReg Tr                        1.869365 0.06900552
+    ## LogReg Tr+X1                     1.868736 0.05743446
+    ## LogReg Tr+X1-2                   1.868045 0.05360871
+    ## LogReg Tr+X1-3                   1.867741 0.05006562
 
 However, let’s consider the conditional odds ratios.
 
@@ -1236,10 +1255,15 @@ there is no confounding.
 
 We discussed that, for a heterogeneous population, the treatment effect
 on the risk ratio and risk difference scales is almost always inherently
-heterogeneous despite being constant on the odds ratio scale. This implies that the marginal risk ratio and risk difference will depend heavily on the population they were computed on and might not be easily generalizable to another population. Let’s investigate the influence of one important characteristic of any population with respect to a binary outcome, the *prevalence* of $`Y`$.
+heterogeneous despite being constant on the odds ratio scale. This
+implies that the marginal risk ratio and risk difference will depend
+heavily on the population they were computed on and might not be easily
+generalizable to another population. Let’s investigate the influence of
+one important characteristic of any population with respect to a binary
+outcome, the *prevalence* of $``Y``$.
 
 First, we will assume a homogeneous population. i.e., everyone has the
-same baseline risk $`P[Y(0)=1]`$. Further, we will
+same baseline risk $`P[Y(0)=1 \mid \text{Treatment}]`$. Further, we will
 assume that the treatment effect, in terms of conditional odds ratios,
 is constant. We will now change the baseline risk (prevalence in the
 non-treated group) and plot marginal effects.
@@ -1325,7 +1349,9 @@ ggplot(data = stat_table, aes(x = Prevalence, y = MOR, color = COR, group = COR)
 Provided that the baseline risk is homogeneous, the marginal odds ratio
 equals the conditional one.
 
-Now, let’s assume that the group is not homogeneous with respect to the baseline risk. We add a variable $X \sim N(0,6.25)$ with coefficient 1 in the logistic model and simulate a population of 10000.
+Now, let’s assume that the group is not homogeneous with respect to the
+baseline risk. We add a variable $`X \sim N(0,6.25)`$ with coefficient 1
+in the logistic model and simulate a population of 10000.
 
 ``` r
 prevalence <- seq(-8,5,0.8)
