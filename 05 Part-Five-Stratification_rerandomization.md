@@ -9,7 +9,7 @@ Jiří Fejlek
 
 <br/> When analyzing the treatment effect, we often include additional covariates
 that have a strong influence on the outcome. Including these covariates in
-CRE is important to keep the design experiment balanced, and as we will show
+CRE is important to keep the experimental design balanced, and as we will show
 it helps us improve the accuracy of estimating the treatment effect. <br/>
 
 ## Table of Contents
