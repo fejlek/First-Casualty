@@ -23,7 +23,8 @@ we are using an appropriate estimator. <br/>
   Heterogeneity](#estimating-ate-for-a-randomized-experiments-under-heterogeneity)
 - [Estimating ATE for an Observational Study under
   Heterogeneity](#estimating-ate-for-an-observational-study-under-heterogeneity)
-- [Estimating ATT](#estimating-att)
+- [Estimating ATT for an Observational Study under
+  Heterogeneity](#estimating-att-for-an-observational-study-under-heterogeneity)
 - [Average Treatment Effect in the Overlap
   Population](#average-treatment-effect-in-the-overlap-population)
 - [References](#references)
@@ -719,7 +720,7 @@ ATE? What if our population of interest is more similar only to the
 treated group, not to the whole population of the observational study?
 Clearly, the estimand to go for is ATT, not ATE.
 
-### Estimating ATT
+### Estimating ATT for an Observational Study under Heterogeneity
 
 Fortunately, estimating ATT is pretty straightforward. Since regression
 can be understood as an imputation of potential outcomes, we should
