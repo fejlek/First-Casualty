@@ -24,7 +24,8 @@ model’s predictions are justified.
 
 In this first part, we will describe two paradoxes: Simpson’s Paradox
 and Berkson’s Paradox, corresponding to *confounder bias* and *collider
-bias*, respectively, which often go wrong. <br/>
+bias*, respectively, for which decisions based on  $`P(Y \mid X)`$ go 
+wrong. <br/>
 
 ## Table of Contents
 
