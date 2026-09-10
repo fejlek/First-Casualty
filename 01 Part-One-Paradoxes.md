@@ -16,8 +16,8 @@ models can be hilariously wrong in determining the distribution of $`Y`$
 when we act, *interven*e on $`X`$, which is often denoted as
 $`P(Y \mid \text{do}(X))`$.
 
-The thing is, we do not want to sit back there, watch, and predict. We
-want to act. We need to act. Causal inference provides us with a
+The thing is, we do not want always to sit back there, watch, and predict. We
+want sometimes to act. Sometimes, we need to act. Causal inference provides us with a
 framework that helps us decide whether $`P(Y \mid X)`$ and
 $`P(Y \mid \text{do}(X))`$ coincide, i.e., whether actions based on the
 model’s predictions are justified.
