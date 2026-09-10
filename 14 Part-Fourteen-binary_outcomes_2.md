@@ -21,7 +21,7 @@ for continuous outcomes. <br/>
   Confounding](#estimating-marginal-risk-ratio-under-confounding)
 - [Estimating Marginal Odds Ratio under
   Confounding](#estimating-marginal-odds-ratio-under-confounding)
-- [Conditional Odds Ratio](#conditional-odds-ratio)
+- [Conditional Odds Ratio under Confounding](#conditional-odds-ratio-under-confounding)
 - [References](#references)
 
 ``` r
@@ -1050,7 +1050,7 @@ results_OR_ATT
     ## Cardinality Matching (Unadjusted)             2.177747 0.1861820
     ## Cardinality Matching (Logistic Regression)    2.133199 0.1710064
 
-## Conditional Odds Ratio
+## Conditional Odds Ratio under Confounding
 
 To conclude, let’s also check the conditional odds ratio.
 
