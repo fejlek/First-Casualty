@@ -1158,7 +1158,7 @@ results_COR
     ## Naive (unadjusted) COR                   0.819566 0.07691336
     ## COR (logistic regression)                1.034492 0.09530593
 
-WWe see that doubling the number of observations makes the logistic
+We see that doubling the number of observations makes the logistic
 regression estimate more precise, whereas the unadjusted estimate
 remains biased. However, we can clearly see how much more difficult it
 is to estimate the conditional effect than the marginal effect: we
