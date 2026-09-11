@@ -42,6 +42,11 @@ library(mgcv)
 library(marginaleffects)
 ```
 
+We will complete our discussion of estimating marginal effects for
+binary outcomes by demonstrating how to estimate them under observed
+confounding. We will see that the computations are very similar to those
+for continuous outcomes.
+
 ## Estimating Marginal Risk Difference under Confounding
 
 Let’s start with the marginal risk difference, which corresponds to the
@@ -323,16 +328,18 @@ for (i in 1:n_sim){
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "nearest", m.order = "largest", distance = 'glm', replace = TRUE)
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RD[i,4] <- avg_comparisons(logist_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
   
-  ols_model <- lm(y ~ treatment*(X1 + X2 + X3), data = match_data)
+  ols_model <- lm(y ~ treatment*(X1 + X2 + X3), data = match_data, weights = weights)
   estimates_RD[i,5] <- avg_comparisons(ols_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RD[i,6] <- avg_comparisons(logist_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
 }
+```
 
+``` r
 results <- rbind(
   apply(estimates_RD,2,mean),
   apply(estimates_RD,2,sd))
@@ -350,9 +357,9 @@ results_RD_ATT
     ## True Marginal RD for Treated (mean)   0.1670557 0.02306800
     ## Linear Regression                     0.1717863 0.01658405
     ## Logistic Regression                   0.1693859 0.01559880
-    ## PSM (Unadjusted)                      0.1870399 0.02681103
-    ## PSM (Linear Regression)               0.1708875 0.02363544
-    ## PSM (Logistic Regression)             0.1703240 0.02332502
+    ## PSM (Unadjusted)                      0.1702696 0.03263405
+    ## PSM (Linear Regression)               0.1714441 0.02883986
+    ## PSM (Logistic Regression)             0.1720494 0.02805571
 
 Again, we can also consider other matching methods.
 
@@ -374,39 +381,39 @@ for (i in 1:n_sim){
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "genetic", estimand = "ATT", replace = TRUE)
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RD[i,1] <- avg_comparisons(logist_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
   
-  ols_model <- lm(y ~ treatment*(X1 + X2 + X3), data = match_data)
+  ols_model <- lm(y ~ treatment*(X1 + X2 + X3), data = match_data, weights = weights)
   estimates_RD[i,2] <- avg_comparisons(ols_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RD[i,3] <- avg_comparisons(logist_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
   
   
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "full", estimand = "ATT")
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RD[i,4] <- avg_comparisons(logist_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
   
-  ols_model <- lm(y ~ treatment*(X1 + X2 + X3), data = match_data)
+  ols_model <- lm(y ~ treatment*(X1 + X2 + X3), data = match_data, weights = weights)
   estimates_RD[i,5] <- avg_comparisons(ols_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RD[i,6] <- avg_comparisons(logist_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
   
   
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "cardinality",  ratio = 1, tols = .05, estimand = "ATT")
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RD[i,7] <- avg_comparisons(logist_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
   
-  ols_model <- lm(y ~ treatment*(X1 + X2 + X3), data = match_data)
+  ols_model <- lm(y ~ treatment*(X1 + X2 + X3), data = match_data, weights = weights)
   estimates_RD[i,8] <- avg_comparisons(ols_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RD[i,9] <- avg_comparisons(logist_model, variables = "treatment", newdata = subset(treatment == 1))$estimate
 }
 
@@ -424,19 +431,17 @@ results_RD_ATT2
 ```
 
     ##                                            RD Estimate         sd
-    ## Genetic Matching (Unadjusted)                0.1849833 0.02405872
-    ## Genetic Matching (Linear Regression)         0.1691895 0.02249325
-    ## Genetic Matching (Logistic Regression)       0.1685049 0.02271988
-    ## Full Matching (Unadjusted)                   0.2088788 0.02180977
-    ## Full Matching (Linear Regression)            0.1723632 0.01679461
-    ## Full Matching (Logistic Regression)          0.1700709 0.01696219
+    ## Genetic Matching (Unadjusted)                0.1674638 0.02791502
+    ## Genetic Matching (Linear Regression)         0.1673533 0.02791580
+    ## Genetic Matching (Logistic Regression)       0.1680235 0.02788251
+    ## Full Matching (Unadjusted)                   0.1725953 0.02460180
+    ## Full Matching (Linear Regression)            0.1728639 0.02317221
+    ## Full Matching (Logistic Regression)          0.1733122 0.02295646
     ## Cardinality Matching (Unadjusted)            0.1750795 0.01971016
     ## Cardinality Matching (Linear Regression)     0.1720869 0.02035655
     ## Cardinality Matching (Logistic Regression)   0.1696858 0.02043041
 
 We see that all methods provide very similar results in this case.
-However, we see that unadjusted matching methods can perform poorly (to
-be fair, we did not check the quality of the balance).
 
 ## Estimating Marginal Risk Ratio under Confounding
 
@@ -695,42 +700,44 @@ for (i in 1:n_sim){
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "nearest", m.order = "largest", distance = 'glm', replace = TRUE)
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RR[i,4] <- avg_comparisons(logist_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
   
-  poisson_model <- glm(y ~ treatment*(X1 + X2 + X3), family = poisson(link = 'log'), data = match_data)
+  poisson_model <- glm(y ~ treatment*(X1 + X2 + X3), family = poisson(link = 'log'), data = match_data, weights = weights)
   estimates_RR[i,5] <- avg_comparisons(poisson_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RR[i,6] <- avg_comparisons(logist_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
   
   
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "full", estimand = "ATT")
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RR[i,7] <- avg_comparisons(logist_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
   
-  poisson_model <- glm(y ~ treatment*(X1 + X2 + X3), family = poisson(link = 'log'), data = match_data)
+  poisson_model <- glm(y ~ treatment*(X1 + X2 + X3), family = poisson(link = 'log'), data = match_data, weights = weights)
   estimates_RR[i,8] <- avg_comparisons(poisson_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RR[i,9] <- avg_comparisons(logist_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
   
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "cardinality",  ratio = 1, tols = .05, estimand = "ATT")
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RR[i,10] <- avg_comparisons(logist_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
   
-  poisson_model <- glm(y ~ treatment*(X1 + X2 + X3), family = poisson(link = 'log'), data = match_data)
+  poisson_model <- glm(y ~ treatment*(X1 + X2 + X3), family = poisson(link = 'log'), data = match_data, weights = weights)
   estimates_RR[i,11] <- avg_comparisons(poisson_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_RR[i,12] <- avg_comparisons(logist_model, variables = "treatment", comparison = "ratio", newdata = subset(treatment == 1))$estimate
   
 }
+```
 
+``` r
 results <- rbind(
   apply(estimates_RR,2,mean),
   apply(estimates_RR,2,sd))
@@ -748,18 +755,17 @@ results_RR_ATT
     ## True Marginal RR in Treated (mean)            1.293639 0.04733173
     ## Poisson Regression                            1.307349 0.04203552
     ## Logistic Regression                           1.299826 0.03420159
-    ## PSM (Unadjusted)                              1.342057 0.06243895
-    ## PSM (Poisson Regression)                      1.299611 0.05555883
-    ## PSM (Logistic Regression)                     1.301841 0.05205625
-    ## Full Matching (Unadjusted)                    1.399261 0.04438836
-    ## Full Matching (Poisson Regression)            1.307349 0.04203552
-    ## Full Matching (Logistic Regression)           1.298528 0.03336660
+    ## PSM (Unadjusted)                              1.304113 0.07587983
+    ## PSM (Poisson Regression)                      1.299850 0.06840758
+    ## PSM (Logistic Regression)                     1.306886 0.06397779
+    ## Full Matching (Unadjusted)                    1.307819 0.05504463
+    ## Full Matching (Poisson Regression)            1.302327 0.04988240
+    ## Full Matching (Logistic Regression)           1.306785 0.04575493
     ## Cardinality Matching (Unadjusted))            1.306661 0.04039661
     ## Cardinality Matching (Linear Regression)      1.311008 0.04637228
     ## Cardinality Matching (Logistic Regression)    1.295173 0.03718041
 
-All estimates are very similar to each other except for unadjusted
-matching methods based on propensity scores.
+All estimates are very similar to each other.
 
 ## Estimating Marginal Odds Ratio under Confounding
 
@@ -1000,33 +1006,35 @@ for (i in 1:n_sim){
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "nearest", m.order = "largest", distance = 'glm', replace = TRUE)
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_OR[i,3] <- avg_comparisons(logist_model, variables = "treatment", comparison = "lnoravg", transform = "exp", newdata = subset(treatment == 1))$estimate
   
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_OR[i,4] <- avg_comparisons(logist_model, variables = "treatment", comparison = "lnoravg", transform = "exp", newdata = subset(treatment == 1))$estimate
   
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "full", estimand = "ATT")
   match_data <- match_data(match_pp)
   
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_OR[i,5] <- avg_comparisons(logist_model, variables = "treatment", comparison = "lnoravg", transform = "exp", newdata = subset(treatment == 1))$estimate
   
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_OR[i,6] <- avg_comparisons(logist_model, variables = "treatment", comparison = "lnoravg", transform = "exp", newdata = subset(treatment == 1))$estimate
   
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "cardinality",  ratio = 1, tols = .05, estimand = "ATT")
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_OR[i,7] <- avg_comparisons(logist_model, variables = "treatment", comparison = "lnoravg", transform = "exp", newdata = subset(treatment == 1))$estimate
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_OR[i,8] <- avg_comparisons(logist_model, variables = "treatment", comparison = "lnoravg", transform = "exp", newdata = subset(treatment == 1))$estimate
 }
+```
 
+``` r
 results <- rbind(
   apply(estimates_OR,2,mean),
   apply(estimates_OR,2,sd))
@@ -1043,10 +1051,10 @@ results_OR_ATT
     ##                                            RD Estimate        sd
     ## True Marginal OR in Treated (mean)            2.132379 0.2337930
     ## Logistic Regression                           2.150869 0.1596171
-    ## PSM (Unadjusted)                              2.313801 0.2622298
-    ## PSM (Logistic Regression)                     2.158986 0.2205170
-    ## Full Matching (Unadjusted)                    2.538854 0.2521414
-    ## Full Matching (Logistic Regression)           2.145965 0.1572754
+    ## PSM (Unadjusted)                              2.165819 0.2936468
+    ## PSM (Logistic Regression)                     2.177852 0.2613129
+    ## Full Matching (Unadjusted)                    2.180092 0.2178192
+    ## Full Matching (Logistic Regression)           2.176765 0.1911722
     ## Cardinality Matching (Unadjusted)             2.177747 0.1861820
     ## Cardinality Matching (Logistic Regression)    2.133199 0.1710064
 
@@ -1264,10 +1272,10 @@ for (i in 1:n_sim){
   match_data <- match_data(match_pp)
   
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_COR[i,1] <- logist_model$coefficients[2]
   
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_COR[i,2] <- logist_model$coefficients[2]
   
   
@@ -1275,22 +1283,24 @@ for (i in 1:n_sim){
   match_data <- match_data(match_pp)
   
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_COR[i,3] <- logist_model$coefficients[2]
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_COR[i,4] <- logist_model$coefficients[2]
   
   
   match_pp <- matchit(treatment ~ X1 + X2 + X3, data = data2, method = "cardinality",  ratio = 1, tols = .05, estimand = "ATT")
   match_data <- match_data(match_pp)
   
-  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment, family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_COR[i,5] <- logist_model$coefficients[2]
 
-  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data)
+  logist_model <- glm(y ~ treatment + (X1 + X2 + X3), family = binomial(link = 'logit'), data = match_data, weights = weights)
   estimates_COR[i,6] <- logist_model$coefficients[2]
 }
+```
 
+``` r
 results <- rbind(
   apply(estimates_COR,2,mean),
   apply(estimates_COR,2,sd))
@@ -1305,10 +1315,10 @@ results_OR_ATT
 ```
 
     ##                                            RD Estimate         sd
-    ## PSM (unadj.)                                 0.7382536 0.08243575
-    ## PSM (Logistic Regression)                    1.0387522 0.11311252
-    ## Full Matching (unadj.)                       0.8195660 0.07691336
-    ## Full Matching (Logistic Regression)          1.0344918 0.09530593
+    ## PSM (unadj.)                                 0.6668621 0.08764805
+    ## PSM (Logistic Regression)                    1.0422284 0.12886368
+    ## Full Matching (unadj.)                       0.6571451 0.07397881
+    ## Full Matching (Logistic Regression)          1.0359805 0.11150806
     ## Cardinality Matching (unadj.)                0.6604632 0.06414917
     ## Cardinality Matching (Logistic Regression)   0.9948984 0.09736231
 
