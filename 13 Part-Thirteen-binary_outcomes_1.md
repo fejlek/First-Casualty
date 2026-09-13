@@ -63,8 +63,6 @@ heterogeneity of the treatment effect. <br/>
   Effects](#influence-of-prevalence-on-marginal-effects)
 - [References](#references)
 
-Binary Outcomes I
-
 ``` r
 library(tidyr)
 library(dplyr)

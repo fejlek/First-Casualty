@@ -42,11 +42,6 @@ library(mgcv)
 library(marginaleffects)
 ```
 
-We will complete our discussion of estimating marginal effects for
-binary outcomes by demonstrating how to estimate them under observed
-confounding. We will see that the computations are very similar to those
-for continuous outcomes.
-
 ## Estimating Marginal Risk Difference under Confounding
 
 Let’s start with the marginal risk difference, which corresponds to the
