@@ -632,7 +632,7 @@ estimation, depending on the magnitude of $`R^2`$.
 straightforward to employ the regression approach using Lin's
 estimator. It can be shown that, provided Lin's estimator uses the
 same covariates as ReM and $`a`$ is small, the asymptotic distribution
-of Lin's estimator is almost identical to that of $`\hat \ tau`$ under
+of Lin's estimator is almost identical to that of $`\hat \tau`$ under
 ReM (Li and Ding 2020).
 
 Let’s perform some simulations. We consider a model with two covariates
