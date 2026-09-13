@@ -758,12 +758,13 @@ quantile(betas_treat, c(0.025,0.975))
     ##       2.5%      97.5% 
     ## -0.4759806  0.4608662
 
-One might wonder which method to prefer, regression on outcomes or
-propensity scores. The correct answer is that it depends, since the two
-approaches are not directly comparable. Standard regression models the
-outcomes, whereas propensity scores model the treatment assignment. We
-should also add that we will cover doubly robust estimators in the next
-part, which combine both approaches.
+One might wonder which method to prefer, regression on outcomes or 
+propensity scores. The correct answer is that it depends, since the 
+two approaches are not directly comparable. Standard regression models 
+the outcomes, whereas propensity scores model the treatment assignment. 
+One can easily imagine a situation in which one approach will be easier 
+than the other. We should also add that we will cover doubly robust 
+estimators in the next part, which combine both approaches.
 
 ## Propensity Score Weighting
 
