@@ -460,7 +460,6 @@ coeftest(lm_penn_lin, vcov. = vcovHC(lm_penn_lin, type = "HC0"))
 We can fit the model directly using the package *estimatr*.
 
 ``` r
-options(width = 1000)
 library(estimatr)
 summary(lm_lin(duration  ~ treatment, covariates = ~ quarter, data = Penn46))
 ```
