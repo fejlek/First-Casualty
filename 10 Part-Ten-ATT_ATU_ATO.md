@@ -17,6 +17,16 @@ average effect on the untreated (ATU) become separate estimands. Thus,
 we need to be careful about what the estimand of interest is and whether
 we are using an appropriate estimator. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [Estimating ATE for a Randomized Experiments under

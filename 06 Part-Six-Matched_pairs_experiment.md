@@ -13,6 +13,16 @@ individuals. The idea is that provided paired individuals are similar to each
 other, we can estimate the treatment effect more accurately by comparing the
 differences in paired outcomes. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [Matched-Pairs Experiment](#matched-pairs-experiment)

@@ -12,6 +12,16 @@ that have a strong influence on the outcome. Including these covariates in
 CRE is important to keep the experimental design balanced, and as we will show
 it helps us improve the accuracy of estimating the treatment effect. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [Stratification](#stratification)

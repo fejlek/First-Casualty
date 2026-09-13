@@ -12,6 +12,15 @@ binary outcomes by demonstrating how to estimate them under observed
 confounding. We will see that the computations are very similar to those
 for continuous outcomes. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
 
 ## Table of Contents
 

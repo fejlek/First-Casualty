@@ -28,6 +28,16 @@ provided that the joint distributions of covariates in the adjusted
 samples are identical, the difference in outcomes between these groups
 is only in the treatment (provided there is no unobserved confounding). <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [RHC dataset](#rhc-dataset)

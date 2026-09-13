@@ -12,6 +12,16 @@ has more than two levels (i.e., not just treated and untreated). We will
 see that assuming non-binary categorical treatment does not
 substantially change the causal inference. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [The MineThatData E-Mail Analytics And Data Mining

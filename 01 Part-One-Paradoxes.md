@@ -27,6 +27,16 @@ and Berkson’s Paradox, corresponding to *confounder bias* and *collider
 bias*, respectively, for which decisions based on  $`P(Y \mid X)`$ go 
 wrong. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [Simpson’s Paradox](#simpsons-paradox)

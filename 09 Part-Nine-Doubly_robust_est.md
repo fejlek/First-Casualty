@@ -13,6 +13,16 @@ doubly robust: they are unbiased if either the regression model for the
 outcome or the propensity scores model for the treatment is correctly
 specified. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [Doubly Robust Estimator](#doubly-robust-estimator)

@@ -48,6 +48,16 @@ to reliably estimate only the marginal (population-level) effects,
 which, however, might not generalize well due to the aforementioned
 heterogeneity of the treatment effect. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [Measures of Treatment Effect for Binary

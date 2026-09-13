@@ -13,6 +13,16 @@ inference in the previous parts using (mostly linear) regression. So let
 us justify this approach and present the main alternatives: Fisher
 randomization test and Neyman inference. <br/>
 
+<style>
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  white-space: pre;
+}
+</style>
+
 ## Table of Contents
 
 - [Fisher Randomization Test](#fisher-randomization-test)
