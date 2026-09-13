@@ -722,7 +722,7 @@ max(abs(ips_weights - prop_scores_model2$weights))
 
 We know from the last part that an important property of propensity
 scores is that they should “balance” the covariates. We demonstrated
-this visually last time, when we compared the covariates across strata
+this last time, when we compared the covariates across strata
 defined by quantiles of the propensity scores.
 
 However, we can do this more elegantly by computing an *adjusted
