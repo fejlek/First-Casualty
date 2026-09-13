@@ -1767,7 +1767,7 @@ result
     ## IPW ATE    2.858327 0.8554132
     ## IPW ATO    2.643477 0.8093111
 
-However, we should stop here because ATO is not ATE unless the treatment
+However, we cannot stop here because ATO is not ATE unless the treatment
 is homogeneous. In addition, exact balance of means does not guarantee
 balance in higher moments.
 
