@@ -460,6 +460,7 @@ coeftest(lm_penn_lin, vcov. = vcovHC(lm_penn_lin, type = "HC0"))
 We can fit the model directly using the package *estimatr*.
 
 ``` r
+options(width = 1000)
 library(estimatr)
 summary(lm_lin(duration  ~ treatment, covariates = ~ quarter, data = Penn46))
 ```
@@ -472,32 +473,19 @@ summary(lm_lin(duration  ~ treatment, covariates = ~ quarter, data = Penn46))
     ## Standard error type:  HC2 
     ## 
     ## Coefficients:
-    ##                      Estimate Std. Error t value Pr(>|t|) CI Lower CI Upper
-    ## (Intercept)           13.3389     0.1830 72.8930 0.000000   12.980  13.6976
-    ## treatment             -0.8641     0.2668 -3.2383 0.001209   -1.387  -0.3410
-    ## quarter1_c            -1.1279     1.8000 -0.6266 0.530929   -4.657   2.4007
-    ## quarter2_c            -0.3546     0.8148 -0.4351 0.663479   -1.952   1.2428
-    ## quarter3_c            -1.1208     0.8158 -1.3738 0.169542   -2.720   0.4785
-    ## quarter4_c            -1.1723     0.8179 -1.4334 0.151791   -2.776   0.4310
-    ## quarter5_c            -1.2745     0.8185 -1.5570 0.119520   -2.879   0.3301
-    ## treatment:quarter1_c  -0.7682     2.6175 -0.2935 0.769172   -5.899   4.3631
-    ## treatment:quarter2_c  -0.8849     1.5035 -0.5886 0.556170   -3.832   2.0624
-    ## treatment:quarter3_c  -1.1898     1.5011 -0.7926 0.428029   -4.132   1.7528
-    ## treatment:quarter4_c  -1.0759     1.5057 -0.7146 0.474903   -4.028   1.8758
-    ## treatment:quarter5_c  -0.6833     1.5480 -0.4414 0.658929   -3.718   2.3513
-    ##                        DF
-    ## (Intercept)          6372
-    ## treatment            6372
-    ## quarter1_c           6372
-    ## quarter2_c           6372
-    ## quarter3_c           6372
-    ## quarter4_c           6372
-    ## quarter5_c           6372
-    ## treatment:quarter1_c 6372
-    ## treatment:quarter2_c 6372
-    ## treatment:quarter3_c 6372
-    ## treatment:quarter4_c 6372
-    ## treatment:quarter5_c 6372
+    ##                      Estimate Std. Error t value Pr(>|t|) CI Lower CI Upper   DF
+    ## (Intercept)           13.3389     0.1830 72.8930 0.000000   12.980  13.6976 6372
+    ## treatment             -0.8641     0.2668 -3.2383 0.001209   -1.387  -0.3410 6372
+    ## quarter1_c            -1.1279     1.8000 -0.6266 0.530929   -4.657   2.4007 6372
+    ## quarter2_c            -0.3546     0.8148 -0.4351 0.663479   -1.952   1.2428 6372
+    ## quarter3_c            -1.1208     0.8158 -1.3738 0.169542   -2.720   0.4785 6372
+    ## quarter4_c            -1.1723     0.8179 -1.4334 0.151791   -2.776   0.4310 6372
+    ## quarter5_c            -1.2745     0.8185 -1.5570 0.119520   -2.879   0.3301 6372
+    ## treatment:quarter1_c  -0.7682     2.6175 -0.2935 0.769172   -5.899   4.3631 6372
+    ## treatment:quarter2_c  -0.8849     1.5035 -0.5886 0.556170   -3.832   2.0624 6372
+    ## treatment:quarter3_c  -1.1898     1.5011 -0.7926 0.428029   -4.132   1.7528 6372
+    ## treatment:quarter4_c  -1.0759     1.5057 -0.7146 0.474903   -4.028   1.8758 6372
+    ## treatment:quarter5_c  -0.6833     1.5480 -0.4414 0.658929   -3.718   2.3513 6372
     ## 
     ## Multiple R-squared:  0.003997 ,  Adjusted R-squared:  0.002278 
     ## F-statistic: 2.376 on 11 and 6372 DF,  p-value: 0.006261
@@ -545,7 +533,7 @@ treatment using CRE, i.e., no balancing within each stratum.
 
 ``` r
 set.seed(123)
-n_sim <- 1000                     # number of simulations
+n_sim <- 1000                      # number of simulations
 n_x <- c(100, 50, 50, 100)         # individuals in each strata
 n <- sum(n_x)                      # population size
 
