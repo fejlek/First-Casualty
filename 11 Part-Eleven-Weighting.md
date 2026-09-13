@@ -2559,11 +2559,13 @@ ATE estimate based on entropy balancing is a bit different. The
 optimization problem is (Källberg and Waernbaum 2023)
 
 ``` math
+\begin{gather*}
 \text{minimize } \text{D}(w)\\
 \text{subject to}\\
 \sum_{i \mid T = 0} w_i f_r(X_i) = \sum_{i \mid T = 1} w_i f_r(X_i)  = \sum_{i = 1}^n w_i f_r(X_i)  = m_r 
 \text{ and } \\
-\sum_{i\mid T = 0}w_i = \sum_{i\mid T = 1}w_i =  n \text{ and } w_i \geq0.\\
+\sum_{i\mid T = 0}w_i = \sum_{i\mid T = 1}w_i =  n \text{ and } w_i \geq 0.\\
+\end{gather*}
 ```
 
 Notice that we require a three-way balance across both subpopulations
