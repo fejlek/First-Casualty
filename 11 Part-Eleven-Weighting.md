@@ -1876,9 +1876,9 @@ parameters $`\beta`$ ((Zubizarreta et al. 2023) and
 <https://ngreifer.github.io/blog/logistic-regression-cbps-overlap-weights/>).
 For ATT, the balancing conditions are
 ``` math
-\sum_{i=1}^n\left(T_i - \frac{\hat e(X_i, \beta)(1-T_i)}{1-\hat e(X_i, \beta)}\right)f(X_i) = 0,
+\sum_{i=1}^n\left(T_i - \frac{\hat e(X_i, \beta)(1-T_i)}{1-\hat e(X_i, \beta)}\right)f(X_i) = 0.
 ```
-. The balancing constraints are then added to the scoring equations.
+The balancing constraints are then added to the scoring equations.
 Now, there are more constraints than parameters $`\beta`$ (the system is
 *over-identified*), so there will be no exact solution. However, this
 system can be solved for $`\beta`$ approximately by the generalized
