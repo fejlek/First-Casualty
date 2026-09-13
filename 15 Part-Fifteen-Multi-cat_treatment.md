@@ -1,4 +1,4 @@
-# The First Casualty of Statistics: Part Fourteen
+# The First Casualty of Statistics: Part Fifteen
 <big>**Multi-Category Treatment**</big>
 
 <br/>
