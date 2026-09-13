@@ -543,7 +543,7 @@ ate_reg
     ##        est         sd 
     ## -239.97947   22.27584
 
-And Lin’s estimator includes the interaction, even though we assume that
+and Lin’s estimator that includes the interaction, even though we assume that
 the treatment effect is homogeneous. Lin’s estimator includes these
 interactions because it ensures that it will never lose efficiency
 asymptotically when estimating ATE compared to the unadjusted estimator,
