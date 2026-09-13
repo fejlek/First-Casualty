@@ -69,55 +69,13 @@ rhc <- read.csv("C:/Users/elini/Desktop/first casualty/rhc.csv")
 head(rhc)
 ```
 
-    ##   X              cat1          cat2  ca sadmdte dschdte dthdte lstctdte death
-    ## 1 1              COPD          <NA> Yes   11142   11151     NA    11382    No
-    ## 2 2     MOSF w/Sepsis          <NA>  No   11799   11844  11844    11844   Yes
-    ## 3 3 MOSF w/Malignancy MOSF w/Sepsis Yes   12083   12143     NA    12400    No
-    ## 4 4               ARF          <NA>  No   11146   11183  11183    11182   Yes
-    ## 5 5     MOSF w/Sepsis          <NA>  No   12035   12037  12037    12036   Yes
-    ## 6 6              COPD          <NA>  No   12389   12396     NA    12590    No
-    ##   cardiohx chfhx dementhx psychhx chrpulhx renalhx liverhx gibledhx malighx
-    ## 1        0     0        0       0        1       0       0        0       1
-    ## 2        1     1        0       0        0       0       0        0       0
-    ## 3        0     0        0       0        0       0       0        0       1
-    ## 4        0     0        0       0        0       0       0        0       0
-    ## 5        0     0        0       0        0       0       0        0       0
-    ## 6        0     1        0       0        1       0       0        0       0
-    ##   immunhx transhx amihx      age    sex       edu  surv2md1 das2d3pc t3d30
-    ## 1       0       0     0 70.25098   Male 12.000000 0.6409912 23.50000    30
-    ## 2       1       1     0 78.17896 Female 12.000000 0.7549996 14.75195    30
-    ## 3       1       0     0 46.09198 Female 14.069916 0.3169999 18.13672    30
-    ## 4       1       0     0 75.33197 Female  9.000000 0.4409790 22.92969    30
-    ## 5       0       0     0 67.90997   Male  9.945259 0.4369998 21.05078     2
-    ## 6       0       0     0 86.07794 Female  8.000000 0.6650000 17.50000    30
-    ##   dth30 aps1 scoma1 meanbp1       wblc1 hrt1 resp1    temp1    pafi1     alb1
-    ## 1    No   46      0      41 22.09765620  124    10 38.69531  68.0000 3.500000
-    ## 2    No   50      0      63 28.89843750  137    38 38.89844 218.3125 2.599609
-    ## 3    No   82      0      57  0.04999542  130    40 36.39844 275.5000 3.500000
-    ## 4    No   48      0      55 23.29687500   58    26 35.79688 156.6562 3.500000
-    ## 5   Yes   72     41      65 29.69921880  125    27 34.79688 478.0000 3.500000
-    ## 6    No   38      0     115 18.00000000  134    36 39.19531 184.1875 3.099609
-    ##      hema1     bili1     crea1 sod1     pot1 paco21      ph1 swang1  wtkilo1
-    ## 1 58.00000 1.0097656 1.1999512  145 4.000000     40 7.359375 No RHC 64.69995
-    ## 2 32.50000 0.6999512 0.5999756  137 3.299805     34 7.329102    RHC 45.69998
-    ## 3 21.09766 1.0097656 2.5996094  146 2.899902     16 7.359375    RHC  0.00000
-    ## 4 26.29688 0.3999634 1.6999512  117 5.799805     30 7.459961 No RHC 54.59998
-    ## 5 24.00000 1.0097656 3.5996094  126 5.799805     17 7.229492    RHC 78.39996
-    ## 6 30.50000 1.0097656 1.3999023  138 5.399414     68 7.299805 No RHC 54.89999
-    ##   dnr1           ninsclas resp card neuro gastr renal meta hema seps trauma
-    ## 1   No           Medicare  Yes  Yes    No    No    No   No   No   No     No
-    ## 2   No Private & Medicare   No   No    No    No    No   No   No  Yes     No
-    ## 3   No            Private   No  Yes    No    No    No   No   No   No     No
-    ## 4   No Private & Medicare  Yes   No    No    No    No   No   No   No     No
-    ## 5  Yes           Medicare   No  Yes    No    No    No   No   No   No     No
-    ## 6   No           Medicare  Yes   No    No    No    No   No   No   No     No
-    ##   ortho adld3p urin1  race     income ptid
-    ## 1    No      0    NA white Under $11k    5
-    ## 2    No     NA  1437 white Under $11k    7
-    ## 3    No     NA   599 white   $25-$50k    9
-    ## 4    No     NA    NA white   $11-$25k   10
-    ## 5    No     NA    64 white Under $11k   11
-    ## 6    No      0   242 white Under $11k   12
+    ##   X              cat1          cat2  ca sadmdte dschdte dthdte lstctdte death cardiohx chfhx dementhx psychhx chrpulhx renalhx liverhx gibledhx malighx immunhx transhx amihx      age    sex       edu  surv2md1 das2d3pc t3d30 dth30 aps1 scoma1 meanbp1       wblc1 hrt1 resp1    temp1    pafi1     alb1    hema1     bili1     crea1 sod1     pot1 paco21      ph1 swang1  wtkilo1 dnr1           ninsclas resp card neuro gastr renal meta hema seps trauma ortho adld3p urin1  race     income ptid
+    ## 1 1              COPD          <NA> Yes   11142   11151     NA    11382    No        0     0        0       0        1       0       0        0       1       0       0     0 70.25098   Male 12.000000 0.6409912 23.50000    30    No   46      0      41 22.09765620  124    10 38.69531  68.0000 3.500000 58.00000 1.0097656 1.1999512  145 4.000000     40 7.359375 No RHC 64.69995   No           Medicare  Yes  Yes    No    No    No   No   No   No     No    No      0    NA white Under $11k    5
+    ## 2 2     MOSF w/Sepsis          <NA>  No   11799   11844  11844    11844   Yes        1     1        0       0        0       0       0        0       0       1       1     0 78.17896 Female 12.000000 0.7549996 14.75195    30    No   50      0      63 28.89843750  137    38 38.89844 218.3125 2.599609 32.50000 0.6999512 0.5999756  137 3.299805     34 7.329102    RHC 45.69998   No Private & Medicare   No   No    No    No    No   No   No  Yes     No    No     NA  1437 white Under $11k    7
+    ## 3 3 MOSF w/Malignancy MOSF w/Sepsis Yes   12083   12143     NA    12400    No        0     0        0       0        0       0       0        0       1       1       0     0 46.09198 Female 14.069916 0.3169999 18.13672    30    No   82      0      57  0.04999542  130    40 36.39844 275.5000 3.500000 21.09766 1.0097656 2.5996094  146 2.899902     16 7.359375    RHC  0.00000   No            Private   No  Yes    No    No    No   No   No   No     No    No     NA   599 white   $25-$50k    9
+    ## 4 4               ARF          <NA>  No   11146   11183  11183    11182   Yes        0     0        0       0        0       0       0        0       0       1       0     0 75.33197 Female  9.000000 0.4409790 22.92969    30    No   48      0      55 23.29687500   58    26 35.79688 156.6562 3.500000 26.29688 0.3999634 1.6999512  117 5.799805     30 7.459961 No RHC 54.59998   No Private & Medicare  Yes   No    No    No    No   No   No   No     No    No     NA    NA white   $11-$25k   10
+    ## 5 5     MOSF w/Sepsis          <NA>  No   12035   12037  12037    12036   Yes        0     0        0       0        0       0       0        0       0       0       0     0 67.90997   Male  9.945259 0.4369998 21.05078     2   Yes   72     41      65 29.69921880  125    27 34.79688 478.0000 3.500000 24.00000 1.0097656 3.5996094  126 5.799805     17 7.229492    RHC 78.39996  Yes           Medicare   No  Yes    No    No    No   No   No   No     No    No     NA    64 white Under $11k   11
+    ## 6 6              COPD          <NA>  No   12389   12396     NA    12590    No        0     1        0       0        1       0       0        0       0       0       0     0 86.07794 Female  8.000000 0.6650000 17.50000    30    No   38      0     115 18.00000000  134    36 39.19531 184.1875 3.099609 30.50000 1.0097656 1.3999023  138 5.399414     68 7.299805 No RHC 54.89999   No           Medicare  Yes   No    No    No    No   No   No   No     No    No      0   242 white Under $11k   12
 
 ``` r
 dim(rhc)
@@ -3205,83 +3163,50 @@ bal_ebs2 <- bal.tab(weights_model_ebs2, stats = c("m", "ks", "v"), int = TRUE)
 bal_engbs$Balance[order(bal_engbs$Balance$Diff.Adj, decreasing = TRUE)[1:10],]
 ```
 
-    ##                           Type Diff.Un V.Ratio.Un KS.Un   Diff.Adj V.Ratio.Adj
-    ## bili1 * meta_Yes       Contin.      NA         NA    NA 0.05015246   2.7735484
-    ## gibledhx_1 * scoma1    Contin.      NA         NA    NA 0.04750029   1.4492088
-    ## dementhx_1 * bili1     Contin.      NA         NA    NA 0.03901437   4.2672290
-    ## malighx_1 * scoma1     Contin.      NA         NA    NA 0.03755654   1.1165186
-    ## scoma1 * gastr_Yes     Contin.      NA         NA    NA 0.03649800   1.1406757
-    ## wblc1 * alb1           Contin.      NA         NA    NA 0.03489001   1.6492786
-    ## scoma1 * wblc1         Contin.      NA         NA    NA 0.03434236   1.7875356
-    ## cat1_CHF * scoma1      Contin.      NA         NA    NA 0.03322270   0.9771311
-    ## cat1_Other * crea1     Contin.      NA         NA    NA 0.03304088   1.0366641
-    ## ca_Metastatic * scoma1 Contin.      NA         NA    NA 0.03187743   1.1935142
-    ##                             KS.Adj
-    ## bili1 * meta_Yes       0.004988438
-    ## gibledhx_1 * scoma1    0.007633919
-    ## dementhx_1 * bili1     0.008237111
-    ## malighx_1 * scoma1     0.013380412
-    ## scoma1 * gastr_Yes     0.014614005
-    ## wblc1 * alb1           0.021651255
-    ## scoma1 * wblc1         0.016433442
-    ## cat1_CHF * scoma1      0.009890079
-    ## cat1_Other * crea1     0.023670693
-    ## ca_Metastatic * scoma1 0.007403756
+    ##                           Type Diff.Un V.Ratio.Un KS.Un   Diff.Adj V.Ratio.Adj      KS.Adj
+    ## bili1 * meta_Yes       Contin.      NA         NA    NA 0.05015246   2.7735484 0.004988438
+    ## gibledhx_1 * scoma1    Contin.      NA         NA    NA 0.04750029   1.4492088 0.007633919
+    ## dementhx_1 * bili1     Contin.      NA         NA    NA 0.03901437   4.2672290 0.008237111
+    ## malighx_1 * scoma1     Contin.      NA         NA    NA 0.03755654   1.1165186 0.013380412
+    ## scoma1 * gastr_Yes     Contin.      NA         NA    NA 0.03649800   1.1406757 0.014614005
+    ## wblc1 * alb1           Contin.      NA         NA    NA 0.03489001   1.6492786 0.021651255
+    ## scoma1 * wblc1         Contin.      NA         NA    NA 0.03434236   1.7875356 0.016433442
+    ## cat1_CHF * scoma1      Contin.      NA         NA    NA 0.03322270   0.9771311 0.009890079
+    ## cat1_Other * crea1     Contin.      NA         NA    NA 0.03304088   1.0366641 0.023670693
+    ## ca_Metastatic * scoma1 Contin.      NA         NA    NA 0.03187743   1.1935142 0.007403756
 
 ``` r
 bal_cbps3$Balance[order(bal_cbps3$Balance$Diff.Adj, decreasing = TRUE)[1:10],]
 ```
 
-    ##                           Type Diff.Un V.Ratio.Un KS.Un   Diff.Adj V.Ratio.Adj
-    ## gibledhx_1 * scoma1    Contin.      NA         NA    NA 0.10052999    2.919418
-    ## cat1_CHF * scoma1      Contin.      NA         NA    NA 0.09925092    2.198640
-    ## pafi1 * card_Yes       Contin.      NA         NA    NA 0.07963641    1.222496
-    ## scoma1 * gastr_Yes     Contin.      NA         NA    NA 0.07782292    1.480194
-    ## renalhx_1 * scoma1     Contin.      NA         NA    NA 0.07606552    2.079563
-    ## liverhx_1 * scoma1     Contin.      NA         NA    NA 0.07570747    1.554372
-    ## cardiohx_1 * pafi1     Contin.      NA         NA    NA 0.07531981    1.332502
-    ## malighx_1 * scoma1     Contin.      NA         NA    NA 0.07185234    1.334742
-    ## chfhx_1 * pafi1        Contin.      NA         NA    NA 0.07156789    1.304895
-    ## ca_Metastatic * scoma1 Contin.      NA         NA    NA 0.06446126    1.499845
-    ##                            KS.Adj
-    ## gibledhx_1 * scoma1    0.01070480
-    ## cat1_CHF * scoma1      0.01549524
-    ## pafi1 * card_Yes       0.04477398
-    ## scoma1 * gastr_Yes     0.02006470
-    ## renalhx_1 * scoma1     0.01061949
-    ## liverhx_1 * scoma1     0.01837532
-    ## cardiohx_1 * pafi1     0.03417054
-    ## malighx_1 * scoma1     0.02021572
-    ## chfhx_1 * pafi1        0.04018542
-    ## ca_Metastatic * scoma1 0.01264259
+    ##                           Type Diff.Un V.Ratio.Un KS.Un   Diff.Adj V.Ratio.Adj     KS.Adj
+    ## gibledhx_1 * scoma1    Contin.      NA         NA    NA 0.10052999    2.919418 0.01070480
+    ## cat1_CHF * scoma1      Contin.      NA         NA    NA 0.09925092    2.198640 0.01549524
+    ## pafi1 * card_Yes       Contin.      NA         NA    NA 0.07963641    1.222496 0.04477398
+    ## scoma1 * gastr_Yes     Contin.      NA         NA    NA 0.07782292    1.480194 0.02006470
+    ## renalhx_1 * scoma1     Contin.      NA         NA    NA 0.07606552    2.079563 0.01061949
+    ## liverhx_1 * scoma1     Contin.      NA         NA    NA 0.07570747    1.554372 0.01837532
+    ## cardiohx_1 * pafi1     Contin.      NA         NA    NA 0.07531981    1.332502 0.03417054
+    ## malighx_1 * scoma1     Contin.      NA         NA    NA 0.07185234    1.334742 0.02021572
+    ## chfhx_1 * pafi1        Contin.      NA         NA    NA 0.07156789    1.304895 0.04018542
+    ## ca_Metastatic * scoma1 Contin.      NA         NA    NA 0.06446126    1.499845 0.01264259
 
 ``` r
 bal_ebs2$Balance[order(bal_ebs2$Balance$Diff.Adj, decreasing = TRUE)[1:10],]
 ```
 
-    ##                        Type Diff.Un V.Ratio.Un KS.Un   Diff.Adj V.Ratio.Adj
-    ## cat1_CHF * scoma1   Contin.      NA         NA    NA 0.10625597    2.368301
-    ## gibledhx_1 * scoma1 Contin.      NA         NA    NA 0.10341519    2.826757
-    ## scoma1 * gastr_Yes  Contin.      NA         NA    NA 0.08335192    1.537178
-    ## liverhx_1 * scoma1  Contin.      NA         NA    NA 0.07946769    1.601635
-    ## malighx_1 * scoma1  Contin.      NA         NA    NA 0.07427803    1.354290
-    ## renalhx_1 * scoma1  Contin.      NA         NA    NA 0.07195342    2.085860
-    ## cat1_Other * pafi1  Contin.      NA         NA    NA 0.07145440    1.222737
-    ## pafi1 * card_Yes    Contin.      NA         NA    NA 0.06686770    1.181146
-    ## resp1 * neuro_Yes   Contin.      NA         NA    NA 0.06538347    1.338492
-    ## chfhx_1 * pafi1     Contin.      NA         NA    NA 0.06384139    1.264721
-    ##                          KS.Adj
-    ## cat1_CHF * scoma1   0.015817223
-    ## gibledhx_1 * scoma1 0.010557058
-    ## scoma1 * gastr_Yes  0.021860706
-    ## liverhx_1 * scoma1  0.018786202
-    ## malighx_1 * scoma1  0.020592842
-    ## renalhx_1 * scoma1  0.008815062
-    ## cat1_Other * pafi1  0.051502526
-    ## pafi1 * card_Yes    0.042000106
-    ## resp1 * neuro_Yes   0.023654747
-    ## chfhx_1 * pafi1     0.037421074
-
+    ##                        Type Diff.Un V.Ratio.Un KS.Un   Diff.Adj V.Ratio.Adj      KS.Adj
+    ## cat1_CHF * scoma1   Contin.      NA         NA    NA 0.10625597    2.368301 0.015817223
+    ## gibledhx_1 * scoma1 Contin.      NA         NA    NA 0.10341519    2.826757 0.010557058
+    ## scoma1 * gastr_Yes  Contin.      NA         NA    NA 0.08335192    1.537178 0.021860706
+    ## liverhx_1 * scoma1  Contin.      NA         NA    NA 0.07946769    1.601635 0.018786202
+    ## malighx_1 * scoma1  Contin.      NA         NA    NA 0.07427803    1.354290 0.020592842
+    ## renalhx_1 * scoma1  Contin.      NA         NA    NA 0.07195342    2.085860 0.008815062
+    ## cat1_Other * pafi1  Contin.      NA         NA    NA 0.07145440    1.222737 0.051502526
+    ## pafi1 * card_Yes    Contin.      NA         NA    NA 0.06686770    1.181146 0.042000106
+    ## resp1 * neuro_Yes   Contin.      NA         NA    NA 0.06538347    1.338492 0.023654747
+    ## chfhx_1 * pafi1     Contin.      NA         NA    NA 0.06384139    1.264721 0.037421074
+    
 We see that energy balancing did a much better job at balancing
 interactions than CBPS and entropy balancing. The nonparametric approach
 proved to be clearly superior in this case.
