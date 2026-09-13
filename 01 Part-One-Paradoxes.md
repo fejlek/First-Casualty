@@ -96,7 +96,7 @@ kidney_stones_aggr
     ## 1                 Open Surgery     273      77         78.0
     ## 2 Percutaneous Nephrolithotomy     289      61         82.6
 
-It seems that **Percutaneous Nephrolithotomy** s a better treatment than
+It seems that **Percutaneous Nephrolithotomy** is a better treatment than
 open surgery. However, these data are not from a *randomized clinical
 trial*, in which treatment is assigned at random to patients. These data
 come from an *observational study*; therefore, treatment assignment was
