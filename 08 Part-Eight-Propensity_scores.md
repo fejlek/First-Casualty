@@ -11,16 +11,6 @@ Jiří Fejlek
 with bias in observational studies: propensity scores, conditional 
 probabilities of treatment assignment. <br/>
 
-<style>
-pre {
-  overflow-x: auto;
-}
-pre code {
-  word-wrap: normal;
-  white-space: pre;
-}
-</style>
-
 ## Table of Contents
 
 - [Propensity Scores](#propensity-scores)

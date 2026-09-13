@@ -13,16 +13,6 @@ outcomes and counterfactuals. We will also introduce a randomized
 experiment, a gold-standard experimental design used for estimating
 causal effects.<br/> 
 
-<style>
-pre {
-  overflow-x: auto;
-}
-pre code {
-  word-wrap: normal;
-  white-space: pre;
-}
-</style>
-
 ## Table of Contents
 
 - [Potential Outcomes](#potential-outcomes)

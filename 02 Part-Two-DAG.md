@@ -12,16 +12,6 @@ graphical tool for expressing causal relations: a directed acyclic graph
 (DAG). In this Second Part, we will expand on this and show how to use a
 DAG to estimate expected causal effects. <br/>
 
-<style>
-pre {
-  overflow-x: auto;
-}
-pre code {
-  word-wrap: normal;
-  white-space: pre;
-}
-</style>
-
 ## Table of Contents
 
 - [Directed Acyclic Graphs](#directed-acyclic-graphs)

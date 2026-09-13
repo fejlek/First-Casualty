@@ -12,16 +12,6 @@ studies, i.e., we no longer assume that the treatment assignment is
 independent of potential outcomes. We will still assume a homogeneous
 treatment effect, but selection bias is now our main focus. <br/>
 
-<style>
-pre {
-  overflow-x: auto;
-}
-pre code {
-  word-wrap: normal;
-  white-space: pre;
-}
-</style>
-
 ## Table of Contents
 
 - [Observational Studies](#observational-studies)

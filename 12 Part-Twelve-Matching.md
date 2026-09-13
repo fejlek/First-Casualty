@@ -33,16 +33,6 @@ specification. Secondly, matching removes observations from the treated
 group in some variants. Then, matching no longer estimates ATT but
 something more akin to ATO. <br/>
 
-<style>
-pre {
-  overflow-x: auto;
-}
-pre code {
-  word-wrap: normal;
-  white-space: pre;
-}
-</style>
-
 ## Table of Contents
 
 - [IHDP dataset](#ihdp-dataset)
