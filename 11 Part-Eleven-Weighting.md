@@ -2537,9 +2537,11 @@ Entropy balancing was introduced for ATT in (Hainmueller 2012). The
 weights were the solution of the optimization
 
 ``` math
+\begin{gather*}
 \text{minimize } \text{D}(w)\\
 \text{subject to}\\
-\sum_{i \mid T =0} w_i f_r(X_i) = m_r \text{ and } \sum_{i\mid T =0}w_i = n_0 \text{ and } w_i \geq0\\
+\sum_{i \mid T =0} w_i f_r(X_i) = m_r \text{ and } \sum_{i\mid T =0}w_i = n_0 \text{ and } w_i \geq 0\\
+\end{gather*}
 ```
 
 where $`D(w) = \sum_{i \mid T =0} w_i \log(w_i/q_i)`$ is
