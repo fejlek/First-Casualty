@@ -44,8 +44,7 @@ their actions, and hence is often the main metric of interest. <br/>
   T)](#complier-average-causal-effect-with-direct-effect-of-t)
   - [Heterogeneous Direct Effect of
     T](#heterogeneous-direct-effect-of-t)
-- [Estimating LATE in E-Mail Analytics And Data Mining Challenge
-  Revisited](#estimating-late-in-e-mail-analytics-and-data-mining-challenge-revisited)
+- [Estimating LATE in E-Mail Analytics And Data Mining Challenge](#estimating-late-in-e-mail-analytics-and-data-mining-challenge)
 - [References](#references)
 
 ``` r
@@ -1178,7 +1177,7 @@ Of course, to make this procedure work in practice, we need a set of
 strong covariates to distinguish between always-buyers and compliers
 accurately and to reliably model the outcomes $`Y`$.
 
-## Estimating LATE in E-Mail Analytics And Data Mining Challenge Revisited
+## Estimating LATE in E-Mail Analytics And Data Mining Challenge
 
 Before we conclude this project, let’s return to the E-Mail Analytics
 And Data Mining Challenge dataset and estimate the money spent by
