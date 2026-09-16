@@ -936,15 +936,11 @@ avg_comparisons(lm_model_unadj, variables = list(segment = "pairwise"))
 ```
 
     ## 
-    ##                     Contrast Estimate Std. Error     z Pr(>|z|)    S  2.5 %
-    ##  Mens E-Mail - No E-Mail        0.767      0.146  5.27  < 0.001 22.8  0.482
-    ##  Womens E-Mail - Mens E-Mail   -0.336      0.161 -2.09  0.03635  4.8 -0.652
-    ##  Womens E-Mail - No E-Mail      0.431      0.132  3.27  0.00108  9.9  0.172
-    ##   97.5 %
-    ##   1.0523
-    ##  -0.0214
-    ##   0.6889
-    ## 
+    ##                     Contrast Estimate Std. Error     z Pr(>|z|)    S  2.5 %  97.5 %
+    ##  Mens E-Mail - No E-Mail        0.767      0.146  5.27  < 0.001 22.8  0.482  1.0523
+    ##  Womens E-Mail - Mens E-Mail   -0.336      0.161 -2.09  0.03635  4.8 -0.652 -0.0214
+    ##  Womens E-Mail - No E-Mail      0.431      0.132  3.27  0.00108  9.9  0.172  0.6889
+    ##   
     ## Term: segment
     ## Type: probs
 
@@ -956,14 +952,10 @@ avg_comparisons(lm_model_adj, variables = list(segment = "pairwise"))
 ```
 
     ## 
-    ##                     Contrast Estimate Std. Error     z Pr(>|z|)    S  2.5 %
-    ##  Mens E-Mail - No E-Mail        0.766      0.145  5.27  < 0.001 22.8  0.481
-    ##  Womens E-Mail - Mens E-Mail   -0.335      0.161 -2.09  0.03699  4.8 -0.650
-    ##  Womens E-Mail - No E-Mail      0.431      0.132  3.28  0.00105  9.9  0.173
-    ##   97.5 %
-    ##   1.0515
-    ##  -0.0202
-    ##   0.6896
+    ##                     Contrast Estimate Std. Error     z Pr(>|z|)    S  2.5 %  97.5 %
+    ##  Mens E-Mail - No E-Mail        0.766      0.145  5.27  < 0.001 22.8  0.481  1.0515
+    ##  Womens E-Mail - Mens E-Mail   -0.335      0.161 -2.09  0.03699  4.8 -0.650 -0.0202
+    ##  Womens E-Mail - No E-Mail      0.431      0.132  3.28  0.00105  9.9  0.173  0.6896
     ## 
     ## Term: segment
     ## Type: probs
