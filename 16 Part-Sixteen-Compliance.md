@@ -154,15 +154,13 @@ By conditioning on **buyer**, we opened a non-causal path to **spend**.
 This means that these conditional treatment effects actually have no
 causal meaning and are just uninterpretable numbers.
 
-The way to understand it from a more practical, less formal standpoint
-is to compare two *incomparable* groups. The group that bought something
-even though they did not receive an email is people who would buy it
-anyway, regardless of whether they receive the email. The second group
-of buyers who received an email includes the types of people from the
-first group, as well as those who bought something because of the
-advertisement. These people bought less and hence made the average
-spending appear lower, which resulted in a seemingly negative effect of
-sending advertising emails.
+The way to understand it from a more practical, less formal standpoint, 
+is that to realize we are comparing two *incomparable* groups. The buyers 
+in the control group consist of people who would buy something regardless 
+of whether they receive the email. The treatemnt group include such people, 
+as well as people who buy something *because* of the advertisement. These 
+people could have bought less on average, thereby making spending appear 
+lower, resulting in a seemingly negative effect of sending advertising emails.
 
 What is fascinating about this is that we are talking about a solution
 from 2008, which demonstrates how young causal inference really is and
