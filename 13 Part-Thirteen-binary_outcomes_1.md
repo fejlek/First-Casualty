@@ -1261,10 +1261,10 @@ one important characteristic of any population with respect to a binary
 outcome, the *prevalence* of $``Y``$.
 
 First, we will assume a homogeneous population. i.e., everyone has the
-same baseline risk $`P[Y(0)=1 \mid \text{Treatment}]`$. Further, we will
-assume that the treatment effect, in terms of conditional odds ratios,
-is constant. We will now change the baseline risk (prevalence in the
-non-treated group) and plot marginal effects.
+same baseline risk $`P[Y(0)=1 \mid \text{Treatment}]`$. Thus, the 
+baseline risk equals the prevalence in the non-treated group. Further, 
+we will assume that the treatment effect, in terms of conditional odds ratios,
+is constant. Let us plot marginal effects for various baseline risks.
 
 ``` r
 prevalence <- seq(-5,5,0.5)
