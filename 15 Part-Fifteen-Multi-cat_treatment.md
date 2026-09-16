@@ -55,20 +55,13 @@ MailAnalytics_orig <- read.csv("E-MailAnalytics_Data.csv")
 head(MailAnalytics_orig)
 ```
 
-    ##   recency history_segment history mens womens  zip_code newbie channel
-    ## 1      10  2) $100 - $200  142.44    1      0 Surburban      0   Phone
-    ## 2       6  3) $200 - $350  329.08    1      1     Rural      1     Web
-    ## 3       7  2) $100 - $200  180.65    0      1 Surburban      1     Web
-    ## 4       9  5) $500 - $750  675.83    1      0     Rural      1     Web
-    ## 5       2    1) $0 - $100   45.34    1      0     Urban      0     Web
-    ## 6       6  2) $100 - $200  134.83    0      1 Surburban      0   Phone
-    ##         segment visit conversion spend
-    ## 1 Womens E-Mail     0          0     0
-    ## 2     No E-Mail     0          0     0
-    ## 3 Womens E-Mail     0          0     0
-    ## 4   Mens E-Mail     0          0     0
-    ## 5 Womens E-Mail     0          0     0
-    ## 6 Womens E-Mail     1          0     0
+    ##   recency history_segment history mens womens  zip_code newbie channel       segment visit conversion spend
+    ## 1      10  2) $100 - $200  142.44    1      0 Surburban      0   Phone Womens E-Mail     0          0     0
+    ## 2       6  3) $200 - $350  329.08    1      1     Rural      1     Web     No E-Mail     0          0     0
+    ## 3       7  2) $100 - $200  180.65    0      1 Surburban      1     Web Womens E-Mail     0          0     0
+    ## 4       9  5) $500 - $750  675.83    1      0     Rural      1     Web   Mens E-Mail     0          0     0
+    ## 5       2    1) $0 - $100   45.34    1      0     Urban      0     Web Womens E-Mail     0          0     0
+    ## 6       6  2) $100 - $200  134.83    0      1 Surburban      0   Phone Womens E-Mail     1          0     0
 
 We will focus primarily on the effect of email promotions on conversion
 (i.e., whether the individual became a buyer) and on spend.
@@ -300,14 +293,10 @@ avg_comparisons(lm_model_unadj, variables = list(segment = "pairwise"))
 ```
 
     ## 
-    ##                     Contrast Estimate Std. Error     z Pr(>|z|)    S  2.5 %
-    ##  Mens E-Mail - No E-Mail        0.770      0.146  5.29  < 0.001 22.9  0.484
-    ##  Womens E-Mail - Mens E-Mail   -0.345      0.146 -2.37  0.01761  5.8 -0.631
-    ##  Womens E-Mail - No E-Mail      0.424      0.146  2.92  0.00354  8.1  0.139
-    ##   97.5 %
-    ##   1.0553
-    ##  -0.0602
-    ##   0.7096
+    ##                     Contrast Estimate Std. Error     z Pr(>|z|)    S  2.5 %  97.5 %
+    ##  Mens E-Mail - No E-Mail        0.770      0.146  5.29  < 0.001 22.9  0.484  1.0553
+    ##  Womens E-Mail - Mens E-Mail   -0.345      0.146 -2.37  0.01761  5.8 -0.631 -0.0602
+    ##  Womens E-Mail - No E-Mail      0.424      0.146  2.92  0.00354  8.1  0.139  0.7096
     ## 
     ## Term: segment
     ## Type: response
@@ -1528,17 +1517,12 @@ avg_comparisons(lm_model_adj, variables = "segment", by = "mens")
 ```
 
     ## 
-    ##                   Contrast mens Estimate Std. Error    z Pr(>|z|)    S  2.5 %
-    ##  Mens E-Mail - No E-Mail      0    0.615      0.176 3.50   <0.001 11.1  0.270
-    ##  Womens E-Mail - No E-Mail    0    0.636      0.171 3.72   <0.001 12.3  0.301
-    ##  Mens E-Mail - No E-Mail      1    0.887      0.221 4.01   <0.001 14.0  0.454
-    ##  Womens E-Mail - No E-Mail    1    0.263      0.194 1.36    0.175  2.5 -0.117
-    ##  97.5 %
-    ##   0.960
-    ##   0.971
-    ##   1.321
-    ##   0.643
-    ## 
+    ##                   Contrast mens Estimate Std. Error    z Pr(>|z|)    S  2.5 % 97.5 %
+    ##  Mens E-Mail - No E-Mail      0    0.615      0.176 3.50   <0.001 11.1  0.270  0.960
+    ##  Womens E-Mail - No E-Mail    0    0.636      0.171 3.72   <0.001 12.3  0.301  0.971 
+    ##  Mens E-Mail - No E-Mail      1    0.887      0.221 4.01   <0.001 14.0  0.454  1.321
+    ##  Womens E-Mail - No E-Mail    1    0.263      0.194 1.36    0.175  2.5 -0.117  0.643
+    ##
     ## Term: segment
     ## Type: probs
 
@@ -1547,16 +1531,11 @@ avg_comparisons(lm_model_adj, variables = "segment", by = "womens")
 ```
 
     ## 
-    ##                   Contrast womens Estimate Std. Error    z Pr(>|z|)    S  2.5 %
-    ##  Mens E-Mail - No E-Mail        0    0.671      0.224 3.00  0.00273  8.5  0.232
-    ##  Womens E-Mail - No E-Mail      0    0.284      0.210 1.35  0.17598  2.5 -0.127
-    ##  Mens E-Mail - No E-Mail        1    0.842      0.191 4.42  < 0.001 16.6  0.469
-    ##  Womens E-Mail - No E-Mail      1    0.550      0.167 3.29  < 0.001 10.0  0.223
-    ##  97.5 %
-    ##   1.110
-    ##   0.696
-    ##   1.216
-    ##   0.878
+    ##                   Contrast womens Estimate Std. Error    z Pr(>|z|)    S  2.5 % 97.5 %
+    ##  Mens E-Mail - No E-Mail        0    0.671      0.224 3.00  0.00273  8.5  0.232  1.110
+    ##  Womens E-Mail - No E-Mail      0    0.284      0.210 1.35  0.17598  2.5 -0.127  0.696
+    ##  Mens E-Mail - No E-Mail        1    0.842      0.191 4.42  < 0.001 16.6  0.469  1.216
+    ##  Womens E-Mail - No E-Mail      1    0.550      0.167 3.29  < 0.001 10.0  0.223  0.878
     ## 
     ## Term: segment
     ## Type: probs
