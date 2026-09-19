@@ -1,4 +1,4 @@
-# The First Casualty of Statistics: Part Fifteen
+# The First Casualty of Statistics: Part Sixteen
 <big>**Compliance**</big>
 
 <br/>
@@ -12,8 +12,8 @@ individuals to perform some action that influences the outcome of
 interest. In particular, we examined a dataset to assess the effect of
 email advertising on merchandise purchases. What is interesting about
 this problem is that individuals are not actually compelled to buy
-something. Some individuals will not buy anything, and some will spend
-money regardless of whether they received the email. Another example of
+something. Some individuals will not buy anything and some will spend
+money, regardless of whether they received the email. Another example of
 this framework is a randomized experiment in which we assign treatments
 at random, but some individuals choose not to comply with the
 assignment.
@@ -1361,8 +1361,7 @@ mean(MailAnalytics_women$spend[MailAnalytics_women$segment == 0 & MailAnalytics_
 
     ## [1] 114.0027
 
-This difference is a bit higher. There could be a significant direct
-effect.
+There could be a significant direct effect.
 
 ``` r
 always_takers_data <- MailAnalytics_women[MailAnalytics_women$segment == 0 & MailAnalytics_women$conversion == 1,]
