@@ -722,7 +722,7 @@ quantile(abs(gps_weights$weights - f_T/f_TX),  c(0.001,0.01, 0.1, 0.9, 0.99, 0.9
     ##         0.1%           1%          10%          90%          99%        99.9% 
     ## 0.0002167873 0.0003017675 0.0023833187 0.0212137480 0.1974082259 6.2365359598
 
-But the discrepancies are small given the vast number of observations.
+But the discrepancies are small given for the vast number of observations.
 
 The crucial thing to check, especially when dealing with weights for
 continuous treatment, is their size.
