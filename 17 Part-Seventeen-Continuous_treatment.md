@@ -676,7 +676,7 @@ defined as (Naimi et al. 2014)
 e_i(X_i)  = \frac{f_{T \mid X}(t_i \mid X_i)}{f_T(t_i)},
 ```
 where $`f_{T \mid X}(t_i \mid X_i)`$ is the probability density of the
-treatment given covariates $`X_i`$, and \$ f_T(t_i) \$ is a marginal
+treatment given covariates $`X_i`$, and $`f_T(t_i)`$ is a marginal
 density used to stabilize the weights (*stabilization factor*).
 
 The simplest model for generalized propensity scores is linear
