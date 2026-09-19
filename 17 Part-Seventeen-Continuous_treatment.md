@@ -11,7 +11,7 @@ Jiří Fejlek
 standard binary treatment is that the average treatment effect for a
 population cannot be aggregated into a single number: ATE. The treatment
 effect now depends on the treatment value; the average treatment
-function is an *average dose-response function*. <br/>
+function becomes an *average dose-response function*. <br/>
 
 ## Table of Contents
 
