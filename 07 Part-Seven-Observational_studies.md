@@ -171,8 +171,9 @@ outcomes perspective, we got the ignorability condition
 ``` math
 Y(0) \perp  T \mid X \text{ and } Y(1) \perp  T \mid X
 ```
-and from the DAG, we got the back-door criterion (Peters et al. 2017) *A
-set of variables $`X`$ satisfies the back-door criterion, given a DAG
+and from the DAG, we got the back-door criterion (Peters et al. 2017) 
+
+*A set of variables $`X`$ satisfies the back-door criterion, given a DAG
 $`\mathcal{G}`$ for the treatment $`T`$ and the outcome $`Y`$, if no
 node of $`X`$ is a descendant of $`T`$ and $`X`$ blocks all the paths
 between $`T`$ and $`Y`$ that contain an arrow into $`T`$ (the back-door
@@ -549,7 +550,7 @@ Causal Models (SEMs), which is the framework to which DAG belongs) in
 
 Nowadays, practitioners mostly use a pragmatic approach and apply both
 frameworks as we will do here. Structural causal models are great at
-posulating causal relations and determining the correct conditioning
+postulating causal relations and determining the correct conditioning
 under these assumed relations. However, the potential outcome framework
 is used to derive the actual estimates. Overall, we observe that we can
 use DAGs (and their extensions) to reason within the potential-outcome
