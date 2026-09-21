@@ -561,13 +561,13 @@ Let’s move to the direct effect of gender. The Stan code of the Bayesian
 model
 
 ``` math
- \begin{align*}
+ \begin{aligned}
 \text{logit } p_i &= \text{Gender_Department}_i\\
 \text{Gender_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
 \text{Gender_Department}_\text{Female, Dep. A} & \sim N(0,2.25)\\
 \text{Gender_Department}_\text{Male, Dep. B} & \sim N(0,2.25)\\
 &\ldots
-\end{align*}
+\end{aligned}
 ```
 is as follows.
 
@@ -895,7 +895,7 @@ confounder $`u`$ directly, but we can include it in the Bayesian model
 as follows.
 
 ``` math
- \begin{align*}
+ \begin{aligned}
 \text{logit } p_i &= \text{Gender_Department}_i + \beta_i u_i\\
 \text{logit } q_i &= \text{Gender}_i + \gamma_i u_i\\
 \text{Gender_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
@@ -904,7 +904,7 @@ as follows.
 &\ldots\\
 \text{Gender}_\text{Male} & \sim N(0,1)\\
 \text{Gender}_\text{Female} & \sim N(0,1)\\
-\end{align*}
+\end{aligned}
 ```
 
 We see that the model now consists of two equations, and the individual
