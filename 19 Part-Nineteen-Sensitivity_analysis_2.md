@@ -305,7 +305,6 @@ e.g., *Nine Circles of Bayesian Modeling* for that purpose. Just as a
 quick reminder, the Bayesian model we will consider here is
 
 ``` math
- 
 \begin{align*}
 \text{logit } p_i &= \text{Gender}_i\\
 \text{Gender}_\text{Male} & \sim N(0,1)\\
@@ -562,8 +561,7 @@ Let’s move to the direct effect of gender. The Stan code of the Bayesian
 model
 
 ``` math
- 
-\begin{align*}
+ \begin{align*}
 \text{logit } p_i &= \text{Gender_Department}_i\\
 \text{Gender_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
 \text{Gender_Department}_\text{Female, Dep. A} & \sim N(0,2.25)\\
@@ -897,8 +895,7 @@ confounder $`u`$ directly, but we can include it in the Bayesian model
 as follows.
 
 ``` math
- 
-\begin{align*}
+ \begin{align*}
 \text{logit } p_i &= \text{Gender_Department}_i + \beta_i u_i\\
 \text{logit } q_i &= \text{Gender}_i + \gamma_i u_i\\
 \text{Gender_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
