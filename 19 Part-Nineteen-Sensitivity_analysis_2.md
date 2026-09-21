@@ -896,11 +896,11 @@ as follows.
 
 ``` math
  \begin{aligned}
-\text{logit } p_i &= \text{Gender_Department}_i + \beta_i u_i\\
+\text{logit } p_i &= \text{Gender\_Department}_i + \beta_i u_i\\
 \text{logit } q_i &= \text{Gender}_i + \gamma_i u_i\\
-\text{Gender_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
-\text{Gender_Department}_\text{Female, Dep. A} & \sim N(0,2.25)\\
-\text{Gender_Department}_\text{Male, Dep. B} & \sim N(0,2.25)\\
+\text{Gender\_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
+\text{Gender\_Department}_\text{Female, Dep. A} & \sim N(0,2.25)\\
+\text{Gender\_Department}_\text{Male, Dep. B} & \sim N(0,2.25)\\
 &\ldots\\
 \text{Gender}_\text{Male} & \sim N(0,1)\\
 \text{Gender}_\text{Female} & \sim N(0,1)\\
