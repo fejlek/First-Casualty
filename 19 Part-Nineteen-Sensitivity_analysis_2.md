@@ -1,14 +1,19 @@
----
-author: Jiří Fejlek
-bibliography: first_casualty.bib
-code_folding: hide
-date: 2025-09-20
-output:
-  md_document:
-    toc: true
-    variant: GFM
-title: "The First Casualty of Statistics: Part Nineteen"
----
+# The First Casualty of Statistics: Part Nineteen
+<big>**Sensitivity Analysis II**</big>
+
+<br/>
+Jiří Fejlek
+
+2026-09-20
+<br/>
+
+<br/> We will continue our discussion of sensitivity analysis by showing how
+to use a Bayesian model with a latent variable to model a causal effect
+in the presence of an unobserved confounder. Since the Bayesian
+framework assigns prior distributions to the unobserved quantities, it
+is well suited to fit these types of models. <br/>
+
+## Table of Contents
 
 - [UC Berkeley Graduate Admissions
   Dataset](#uc-berkeley-graduate-admissions-dataset)
@@ -21,14 +26,6 @@ title: "The First Casualty of Statistics: Part Nineteen"
   - [Bayesian Model for Direct Effect of Gender (with
     Confounding)](#bayesian-model-for-direct-effect-of-gender-with-confounding)
 - [References](#references)
-
-Sensitivity Analysis II
-
-We will continue our discussion of sensitivity analysis by showing how
-to use a Bayesian model with a latent variable to model a causal effect
-in the presence of an unobserved confounder. Since the Bayesian
-framework assigns prior distributions to the unobserved quantities, it
-is well suited to fit these types of models.
 
 ``` r
 library(tidyr)
@@ -97,7 +94,7 @@ ggplot(ucb_total %>% filter(Admit == "Admitted"), aes(x = Gender, y = Prop, fill
   theme_minimal() + theme(legend.position = "none")
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-3-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-3-1.png)<!-- -->
 
 We observe a large gap between the percentages of admitted men and
 women. We can quickly jump to the conclusion that there was significant
@@ -112,7 +109,7 @@ dag <- dagify(A ~ G,  exposure = 'G', outcome = 'A')
 ggdag_status(dag) + theme_dag() + theme(legend.position = "none")
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-4-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-4-1.png)<!-- -->
 
 Now, there is no hidden confounder here. There is no common cause of
 gender and admittance, i.e., the estimate of the average total effect of
@@ -158,7 +155,7 @@ ggplot(ucb_dep %>% filter(Admit == "Admitted"), aes(x = Gender, y = Prop, fill =
   theme_minimal() + theme(legend.position = "none")
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-6-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-6-1.png)<!-- -->
 
 Let us fit the corresponding model and compute the average direct effect
 of the gender.
@@ -236,7 +233,7 @@ dag <- dagify(A ~ G + D, D ~ G,  exposure = 'G', outcome = 'A')
 ggdag_status(dag) + theme_dag() + theme(legend.position = "none")
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-10-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-10-1.png)<!-- -->
 
 To estimate the direct effect of gender, we stratify by the departments.
 However, whereas there were no common causes of gender and admittance,
@@ -249,7 +246,7 @@ dag <- dagify(A ~ G + D + U, D ~ G + U,  exposure = 'G', outcome = 'A')
 ggdag_status(dag) + theme_dag() + theme(legend.position = "none")
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-11-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-11-1.png)<!-- -->
 
 In other words, department is a collider, which means that our
 estimators of the direct effect of gender could be biased.
@@ -471,7 +468,7 @@ p4 <- ppc_loo_intervals(ucb_dep_long_data$A, A_sim, psis_object = psis_object, p
 (p1 + p2 + p3 + p4) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-17-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-17-1.png)<!-- -->
 
 We see no problems with PIT (probability integral transform; see, e.g.,
 *Nine Circles of Bayesian Modeling: The Second Circle: Checking,
@@ -486,7 +483,7 @@ p2 <-mcmc_nuts_divergence(np, log_posterior(stan_fit))
 (p1 + p2) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-18-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-18-1.png)<!-- -->
 
 There were no divergent transitions. Lastly, let us check the
 sensitivity of our estimates to our choice of priors.
@@ -517,7 +514,7 @@ ggplot(dens_data1, aes(x = x, y = y)) +
   xlab('Probability of Admittance (men: blue, women: red)') + ylab('Posterior Density')
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-20-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-20-1.png)<!-- -->
 
 We can also simulate the average total treatment effect using the
 posterior draws
@@ -554,7 +551,7 @@ ggplot(dens_data1, aes(x = x, y = y)) +
   geom_line(aes(x = dens_data1$x, y = dens_data1$y), linewidth = 1, color = 'blue') + geom_vline(xintercept = mean(p_male-p_female), color = "red") + xlab('Risk Difference (men - women)') + ylab('Posterior Density')
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-22-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-22-1.png)<!-- -->
 
 The Bayesian framework yields the same result as the standard logistic
 regression. The total effect of gender is clearly in favor of men.
@@ -718,7 +715,7 @@ p4 <- ppc_loo_intervals(ucb_dep_long_data$A, A_sim, psis_object = psis_object, p
 (p1 + p2 + p3 + p4) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-27-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-27-1.png)<!-- -->
 
 ``` r
 np <- nuts_params(stan_fit)
@@ -728,7 +725,7 @@ p2 <-mcmc_nuts_divergence(np, log_posterior(stan_fit))
 (p1 + p2) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-28-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-28-1.png)<!-- -->
 
     ## Sensitivity based on cjs_dist
     ## Prior selection: all priors
@@ -775,7 +772,7 @@ p2 <-  ggplot(dens_data3, aes(x = x, y = y)) +
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-30-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-30-1.png)<!-- -->
 
 ``` r
 dens <- density(plogis(a_posterior[,1,3]))
@@ -801,7 +798,7 @@ p2 <-  ggplot(dens_data3, aes(x = x, y = y)) +
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-31-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-31-1.png)<!-- -->
 
 ``` r
 dens <- density(plogis(a_posterior[,1,5]))
@@ -826,7 +823,7 @@ p2 <-  ggplot(dens_data3, aes(x = x, y = y)) +
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-32-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-32-1.png)<!-- -->
 
 We see that department A makes all the difference in the distribution.
 However, as we discussed, this estimate may be biased. Let us
@@ -866,7 +863,7 @@ ggplot(dens_data1, aes(x = x, y = y)) +
   xlab('Probability of Admittance (all men: blue, all women: red)') + ylab('Posterior Density')
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-34-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-34-1.png)<!-- -->
 
 ``` r
 dens <- density(p_male-p_female)
@@ -876,7 +873,7 @@ ggplot(dens_data1, aes(x = x, y = y)) +
   geom_line(aes(x = dens_data1$x, y = dens_data1$y), linewidth = 1, color = 'blue') + geom_vline(xintercept = mean(p_male-p_female), color = "red") + xlab('Risk Difference (men - women)') + ylab('Posterior Density')
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-35-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-35-1.png)<!-- -->
 
 We see that the department A makes all the difference in the
 distribution. However, as we discussed this estimate may be biased. Let
@@ -892,7 +889,7 @@ dag <- dagify(A ~ G + D + U, D ~ G + U,  exposure = 'G', outcome = 'A')
 ggdag_status(dag) + theme_dag() + theme(legend.position = "none")
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-36-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-36-1.png)<!-- -->
 
 Let’s denote the probability of choosing the department $`A`$ as $`q`$,
 which is influenced by gender and $`u`$. We cannot observe the
@@ -1097,7 +1094,7 @@ p4 <- ppc_loo_intervals(ucb_dep_long_data$A, A_sim, psis_object = psis_object, p
 (p1 + p2 + p3 + p4) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-40-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-40-1.png)<!-- -->
 
 ``` r
 np <- nuts_params(stan_fit)
@@ -1107,7 +1104,7 @@ p2 <-mcmc_nuts_divergence(np, log_posterior(stan_fit))
 (p1 + p2) + plot_layout(ncol = 2)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-41-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-41-1.png)<!-- -->
 
     ## Sensitivity based on cjs_dist
     ## Prior selection: all priors
@@ -1231,7 +1228,7 @@ p2 <-  ggplot(dens_data3, aes(x = x, y = y)) +
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-45-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-45-1.png)<!-- -->
 
 ``` r
 dens <- density(plogis(a_posterior[,1,3]))
@@ -1258,7 +1255,7 @@ p2 <-  ggplot(dens_data3, aes(x = x, y = y)) +
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-46-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-46-1.png)<!-- -->
 
 ``` r
 dens <- density(plogis(a_posterior[,1,5]))
@@ -1285,7 +1282,7 @@ p2 <-  ggplot(dens_data3, aes(x = x, y = y)) +
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-47-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-47-1.png)<!-- -->
 
 We see that confounding has a major influence on our estimates of the
 gender effect on admission for department A. Women are no longer
@@ -1329,7 +1326,7 @@ ggplot(dens_data1, aes(x = x, y = y)) +
   xlab('Probability of Admittance (all men: blue, all women: red)') + ylab('Posterior Density')
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-49-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-49-1.png)<!-- -->
 
 ``` r
 dens <- density(p_male-p_female)
@@ -1339,7 +1336,7 @@ ggplot(dens_data1, aes(x = x, y = y)) +
   geom_line(aes(x = dens_data1$x, y = dens_data1$y), linewidth = 1, color = 'blue') + geom_vline(xintercept = mean(p_male-p_female), color = "red") + xlab('Risk Difference (men - women)') + ylab('Posterior Density')
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-50-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-50-1.png)<!-- -->
 
 We see that the direct effects are now identical across genders. Of
 course, we could crank up the effect of selection for department A even
@@ -1377,7 +1374,7 @@ ggplot(dens_data1, aes(x = x, y = y)) +
   xlab('Probability of Admittance for Department A (men: blue, women: red)') + ylab('Posterior Density')
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-53-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-53-1.png)<!-- -->
 
 The average direct effect would now be as follows.
 
@@ -1414,7 +1411,7 @@ ggplot(dens_data1, aes(x = x, y = y)) +
   geom_line(aes(x = dens_data1$x, y = dens_data1$y), linewidth = 1, color = 'blue') + geom_vline(xintercept = mean(p_male-p_female), color = "red") + xlab('Risk Difference (men - women)') + ylab('Posterior Density')
 ```
 
-![](Part-Nineteen_files/Part-Nineteen_files/figure-GFM/unnamed-chunk-55-1.png)<!-- -->
+![](Part-Nineteen_files/figure-GFM/unnamed-chunk-55-1.png)<!-- -->
 
 We would need to introduce much more unobserved confounding to shift the
 overall average significantly.
