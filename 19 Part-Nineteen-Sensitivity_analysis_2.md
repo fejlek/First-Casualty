@@ -992,7 +992,7 @@ stancode(ulam_model)
     ##     for ( i in 1:4526 ) log_lik[i] = bernoulli_lpmf( A[i] | p[i] );
     ## }
 
-Our resulting Stan code is as follows.
+We add the usual generated quantities and get the following Stan code.
 
 ``` default
 data{
