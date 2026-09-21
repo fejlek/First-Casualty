@@ -562,10 +562,10 @@ model
 
 ``` math
  \begin{aligned}
-\text{logit } p_i &= \text{Gender_Department}_i\\
-\text{Gender_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
-\text{Gender_Department}_\text{Female, Dep. A} & \sim N(0,2.25)\\
-\text{Gender_Department}_\text{Male, Dep. B} & \sim N(0,2.25)\\
+\text{logit } p_i &= \text{Gender\_Department}_i\\
+\text{Gender\_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
+\text{Gender\_Department}_\text{Female, Dep. A} & \sim N(0,2.25)\\
+\text{Gender\_Department}_\text{Male, Dep. B} & \sim N(0,2.25)\\
 &\ldots
 \end{aligned}
 ```
