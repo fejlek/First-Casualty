@@ -305,11 +305,11 @@ e.g., *Nine Circles of Bayesian Modeling* for that purpose. Just as a
 quick reminder, the Bayesian model we will consider here is
 
 ``` math
-\begin{align*}
+\begin{aligned}
 \text{logit } p_i &= \text{Gender}_i\\
 \text{Gender}_\text{Male} & \sim N(0,1)\\
 \text{Gender}_\text{Female} & \sim N(0,1).
-\end{align*}
+\end{aligned}
 ```
 
 Here $`\text{Gender}_\text{Male}`$ and $`\text{Gender}_\text{Female}`$
