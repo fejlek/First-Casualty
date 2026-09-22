@@ -52,11 +52,11 @@ and
 \text{ATE} = \mathbb{E}\left(\frac{TY}{e(X)} - \frac{(1-T)Y}{(1-e(X))}\right).
 ```
 
-Let us assume a *working model* for potential outcomes
+Let us assume a model for potential outcomes (outcome model)
 $`\mu_1(X,\beta_1)`$, $`\mu_0(X,\beta_0)`$ parametrized by $`\beta_1`$
-and $`\beta_0`$. If the working model is correctly specified, then
+and $`\beta_0`$. If the outcome model is correctly specified, then
 $`\mu_1(X,\beta_1) = \mu_1(X)`$ and $`\mu_0(X,\beta_0) = \mu_0(X)`$.
-Additionally, we construct a working model for propensity scores
+Additionally, we construct a model for propensity scores
 $`e(X,\alpha)`$, which when correctly specified meets
 $`e(X,\alpha) = e(X).`$
 
@@ -68,7 +68,7 @@ consider a hybrid estimator (Ding 2024)
 ``` math
 \mu_0^\text{DR} = \mathbb{E}\left[\frac{(1-T)(Y-\mu_0(X, \beta_0))}{1-e(X,\alpha)} + \mu_0(X, \beta_0)\right].
 ```
-We notice that the estimator is a working model of potential outcomes,
+We notice that the estimator is an outcome model,
 in which the propensity scores weight the residuals. This estimator can
 be equivalently written as (Ding 2024)
 ``` math
@@ -84,7 +84,7 @@ the *doubly robust estimator* or the *augmented inverse propensity score
 weighting* (AIPW) estimator.
 
 The estimator is known as *doubly* robust because it requires only *one*
-of the propensity score or potential outcome working models to be
+of the propensity score or potential outcome models to be
 well-specified for the estimator to be unbiased (Ding 2024).
 
 *Let* $`T \perp (Y(0),Y(1)) \mid X`$ *and* $`0 < e(X) < 1`$*. Then*
@@ -604,7 +604,7 @@ mean(predict(lm_cattaneo2_alt1, cattaneo2_1)) - mean(predict(lm_cattaneo2_alt0, 
 
 The reason why we showed this equivalence between these three models is
 if we go back to the definition of a doubly robust estimator, we need to
-construct two working models of potential outcome $`\mu_0(X,\beta_0)`$
+construct two outcome models $`\mu_0(X,\beta_0)`$
 and $`\mu_1(X,\beta_1)`$. Now, we know that these two models correspond
 to Lin’s estimator; thus, fitting these two models does not
 asymptotically reduce the precision of our ATE estimator (compared to
@@ -1235,9 +1235,9 @@ quite close to our bootstrap estimate.
 ### Doubly Robust Estimators
 
 Finally, we will consider the doubly robust estimator (augmented inverse
-propensity score weighting, AIPW). As we have discussed, our working
-model for the potential outcomes is based on Lin’s estimator. We combine
-it with the IPW estimator using the formulas
+propensity score weighting, AIPW). As we have discussed, our outcome
+model is based on Lin’s estimator. We combine it with the IPW estimator 
+using the formulas
 ``` math
 \hat\mu_1^\text{DR} = \frac{1}{n}\sum_{i = 1}^n\left[\frac{T_i(Y_i-\mu_1(X_i, \hat\beta_1))}{e(X_i,\hat\alpha)} + \mu_1(X_i, \hat\beta_1)\right],
 ```
