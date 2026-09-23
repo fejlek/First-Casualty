@@ -306,7 +306,7 @@ quick reminder, the Bayesian model we will consider here is
 
 ``` math
 \begin{aligned}
-\text{logit } p_i &= \text{Gender}_i\\
+\text{logit } p_i &= \text{Gender}\\
 \text{Gender}_\text{Male} & \sim N(0,1)\\
 \text{Gender}_\text{Female} & \sim N(0,1).
 \end{aligned}
@@ -562,7 +562,7 @@ model
 
 ``` math
  \begin{aligned}
-\text{logit } p_i &= \text{Gender\_Department}_i\\
+\text{logit } p_i &= \text{Gender\_Department}\\
 \text{Gender\_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
 \text{Gender\_Department}_\text{Female, Dep. A} & \sim N(0,2.25)\\
 \text{Gender\_Department}_\text{Male, Dep. B} & \sim N(0,2.25)\\
@@ -883,8 +883,8 @@ as follows.
 
 ``` math
  \begin{aligned}
-\text{logit } p_i &= \text{Gender\_Department}_i + \beta_i u_i\\
-\text{logit } q_i &= \text{Gender}_i + \gamma_i u_i\\
+\text{logit } p_i &= \text{Gender\_Department} + \beta u_i\\
+\text{logit } q_i &= \text{Gender} + \gamma u_i\\
 \text{Gender\_Department}_\text{Male, Dep. A} & \sim N(0,2.25)\\
 \text{Gender\_Department}_\text{Female, Dep. A} & \sim N(0,2.25)\\
 \text{Gender\_Department}_\text{Male, Dep. B} & \sim N(0,2.25)\\
