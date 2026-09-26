@@ -242,11 +242,7 @@ that everything else stays the same). We denote this probability as
 ```
 
 To estimate this probability, we have to remove the confounding by
-including
-``` math
-Size
-```
-in the model
+including **Size** in the model.
 
 ``` r
 summary_table$Treatment <- relevel(as.factor(summary_table$Treatment), 'Percutaneous Nephrolithotomy')
