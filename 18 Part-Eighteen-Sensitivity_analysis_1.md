@@ -21,10 +21,10 @@ scenario is realistic given our particular subject knowledge. <br/>
 
 ## Table of Contents
 
-- [Package Causalsens](#package-causalsens)
+- [Causalsens Package](#causalsens-package)
 - [Sensemakr Package](#sensemakr-package)
 - [Evalue Package](#evalue-package)
-- [Package Tipr](#package-tipr)
+- [Tipr Package](#tipr-package)
 - [References](#references)
 
 
@@ -46,7 +46,7 @@ library(mgcv)
 library(marginaleffects)
 ```
 
-## Package Causalsens
+## Causalsens Package
 
 We will start with the package *causalsens* that is based on (Blackwell
 2014). The package handles only a linear regression outcome model with a
@@ -1083,7 +1083,7 @@ bias_plot(bca[1], xmax = 15)
 
 ![](Part-Eighteen_files/figure-GFM/unnamed-chunk-34-1.png)<!-- -->
 
-## Package Tipr
+## Tipr Package
 
 We conclude this part with the package *tipr*, which can be used for
 quick adjusting/tiping of treatment effects. For example, if we return
