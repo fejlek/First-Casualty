@@ -383,7 +383,7 @@ method is known as Lin's estimator (Lin 2013). Lin showed that
 with this modification adjustment will never increase asymptotic variance 
 compared to unadjusted estimate, i.e., adjusting will never do harm. 
 
-First, we need to center the covariates. 
+First, we center the covariates. 
 
 ``` r
 model_matrix <- scale(model.matrix(lm_penn)[,c(-1,-2)], center = TRUE, scale = TRUE)
