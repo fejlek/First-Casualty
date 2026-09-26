@@ -639,7 +639,7 @@ summary(lm(Y ~ Z))
 
 Dropping $`X`$ decrease $`R^2`$ significantly. In other words, if we
 went for a model based on prediction accuracy, we would definitely go
-for $`Y \sim X + Z`$. But god help us, if we intervened on $`X`$ based
+for $`Y \sim X + Z.`$ But god help us, if we intervened on $`X`$ based
 on this model with some stakes on the line …
 
 ## Dataset cps1re74
