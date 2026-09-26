@@ -32,12 +32,6 @@ library(dagitty)
 library(ggdag)
 ```
 
-In the Third Part of this series, we take a step back and look at the
-problem of causal inference from a different viewpoint: potential
-outcomes and counterfactuals. We will also introduce a randomized
-experiment, a gold-standard experimental design used for estimating
-causal effects.
-
 ## Potential Outcomes
 
 Let’s assume an individual who either receives or does not receive a
