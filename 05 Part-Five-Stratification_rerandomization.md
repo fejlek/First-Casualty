@@ -379,7 +379,7 @@ enough $`n`$. Freedman also showed that adjusting can lead to a less
 precise (i.e., less efficient) estimate in imbalanced designs.
 
 However, we can do a bit better and obtain a more precise estimate. The
-method is known as Lin's estimator (Lin 2013). The authors showed that 
+method is known as Lin's estimator (Lin 2013). Lin showed that 
 with this modification adjustment will never increase asymptotic variance 
 compared to unadjusted estimate, i.e., adjusting will never do harm. 
 
