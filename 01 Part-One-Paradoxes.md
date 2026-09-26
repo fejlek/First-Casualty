@@ -671,7 +671,7 @@ have been estimated). However, the original control group was
 subsequently removed from the dataset and replaced with a
 non-experimental comparison group pulled from a population survey, i.e.,
 the original randomization is compromised. The goal is to test whether
-some method can recover the causal effect.
+a given method can recover the causal effect.
 
 At this point we are not ready to tackle this. But let’s do some
 regressing. For reference, the estimated treatment effect from the
