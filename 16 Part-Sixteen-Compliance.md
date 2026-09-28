@@ -585,7 +585,7 @@ mean(y_0[buyer_1 == buyer_0 & buyer_1 == 1])
 We observe that the averages of potential outcomes are indeed equal and
 very close to our estimate.
 
-We can do these calculations because we know the spending when some
+We can do these calculations because we know the spending when someone
 decided not to buy anything. The spending is, of course, 0. If we
 assumed the problem of estimating the treatment effect under
 non-compliance, we would not be able to estimate the treatment effect on
