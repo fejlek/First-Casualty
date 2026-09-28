@@ -237,7 +237,7 @@ i.e., the treatment is independent of potential outcomes. This is the
 case in our simple example, and hence, the APE works well.
 
 ``` r
-mean(trt_effect_table$Y1[trt_effect_table$Treatment == 1] - trt_effect_table$Y0[trt_effect_table$Treatment == 0] )
+mean(trt_effect_table$Y1[trt_effect_table$Treatment == 1]) - mean(trt_effect_table$Y0[trt_effect_table$Treatment == 0])
 ```
 
     ## [1] 2
