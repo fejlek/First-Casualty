@@ -477,8 +477,8 @@ driven by fewer than 2% compliers in the population; remember that the
 rest are always-buyers and never-buyers who are not influenced by the
 emails at all.
 
-To estimate the number of compliers, we need to estimate the (risk
-difference) ATE for buyers.
+To estimate the number of compliers, we need to estimate the ATE 
+(risk difference) for buyers.
 
 ``` r
 avg_comparisons(lm(buyer ~ treatment, data = data_sim), variables = "treatment")
