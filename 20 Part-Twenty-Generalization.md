@@ -486,7 +486,7 @@ The last method we will cover here is weighting, such as inverse
 propensity score weighting and entropy balancing. The idea is to weight
 the experiment’s population so that it resembles the target population.
 We can then estimate the treatment effect on the weighted experiment
-population as usual Dahabreh et al. (2019).
+population as usual (Stuart et al. 2011) and (Dahabreh et al. 2019).
 
 First, we will unite the datasets. We will also add a new column,
 *target*, to separate the populations.
@@ -751,7 +751,7 @@ avg_comparisons(lm_model_weighted_alt, variable = 'T')
     ## Comparison: 1 - 0
 
 Instead, we have to employ the second weighting scheme to balance the
-treatment-weighted and control-weighted groups Dahabreh et al. (2019).
+treatment-weighted and control-weighted groups (Stuart et al. 2011) and (Dahabreh et al. 2019).
 We perform this in *weightit* using *s.weights*, which substitutes in
 the weights.
 
