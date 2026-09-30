@@ -753,7 +753,7 @@ avg_comparisons(lm_model_weighted_alt, variable = 'T')
 Instead, we have to employ the second weighting scheme to balance the
 treatment-weighted and control-weighted groups Dahabreh et al. (2019).
 We perform this in *weightit* using *s.weights*, which substitutes in
-the sampling weights.
+the weights.
 
 ``` r
 s_weights  = sample_weights_alt$weights[design_matrix_2_full_alt$target == 0]
