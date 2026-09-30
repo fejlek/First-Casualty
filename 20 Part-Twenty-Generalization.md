@@ -1085,7 +1085,7 @@ But this is only because our outcome model was linear; hence, it just
 happens to be correctly specified. Thus, our imputation of the potential
 outcomes is correct. But crucially, this imputation is an extrapolation
 due to the lack of overlap for $`X_3`$. We cannot rely
-on the fact that such *extrapolation* would be correct in general.
+on the fact that such *extrapolation* of potential outcomes would be correct in general.
 Consequently, this estimate is likely to be considered too unreliable in
 practice.
 
