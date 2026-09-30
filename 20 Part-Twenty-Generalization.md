@@ -1082,7 +1082,7 @@ avg_comparisons(lm_model, variable = 'T', newdata = design_matrix_3_new_pop)
     ## Comparison: 1 - 0
 
 But this is only because our outcome model was linear; hence, it just happens to be correctly specified. Thus, our imputation of the potential outcomes is correct. But crucially, this imputation is an *extrapolation* due to the lack of overlap for $`X_3`$. We cannot rely on the fact that such extrapolation of potential outcomes would be correct in general.
-Consequently, this regression estimate would be too unreliable in more realistic scenario.
+Consequently, this regression estimate would be too unreliable in practice.
 
 ## References
 
