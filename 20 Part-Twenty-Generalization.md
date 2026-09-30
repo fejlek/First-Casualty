@@ -101,7 +101,7 @@ for (i in 1:n_block){
 }
 
 colnames(design_matrix_1) <- c('X1','X2', 'X3','X4','Stratum','T','Y','Y0','Y1')
-design_matrix_1
+head(design_matrix_1)
 ```
 
     ##       X1 X2 X3 X4 Stratum T             Y            Y0            Y1
@@ -111,10 +111,6 @@ design_matrix_1
     ## 4      0  0  0  0       1 0  1.6903218735  1.6903218735  1.1277243688
     ## 5      0  0  0  0       1 1  1.7973968931  1.0603035446  1.7973968931
     ## 6      0  0  0  0       1 1  0.4946086131  0.8697590062  0.4946086131
-    ## 7      0  0  0  0       1 1  1.0017746160  1.1724249678  1.0017746160
-    ## 8      0  0  0  0       1 1  1.5599478787  0.5976964778  1.5599478787
-    ## 9      0  0  0  0       1 1  2.2530127588  1.5542780459  2.2530127588
-    ## 10     0  0  0  0       1 1  1.3559708407  0.4484604193  1.3559708407
 
 The true ATE for the experiment population is as follows.
 
@@ -223,7 +219,7 @@ for (i in 1:n_block){
 }
 
 colnames(design_matrix_1_new_pop) <- c('X1','X2', 'X3','X4','Stratum','Y0','Y1')
-design_matrix_1_new_pop
+head(design_matrix_1_new_pop)
 ```
 
     ##       X1 X2 X3 X4 Stratum           Y0            Y1
@@ -233,10 +229,6 @@ design_matrix_1_new_pop
     ## 4      0  0  0  0       1  1.035254196  1.8458006343
     ## 5      0  0  0  0       1  1.064643868  0.8555183909
     ## 6      0  0  0  0       1  1.857532493  0.4761117282
-    ## 7      0  0  0  0       1  1.230458103  2.4790302459
-    ## 8      0  0  0  0       1  0.367469383  1.1687890288
-    ## 9      0  0  0  0       1  0.656573574  1.2012743749
-    ## 10     0  0  0  0       1  0.777169015  1.4602870943
 
 ``` r
 mean(design_matrix_1_new_pop$Y1 - design_matrix_1_new_pop$Y0)
@@ -253,7 +245,7 @@ for this new (*target*) population
 (<https://mc-stan.org/docs/stan-users-guide/poststratification.html>).
 We encountered this term before in Part Five in the context of using
 adjustment for discrete covariates in the CRE inference. Unfortunately,
-the same term is applied to two unrelated concepts.
+the same term is applied to two unrelated concepts in literature.
 
 First, we need to estimate ATE in each stratum of the experiment’s
 population.
@@ -545,7 +537,7 @@ p2 <- bal.plot(sample_weights, var = c('X2'), which = 'both')
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-21-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-21-1.png)<!-- -->
 
 ``` r
 p1 <- bal.plot(sample_weights, var = c('X3'), which = 'both')
@@ -553,7 +545,7 @@ p2 <- bal.plot(sample_weights, var = c('X4'), which = 'both')
 (p1 + p2 ) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-22-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-22-1.png)<!-- -->
 
 We see that entropy balancing successfully weighted the original
 population to look like the target population. Since the treatment
@@ -730,7 +722,7 @@ p2 <- bal.plot(sample_weights_alt, var = c('X2'), which = 'both')
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-31-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-31-1.png)<!-- -->
 
 ``` r
 p1 <- bal.plot(sample_weights_alt, var = c('X3'), which = 'both')
@@ -738,7 +730,7 @@ p2 <- bal.plot(sample_weights_alt, var = c('X4'), which = 'both')
 (p1 + p2 ) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-32-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-32-1.png)<!-- -->
 
 However, the treatment assignment was not random, and hence, we cannot
 simply compute the treatment effect.
@@ -801,7 +793,7 @@ p2 <- bal.plot(observational_weights, var = c('X2'), which = 'both')
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-35-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-35-1.png)<!-- -->
 
 ``` r
 p1 <- bal.plot(observational_weights, var = c('X3'), which = 'both')
@@ -809,7 +801,7 @@ p2 <- bal.plot(observational_weights, var = c('X4'), which = 'both')
 (p1 + p2 ) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-36-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-36-1.png)<!-- -->
 
 Finally, we obtain the average treatment effect on the target population
 by multiplying the *sample weights* (balancing with respect to the
@@ -982,7 +974,7 @@ p2 <- bal.plot(sample_weights, var = c('X2'), which = 'both')
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-43-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-43-1.png)<!-- -->
 
 ``` r
 p1 <- bal.plot(sample_weights, var = c('X3'), which = 'both')
@@ -990,7 +982,7 @@ p2 <- bal.plot(sample_weights, var = c('X4'), which = 'both')
 (p1 + p2 ) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-44-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-44-1.png)<!-- -->
 
 This is because the target population consists of individuals with
 $`X_3`$ who are not present in the original sample. Entropy balancing
@@ -1038,7 +1030,7 @@ p2 <- bal.plot(observational_weights, var = c('X2'), which = 'both')
 (p1 + p2) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-46-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-46-1.png)<!-- -->
 
 ``` r
 p1 <- bal.plot(observational_weights, var = c('X3'), which = 'both')
@@ -1046,7 +1038,7 @@ p2 <- bal.plot(observational_weights, var = c('X4'), which = 'both')
 (p1 + p2 ) + plot_layout(ncol = 1)
 ```
 
-![](Part-Twenty_files/Part-Twenty_files/figure-GFM/unnamed-chunk-47-1.png)<!-- -->
+![](Part-Twenty_files/figure-GFM/unnamed-chunk-47-1.png)<!-- -->
 
 We see that our adjusted population is decimated; we have effectively
 only 15 observations from 1000 in the treated group! Consequently, the
