@@ -652,7 +652,7 @@ data_sim <- data.frame(y = y, X1 = X1, X2 = X2, X3 = X3, treatment = treatment, 
 Since the exclusion restriction no longer holds, we cannot use the Wald
 estimator directly. We first need to estimate the direct effect of $`T`$
 on the always-takers. This approach is known as the *Principal
-stratification* ((Frangakis and Rubin 2002)).
+stratification* (Frangakis and Rubin 2002).
 
 To perform principal stratification, we extract the always-takers from
 the control group (by taking the subgroup of buyers).
