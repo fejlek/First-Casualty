@@ -289,7 +289,7 @@ results
 Then, we will use observed proportions of each stratum in the target
 population and reweight the ATE estimate as (Hernán and Robins 2010)
 ``` math
-\widehat{ATE}\text{target} = \sum{i = 1}^S w_i \hat \tau_i,
+\widehat{ATE}_\text{target} = \sum_{i = 1}^S w_i \hat \tau_i,
 ```
 where $`w_i = P_\text{target}[X \in S_i]`$ is the probability that an
 individual from the target population belongs to the $`i`$-th stratum
