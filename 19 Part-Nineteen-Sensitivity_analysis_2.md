@@ -8,10 +8,10 @@ Jiří Fejlek
 <br/>
 
 <br/> We will continue our discussion of sensitivity analysis by showing how
-to use a Bayesian model with a latent variable to model a causal effect
+to use a Bayesian framework with latent variables to model a causal effect
 in the presence of an unobserved confounder. Since the Bayesian
 framework assigns prior distributions to the unobserved quantities, it
-is well suited to fit these types of models. <br/>
+is well suited to handle these types of tasks. <br/>
 
 ## Table of Contents
 
