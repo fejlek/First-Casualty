@@ -863,7 +863,7 @@ colSums(is.na(card))
     ##        0        0        0        0        0        0      690      353        0        0        0        0        0        0        0        0        0        0        0        0        0        0        0        0        0        0        0        0       47      949        7       13        0        0        0
 
 We see that **IQ**, in particular, is often missing. For simplicity, we
-will consider case-complete analysis here. We will drop **IQ** from the
+will consider the complete case analysis here. We will drop **IQ** from the
 model and combine **fatheduc** and **motheduc** into a single predictor
 (taking the maximum of both values). Overall, we get the following
 dataset (losing about 300 observations).
