@@ -216,15 +216,15 @@ women). We should remember this, as it implies that the treatment effect
 is likely to be heterogeneous by customer gender. Other than that, we
 have additional covariates on customers’ backgrounds.
 
-- *recency*: months since last purchase before the campaign started
+- **recency**: months since last purchase before the campaign started
   (between 1 and 12)
-- *history_segment*: customer’s past purchase value
-- *mens*: customer has purchased men’s merchandise in the past year
-- *womens*: customer has purchased women’s merchandise in the past year
-- *zip_code*: geographic area where the customer lives (Rural, Suburban,
+- **history_segment**: customer’s past purchase value
+- **mens**: customer has purchased men’s merchandise in the past year
+- **womens**: customer has purchased women’s merchandise in the past year
+- **zip_code**: geographic area where the customer lives (Rural, Suburban,
   Urban)
-- *newbie*: if the customer is a new customer within the last 12 months
-- *channel*: primary purchasing channel used by the customer in the past
+- **newbie**: if the customer is a new customer within the last 12 months
+- **channel**: primary purchasing channel used by the customer in the past
   year (Web, Phone, Multichannel)
 
 The data are the result of a randomized experiment, so we expect
