@@ -326,7 +326,7 @@ $`\Gamma`$, i.e., $`\hat T = \Gamma Z`$. The bias term we derived meets
 (\hat T^T \hat T)^{-1}\hat T \varepsilon =  ((\Gamma Z)^T \Gamma Z)^{-1} Z^T\Gamma^T  \varepsilon = (Z^T \Gamma Z)^{-1}Z^T \Gamma \varepsilon = \left(\frac{1}{n}Z^T \Gamma Z\right)^{-1}\frac{1}{n}Z^T \Gamma \varepsilon
 ```
 We used the fact that $`\Gamma`$ is a projection matrix, and thus it is
-symmetric ($`\ Gamma^T = \Gamma`$) and idempotent
+symmetric ($`\Gamma^T = \Gamma`$) and idempotent
 ($`\Gamma\Gamma = \Gamma`$). In addition,  
 ``` math
 \left(\frac{1}{n}Z^T \Gamma Z\right)^{-1} = \left(\frac{1}{n}Z^TZ(Z^TZ)^{-1}Z^TZ\right)^{-1} \rightarrow Q^{-1}
