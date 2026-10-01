@@ -1311,10 +1311,7 @@ summary(model_exper_exog)
     ## Multiple R-Squared: -0.4556, Adjusted R-squared: -0.4556 
     ## Wald test: 922.8 on 3 and 99996 DF,  p-value: < 2.2e-16
 
-So yeah, we still have to follow the rules of causal inference, even
-when using 2SLS. What is happening here is that by conditioning on the
-mediator **exper** as the treatment (endogenous) variable and include
-**age** as the instrument, the bias in **edu** disappears.
+We see that if we treat **exper** as another covariate in the model (an exogenous variable in the econometric sense), the estimate of the direct effect of **edu** is significantly biased. However, if we correctly treat **exper** as the treatment (endogenous) variable and include **age** as the instrument, the bias in **edu** disappears.
 
 ``` r
 model_exper_endg <- ivreg(lwage ~ edu + exper + X| nearc4_sim + age + X, data = sim_dataset)
