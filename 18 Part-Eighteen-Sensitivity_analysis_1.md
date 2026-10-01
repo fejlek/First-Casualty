@@ -16,7 +16,10 @@ so far do not help much with this problem; these confounders were not
 observed after all. What we can do is investigate, via the so-called
 *sensitivity analysis*, how much confounding would be required to
 completely invalidate our inference, and then assess whether such a
-scenario is realistic given our particular subject knowledge. <br/>
+scenario is realistic given our particular subject knowledge. 
+
+Here, we will investigate several sensitivity analysis methods by 
+looking at a handful of packages implemented in R. <br/>
 
 
 ## Table of Contents
