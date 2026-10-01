@@ -412,41 +412,7 @@ Let us check the predictors.
 card <- card %>% mutate(across(c(nearc2, nearc4, momdad14, sinmom14, step14, reg661, reg662, reg663, reg664, reg665, reg666, reg667, reg668, reg669, south66, black, smsa, south, smsa66, enroll, married, libcrd14), as.factor))
 datasummary_skim(card)
 ```
-<head>
-<meta charset="UTF-8">
-<style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin: 20px;
-    color: #333;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 1000px;
-    margin-bottom: 30px;
-    font-size: 14px;
-  }
-  th, td {
-    padding: 8px 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  th {
-    background-color: #f5f5f7;
-    font-weight: 600;
-  }
-  tr:hover {
-    background-color: #f9f9f9;
-  }
-  .num {
-    text-align: right;
-  }
-  .section-header {
-    background-color: #eef2f5;
-    font-weight: bold;
-  }
-</style>
+
 </head>
 <body>
 
