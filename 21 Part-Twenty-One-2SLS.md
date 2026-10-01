@@ -4,7 +4,7 @@
 <br/>
 Jiří Fejlek
 
-2026-09-31
+2026-09-30
 <br/>
 
 <br/> When discussing compliance in Part Sixteen, we computed the local
