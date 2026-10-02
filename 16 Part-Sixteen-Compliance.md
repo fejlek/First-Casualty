@@ -234,9 +234,9 @@ that everyone in the control group for whom $`D_i = 1`$ is an
 always-taker, which we can then use to isolate the causal effects on
 compliers.
 
-Not having defilers (or having them in marginal amounts) is often a
+Not having defiers (or having them in marginal amounts) is often a
 reasonable assumption. However, we should be aware that when the
-defilers are significantly present, individuals that have $`D_i = 1`$ in
+defiers are significantly present, individuals that have $`D_i = 1`$ in
 the control group are now a mixture of always-takers and defiers, making
 the standard inference biased.
 
