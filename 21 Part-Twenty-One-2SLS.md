@@ -281,7 +281,7 @@ iv_est <- numeric(n_sim)
 for (i in 1:n_sim){
   
   model_matrix_new <-  model_matrix[sample(nrow(model_matrix) , rep=TRUE),]
-  iv_est[i] <- coefficients(lm(Y~Z+X1+X2+X3, data = model_matrix_new))[2]/coefficients(lm(T~Z, data = model_matrix_new))[2]
+  iv_est[i] <- coefficients(lm(Y~Z+X1+X2+X3, data = model_matrix_new))[2]/coefficients(lm(T~Z+X1+X2+X3, data = model_matrix_new))[2]
 }
 
 results <- c(coefficients(lm(Y~Z+X1+X2+X3))[2]/coefficients(lm(T~Z+X1+X2+X3))[2], quantile(iv_est, c(0.025,0.975)))
@@ -290,7 +290,7 @@ results
 ```
 
     ## Estimate     2.5%    97.5% 
-    ## 1.956884 1.760321 2.947497
+    ## 1.956884 1.576057 2.388302 
 
 ## Two-Stage Least Squares
 
