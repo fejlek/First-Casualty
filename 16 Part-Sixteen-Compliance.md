@@ -170,7 +170,7 @@ ago.
 
 Still, focusing attention on the subpopulation that actually bought
 something makes sense, and it is definitely an estimand of interest. But
-we must do so in a less straightforward way to avoid selection bias.
+we must do so in a less straightforward way to avoid bias.
 
 ## Compliance
 
@@ -544,7 +544,7 @@ for(i in 1:nb){
   data_sim_new <-  data_sim[sample(nrow(data_sim) , rep=TRUE),]
   
   
-  late_est[i] <- coefficients(lm(y ~ treatment + X1 + X2 + X3, data = data_sim_new), variables = "treatment")[2]/coefficients(lm(buyer ~ treatment + X1 + X2 + X3, data = data_sim_new), variables = "treatment")[2]
+  late_est[i] <- coefficients(lm(y ~ treatment + X1 + X2 + X3, data = data_sim_new))[2]/coefficients(lm(buyer ~ treatment + X1 + X2 + X3, data = data_sim_new))[2]
 }
 
 quantile(late_est, c(0.025,0.5, 0.975))
