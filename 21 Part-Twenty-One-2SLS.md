@@ -304,9 +304,9 @@ If this is the case, we can use the two-stage least squares (2SLS)
 method to estimate $`\beta`$. The method has, as the name would suggest,
 two stages (Ding 2024).
 
-- Perform linear regression $`T \sim Z`$ and obtain predictions
+1. Perform linear regression $`T \sim Z`$ and obtain predictions
   $`\hat T`$
-- Perform linear regression $`Y \sim \hat T`$ and obtain the
+2. Perform linear regression $`Y \sim \hat T`$ and obtain the
   coefficient $`\hat \beta`$
 
 This estimator works since
