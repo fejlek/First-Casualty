@@ -925,7 +925,7 @@ mean(y_0[buyer_1 == buyer_0 & buyer_1 == 1])
 
     ## [1] 28.16906
 
-Estimating the average amount spent for $`T = 0`$ requires our direct
+Estimating the average amount spent for $`T = 1`$ requires our direct
 effect model and thus can be biased provided there is unobserved
 confounding.
 
@@ -1087,7 +1087,7 @@ The estimate is quite accurate.
 If we want to estimate LATE, we cannot simply subtract a multiple of the
 direct treatment effect for the always-takers to represent the direct
 effect for compliers, since the treatment effect is heterogeneous. We
-have reweighted the whole population to make it more comparable to the
+must weight the whole population to make it more comparable to the
 compliers. Then we impute their potential outcomes and estimate the
 average direct effect.
 
