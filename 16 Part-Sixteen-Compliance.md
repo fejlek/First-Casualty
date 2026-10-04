@@ -264,8 +264,8 @@ Under monotonicity, the average effect of $`T`$ on $`D`$ is (Ding 2024)
 ``` math
 \tau_D =  P(G = \text{complier}),
 ```
-because we assume no defiers, and $`T`$ does not influence always-takers
-and never-takers. If we further assume the exclusion restriction, we get
+because we assume no defiers, and hence, the difference in proportions of $`D`$ can
+be only caused by compliers. If we further assume the exclusion restriction, we get
 that the average effect of $`T`$ on $`Y`$ (Ding 2024) meets
 ``` math
 \tau_Y = \mathbb{E}(Y(1)-Y(0) \mid G = \text{complier})P(G = \text{complier}).
