@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Twenty Two
-<big>**Instrumental Variables and LATE I**</big>
+<big>**2SLS and LATE I**</big>
 
 <br/>
 Jiří Fejlek
