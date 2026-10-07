@@ -1098,7 +1098,7 @@ cov(T, p_zi >= ps[2]) + cov(T, p_zi >= ps[4]) - cov(T, p_zi >= ps[3])
 
     ## [1] 0.0456166
 
-All the weights are positive, and thus \$\_ \$ is a causal estimate. If
+All the weights are positive, and thus $`\beta_\text{2SLS}`$ is a causal estimate. If
 we could assume that the treatment effect is homogeneous (which is not
 the case in our study), we would obtain an estimate of the ATE.
 
