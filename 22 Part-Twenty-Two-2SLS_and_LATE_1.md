@@ -1131,7 +1131,7 @@ previous example, this would be *ec, rc, 1c,* and *2c*.
 monotonicity
 
 ``` math
-\text{CC-LATE} =  \frac{\mathbb{E}(Y \mid Z_1 = 1, Z_2 = 1,  \ldots Z_K = 1 ) - \mathbb{E}(Y \mid Z_1 = 0, Z_2 = 0,  \ldots Z_K = 0)}{\mathbb{E}(T \mid Z_1 = 1, Z_2 = 1,  \ldots Z_K = 1 ) - \mathbb{E}(T \mid Z_1 = 0, Z_2 = 0,  \ldots Z_K = 0).}
+\text{CC-LATE} =  \frac{\mathbb{E}(Y \mid Z_1 = 1, Z_2 = 1,  \ldots Z_K = 1 ) - \mathbb{E}(Y \mid Z_1 = 0, Z_2 = 0,  \ldots Z_K = 0)}{\mathbb{E}(T \mid Z_1 = 1, Z_2 = 1,  \ldots Z_K = 1 ) - \mathbb{E}(T \mid Z_1 = 0, Z_2 = 0,  \ldots Z_K = 0)}.
 ```
 If we use our example, we get an estimate
 
