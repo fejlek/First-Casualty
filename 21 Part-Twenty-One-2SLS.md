@@ -15,7 +15,7 @@ the model. An instrument is a variable that causes the treatment but has
 no direct effect on the outcome, and, as we will see, it can be used to
 estimate the treatment effect even when unobserved confounding is
 present. Here, we will focus particularly on *two-stage least squares*,
-a popular method based on linear regression. <br/>
+a popular causal inference method based on linear regression. <br/>
 
 ## Table of Contents
 
