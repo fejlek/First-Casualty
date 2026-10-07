@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Twenty Two
-<big>**2SLS and LATE I**</big>
+<big>**2SLS and LATE**</big>
 
 <br/>
 Jiří Fejlek
@@ -1188,9 +1188,7 @@ discussed is that it is both easy to compute and easy to interpret under
 very general conditions. Other than that, we saw that the relative ease
 of computing 2SLS is quite deceptive. The causal interpretation of the
 2SLS results gets quite difficult very fast unless we are willing to
-make very strong assumptions. In the next part, we will wrap up this
-topic by covering 2SLS with continuous instruments and continuous
-treatment.
+make very strong assumptions.
 
 ## References
 
