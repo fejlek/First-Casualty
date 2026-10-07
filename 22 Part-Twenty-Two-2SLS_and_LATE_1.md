@@ -1126,7 +1126,7 @@ effect of all compliers
 
 where *cc* denotes a group of compliers, i.e., the group that complies
 with at least one of the instruments, or a combination of them. In our
-previous example, this would be ec, rc, 1c, and 2c.
+previous example, this would be *ec, rc, 1c,* and *2c*.
 (<span class="nocase">Hoff et al.</span> 2023) showed that under limited
 monotonicity
 
