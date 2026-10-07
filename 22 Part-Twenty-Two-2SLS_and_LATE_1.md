@@ -1121,7 +1121,7 @@ estimation of a particular average treatment effect. Namely, CC-LATE (
 combined compliers local average treatment), the average treatment
 effect of all compliers
 ``` math
-\text{CC-LATE} = \mathbb{E}(Y(1)-Y(0) \mid G \in g),
+\text{CC-LATE} = \mathbb{E}(Y(1)-Y(0) \mid G \in \text{cc}),
 ```
 
 where *cc* denotes a group of compliers, i.e., the group that complies
