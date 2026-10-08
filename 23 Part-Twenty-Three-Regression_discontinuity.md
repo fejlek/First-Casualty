@@ -331,27 +331,13 @@ indianroad <- read.csv("C:/Users/elini/Desktop/first casualty/indianroad.csv")
 head(indianroad)
 ```
 
-    ##   transport_index_andrsn occupation_index_andrsn firms_index_andrsn
-    ## 1              0.2294292             -0.53692758        -0.22754674
-    ## 2             -0.6857497              1.44797190        -0.36850739
-    ## 3              0.6792668              0.05293373         2.29903940
-    ## 4              1.3638802             -1.36518310         0.35144857
-    ## 5              2.7288966             -0.28853330         0.05583254
-    ## 6              0.2294292             -0.44346148         0.27563861
-    ##   consumption_index_andrsn agriculture_index_andrsn r2012 t left right
-    ## 1                1.4276736               0.82491314     0 0  -42     0
-    ## 2                1.0348541               1.26404360     0 0  -71     0
-    ## 3                1.8552666               0.73733830     0 0   -3     0
-    ## 4                0.3810506              -0.09156802     1 1    0    75
-    ## 5                1.1738154               1.40737010     0 0  -43     0
-    ## 6                0.8008583               0.79718453     0 1    0    61
-    ##   mainsample
-    ## 1          1
-    ## 2          1
-    ## 3          1
-    ## 4          1
-    ## 5          1
-    ## 6          1
+    ##   transport_index_andrsn occupation_index_andrsn firms_index_andrsn consumption_index_andrsn agriculture_index_andrsn r2012 t left right mainsample
+    ## 1              0.2294292             -0.53692758        -0.22754674                1.4276736               0.82491314     0 0  -42     0          1
+    ## 2             -0.6857497              1.44797190        -0.36850739                1.0348541               1.26404360     0 0  -71     0          1
+    ## 3              0.6792668              0.05293373         2.29903940                1.8552666               0.73733830     0 0   -3     0          1
+    ## 4              1.3638802             -1.36518310         0.35144857                0.3810506              -0.09156802     1 1    0    75          1
+    ## 5              2.7288966             -0.28853330         0.05583254                1.1738154               1.40737010     0 0  -43     0          1
+    ## 6              0.2294292             -0.44346148         0.27563861                0.8008583               0.79718453     0 1    0    61          1
 
 The treatment variable **r2012** is whether the village actually
 received a new road network. Outcome variables are several economic
