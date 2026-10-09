@@ -289,7 +289,7 @@ place.
 
 The sharp regression discontinuity assumption assumes that treatment
 assignment is deterministic. But what if the running variable changes
-discontinuously, merely altering the probabilities of the treatments
+discontinuously merely the probabilities of the treatments
 received at the cutoff point? This modification is known as *fuzzy
 regression discontinuity*, and as we will see, it combines sharp
 regression discontinuity with the method of instrumental variables.
