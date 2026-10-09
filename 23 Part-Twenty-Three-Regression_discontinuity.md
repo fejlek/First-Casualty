@@ -44,11 +44,13 @@ library(ivreg)
 
 The standard assumptions of causal inference in observational studies
 (e.g., methods based on weighting or matching) rely on two critical
-assumptions (Ding 2024) \* unconfoundedness
+assumptions (Ding 2024) 
+* unconfoundedness
 ``` math
  T \perp \{Y(0), Y(1)\} \mid X
 ```
-and \* positive overlap
+and 
+* positive overlap
 ``` math
 0 < e(x) < 1
 ```
