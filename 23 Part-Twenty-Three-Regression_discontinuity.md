@@ -10,7 +10,7 @@ Jiří Fejlek
 <br/> In this presentation, we will have a brief look at regression 
 discontinuity designs, in which treatment is assigned based on exceeding 
 some predefined threshold. As we will see, this design allows estimation 
-of the treatment effect for individuals near it. <br/>
+of the treatment effect for individuals near this threshold. <br/>
 
 ## Table of Contents
 
