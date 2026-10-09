@@ -298,11 +298,7 @@ Let us assume a running variable $`X`$ which defines a cutoff point as
 ``` math
 Z = I(X \geq x_0).
 ```
-We can interpret $`Z`$ as an instrumental variable that causes a jump
-discontinuity of the treatment assignment probability
-$`P(T = 1 \mid X)`$ at $`x_0`$.
-
-We use a sharp regression discontinuity estimate to determine the LATE
+We can use a sharp regression discontinuity estimate to determine the LATE
 of the outcome $`Y`$ and the treatment $`T`$ with respect to $`Z`$ as
 ``` math
 \tau_T(x_0) = \mathbb{E}(T(1)-T(0) \mid X = x_0) = \lim_{\varepsilon \rightarrow 0^+} \mathbb{E}(T\mid X= x_0 + \varepsilon, Z = 1) - \lim_{\varepsilon \rightarrow 0^-} \mathbb{E}(T \mid X= x_0 + \varepsilon, Z = 0),
@@ -310,6 +306,9 @@ of the outcome $`Y`$ and the treatment $`T`$ with respect to $`Z`$ as
 ``` math
 \tau_Y(x_0) = \mathbb{E}(Y(1)-Y(0) \mid X = x_0) = \lim_{\varepsilon \rightarrow 0^+} \mathbb{E}(Y\mid X= x_0 + \varepsilon, Z = 1) - \lim_{\varepsilon \rightarrow 0^-} \mathbb{E}(Y \mid X= x_0 + \varepsilon, Z = 0).
 ```
+Next, we interpret $`Z`$ as an instrumental variable that causes a jump
+discontinuity of the treatment assignment probability
+$`P(T = 1 \mid X)`$ at $`x_0`$. 
 To get a valid LATE estimate, we will assume a monotonicity assumption
 (Ding 2024): $`T_i(1) \geq T_i(0)`$ and
 $`T_i(1) = T_i(0) \Rightarrow Y_i(1) = Y_i(0)`$, on some neighborhood of
