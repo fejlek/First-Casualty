@@ -69,7 +69,7 @@ outcome. We should note here that we are explicitly using a
 d’Haultfoeuille</span> 2026) perspective of inference, in which we
 assume that potential outcomes are random (and hence the expectation in
 the formula) rather than treatment assignments (which, we know from Part
-Four, is the *Neyman repeated-sampling inference*).
+Four, as the *Neyman repeated-sampling inference*).
 
 Naturally, this is a very strong assumption. We should note that many
 results require the condition to hold only *on average*. For example,
@@ -545,7 +545,7 @@ pretrends$event_plot
 
 ![](Part-Twenty-Four_files/figure-GFM/unnamed-chunk-15-1.png)<!-- -->
 
-Our result is thus quite robust. But this is not necessarily the case.
+Our result seems quite robust. But this is not necessarily the case.
 Since the effect of treatment is observed to be significant only after a
 relatively long period of time, we need a comparatively small violation
 of the parallel trend assumption to invalidate the inference. To
