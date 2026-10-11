@@ -548,16 +548,16 @@ pretrends$event_plot
 Our result seems quite robust. But this is not necessarily the case.
 Since the effect of treatment is observed to be significant only after a
 relatively long period of time, we need a comparatively small violation
-of the parallel trend assumption to invalidate the inference. To
-demonstrate this, we will use the package *HonestDiD*
+of the parallel trend assumption to invalidate the inference (the effect 
+is multiplicative, e.g., the violation for the second period will be twice 
+as larger as for the first period). To demonstrate this, we will use the package *HonestDiD*
 (<https://github.com/asheshrambachan/HonestDiD?tab=readme-ov-file#honestdid>)
 based on (Rambachan and Roth 2023).
 
 We will investigate the sensitivity analysis of the treatment effect for
-the year 1939. The post-treatment violation of parallel trends is no
-more than some constant $`\bar M`$ larger than the maximum violation of
-parallel trends in the pre-treatment period (between consecutive
-periods).
+the year 1939. We consider a post-treatment violation of parallel trends that is at most
+$`\bar M`$ large, where  $`\bar M`$ is the maximum violation of parallel trends in 
+the pre-treatment period (between consecutive periods).
 
 ``` r
 library(HonestDiD)
@@ -598,7 +598,7 @@ createSensitivityPlot_relativeMagnitudes(delta_rm_results, originalResults)
 
 ![](Part-Twenty-Four_files/figure-GFM/unnamed-chunk-17-1.png)<!-- -->
 
-We see that we need a violation rate of about 20% of the observed
+We see that we need a violation of about 20% of the observed
 violations in the pre-treatment period for the effect to be not
 significant. We can also perform a sensitivity analysis on linear
 combinations of $`\hat\beta_{l,\text{TWFE}}`$, such as the ATT estimate.
