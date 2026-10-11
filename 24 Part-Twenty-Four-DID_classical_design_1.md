@@ -7,7 +7,7 @@ Jiří Fejlek
 2026-10-10
 <br/>
 
-<br/> With differences-in-differences (DID), we make an important transition to causal inference for panel (longitudinal) data, in which the same individuals are followed as time progresses instead of having one snapshot for each individual. Since this is quite a big topic, we will split the presentation into several parts. We will start with the simplest design, in which the treatment is applied to all treated units at the same time and continues to be applied from that point on (the classical design), and we will build the theory from there. <br/>
+<br/> With differences-in-differences (DID), we make an important transition to causal inference for panel (longitudinal) data, in which the same individuals are followed as time progresses instead of having one "snapshot" observation for each individual. Since this is quite a big topic, we will split the presentation into several parts. We will start with the simplest design, in which the treatment is applied to all treated units at the same time and continues to be applied from that point on (the classical design), and we will build the theory from there. <br/>
 
 
 ## Table of Contents
