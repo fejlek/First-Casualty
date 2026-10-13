@@ -90,7 +90,7 @@ with no variation in treatment timing, i.e.,
 ``` math
 D_{g,t} = I(t>T_0)I(g \in G_\text{treated}),
 ```
-where $`T_0 \geq 1`$ and $`D_g \in \{0,1\}`$. Let’s denote by $`1_t`$
+where $`T_0 \geq 1`$. Let’s denote by $`1_t`$
 the vector of $`t`$ ones and by $`0_t`$ the vector of $`t`$ zeros. The
 individual treatment effect after $`t - T_0`$ periods is
 ``` math
@@ -232,7 +232,7 @@ appropriate indicator variables manually in *fixest*; instead, we can
 write the model as follows.
 
 ``` r
-twfe_es = feols(patents  ~ i(year, treatmentgroup, ref = 1918) | year + subclass, cluster ~  subclass, data = moser_voena)
+twfe_es <- feols(patents  ~ i(year, treatmentgroup, ref = 1918) | year + subclass, cluster ~  subclass, data = moser_voena)
 summary(twfe_es)
 ```
 
