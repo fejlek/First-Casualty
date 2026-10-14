@@ -55,7 +55,7 @@ relaxation is to assume that the parallel trend assumption holds only
 conditionally on some covariates $`X`$.
 
 We will assume only two time periods. In addition, we will assume no
-*dynamic effects* (i.e., $`Y_{g,t} (d_1, \ldots, d_t) = Y_{g,t}(d_t)`$).
+*dynamic effects* $`Y_{g,t} (d_1, \ldots, d_t) = Y_{g,t}(d_t)`$.
 Let $`X_g`$ be the control variables; the *conditional parallel trends*
 assumption reduces to
 ``` math
