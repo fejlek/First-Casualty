@@ -2542,7 +2542,7 @@ results_mtch
 
 The best matching estimates are in line with the estimates based on
 weighting, and actually the most precise estimate for this dataset was
-based on (cardinality) matching.
+based on matching.
 
 ## References
 
