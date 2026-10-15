@@ -849,6 +849,10 @@ results
 
 We see that all estimators yielded similar results.
 
+
+Before we wrap up this presentation, let us address one common misconception. In a completely randomized experiment, we should adjust for any relevant covariate when possible, as this improves the precision of our estimates. This is not the case with DID. It can be shown that under the parallel-trend assumption and homoscedasticity, the adjusted DID estimator has a larger asymptotic variance than the unadjusted one (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026)! Intuitively, differences between individuals are already accounted for by the fixed effects in the model. No, covariate adjustments in DID are done because the unconditional parallel trend assumption is unlikely to hold in practice.  
+
+
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
