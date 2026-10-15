@@ -7,9 +7,10 @@ Jiří Fejlek
 2026-10-12
 <br/>
 
-<br/> In this part, we will continue our presentation of the classical differences-in-differences (DID) design by discussing how to incorporate 
-observed pre-treatment covariates to alleviate the violations of the parallel trend 
-assumption. <br/>
+<br/> In this part, we will continue our presentation of the classical
+differences-in-differences (DID) design by discussing how to incorporate
+observed pre-treatment covariates to alleviate violations of the
+parallel-trend assumption. <br/>
 
 ## Table of Contents
 
@@ -110,18 +111,124 @@ treatment effects, but because the weights are not always positive, this
 value does not have a causal interpretation as a weighted average of
 group-wise treatment effects. 
 
-Secondly, we notice the so-called *weight reversal* (Caetano et al. 2022):
-the uncommon values of the covariates among the treated group are given 
-larger weights than common ones. We see it in this simple case as well, 
-since the weights are proportional to the difference 
-$X_{g,1} - \mu_{X,\text{treated}}$. This means that even 
-when all the weights are positive, the result can be far from ATT under 
-heterogeneous treatment effects. 
+Secondly, we notice the so-called *weight reversal* (Caetano et al.
+2022): the uncommon values of the covariates among the treated group are
+given larger weights than common ones. We see it in this simple case as
+well, since the weights are proportional to the difference
+$`X_{g,1} - \mu_{X,\text{treated}}`$. This means that even when all the
+weights are positive, the result can be far from ATT under heterogeneous
+treatment effects.
 
-Latly,  provided that $\mu_{X,\text{treated}} = \mu_{X,\text{control}}$, 
-$w_g$ simplifies to $\frac{1}{|G_\text{treated}|}$ and thus, 
-$\mathbb{E}\hat\beta_{\text{TWFE}, X} = \text{ATT}$. In other words,
-TWFE can estimate ATT in this case, provided the treated and control groups are balanced.
+Lastly, provided that
+$`\mu_{X,\text{treated}} = \mu_{X,\text{control}}`$, $`w_g`$ simplifies
+to $`\frac{1}{|G_\text{treated}|}`$ and thus,
+$`\mathbb{E}\hat\beta_{\text{TWFE}, X} = \text{ATT}`$. In other words,
+TWFE can estimate ATT in this case, provided the treated and control
+groups are balanced.
+
+Let us demonstrate the result. First, we simulate data in which the
+parallel trend assumption holds and compute the true ATT.
+
+``` r
+set.seed(123)
+n_sim <- 10000
+X <- abs(rnorm(n_sim, 0, 2.5))                         # covariate
+
+Y_1 <- rnorm(n_sim, 0, 5)                              # Y_1
+Y_2_0 <- Y_1 + 5 + rnorm(n_sim)                        # Y_2(0)
+Y_2_1 <- Y_1 + 5 + rnorm(n_sim) + X^2 + 3*X            # Y_2(1)
+
+# treatment assignment
+rand <- runif(n_sim)
+D <- plogis(1 - 1.5*X) > rand
+Y <- ifelse(D == 1, Y_2_1, Y_2_0)
+
+obs_data <- data.frame(Y = c(Y_1, Y), T = c(rep(0,n_sim),rep(1,n_sim)), id =c(seq(1,n_sim),seq(1,n_sim)), D = c(rep(0,n_sim),D))
+
+mean(Y_2_1[D == 1] - Y_2_0[D == 1])
+```
+
+    ## [1] 3.464352
+
+Let’s estimate the treatment effect using the TWFE.
+
+``` r
+summary(feols(Y ~ D |  T + id, cluster ~  id, data = obs_data))
+```
+
+    ## OLS estimation, Dep. Var.: Y
+    ## Observations: 20,000
+    ## Fixed-effects: T: 2,  id: 10,000
+    ## Standard-errors: Clustered (id) 
+    ##   Estimate Std. Error t value  Pr(>|t|)    
+    ## D  3.43028   0.075592 45.3789 < 2.2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## RMSE: 1.03884     Adj. R2: 0.941483
+    ##                 Within R2: 0.340296
+
+We see that the result is unbiased despite the treatment assignment
+being confounded with $`X`$. Let’s simulate the data again, but now the
+trends for $`Y_1(0)`$ depend linearly on $`X`$.
+
+``` r
+set.seed(123)
+n_sim <- 10000
+X <- abs(rnorm(n_sim, 0, 2.5))                         # covariate
+
+Y_1 <- rnorm(n_sim, 0, 5)                              # Y_1
+Y_2_0 <- Y_1 + 5 + rnorm(n_sim) - 5*X                  # Y_2(0)
+Y_2_1 <- Y_1 + 5 + rnorm(n_sim) + X^2 + 3*X            # Y_2(1)
+
+# treatment assignment
+rand <- runif(n_sim)
+D <- plogis(1 - 1.5*X) > rand
+Y <- ifelse(D == 1, Y_2_1, Y_2_0)
+
+obs_data <- data.frame(Y = c(Y_1, Y), T = c(rep(0,n_sim),rep(1,n_sim)), id =c(seq(1,n_sim),seq(1,n_sim)), D = c(rep(0,n_sim),D), X = X)
+
+mean(Y_2_1[D == 1] - Y_2_0[D == 1])
+```
+
+    ## [1] 7.416391
+
+``` r
+summary(feols(Y ~ D |  T + id, cluster ~  id, data = obs_data))
+```
+
+    ## OLS estimation, Dep. Var.: Y
+    ## Observations: 20,000
+    ## Fixed-effects: T: 2,  id: 10,000
+    ## Standard-errors: Clustered (id) 
+    ##   Estimate Std. Error t value  Pr(>|t|)    
+    ## D  15.4103   0.114835 134.195 < 2.2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## RMSE: 3.38943     Adj. R2: 0.683072
+    ##                 Within R2: 0.494427
+
+The unadjusted TWFE estimate is clearly biased; it is almost double the
+true value. Let’s adjust the estimate by including $`X\cdot I(T=2)`$ in
+the model.
+
+``` r
+summary(feols(Y ~ D + X:T |  T + id, cluster ~  id, data = obs_data))
+```
+
+    ## OLS estimation, Dep. Var.: Y
+    ## Observations: 20,000
+    ## Fixed-effects: T: 2,  id: 10,000
+    ## Standard-errors: Clustered (id) 
+    ##     Estimate Std. Error   t value  Pr(>|t|)    
+    ## D    8.43550   0.166701   50.6026 < 2.2e-16 ***
+    ## X:T -4.34405   0.033477 -129.7611 < 2.2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## RMSE: 1.74664     Adj. R2: 0.91583 
+    ##                 Within R2: 0.865743
+
+The estimate is much better, but it is still slightly off from the true
+ATT.
 
 ## DID Estimators
 
