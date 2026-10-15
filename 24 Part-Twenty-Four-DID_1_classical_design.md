@@ -71,7 +71,7 @@ assume that potential outcomes are random (and hence the expectation in
 the formula) rather than treatment assignments (which, we know from Part
 Four, as the *Neyman repeated-sampling inference*).
 
-Naturally, this is a very strong assumption. We should note that many
+Naturally, the PT assumption is a very strong assumption. We should note that many
 results require the condition to hold only *on average*. For example,
 the classical design we discuss in this section requires a slightly
 weaker assumption (<span class="nocase">De Chaisemartin and

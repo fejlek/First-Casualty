@@ -10,7 +10,7 @@ Jiří Fejlek
 <br/> In Part Twenty One, we introduced instrumental variables and the 2SLS
 method, which allow us to estimate the treatment effect even in the
 presence of unobserved confounding. However, one major limitation of the
-2SLS method is that it relies on linear regression, which is almost
+2SLS method is that it uses linear regression, which is almost
 always misspecified in practice. In addition, if we check the derivation
 of 2SLS, we will find that it relies heavily on properties of linear
 regression (namely, 2SLS uses the fact that linear regression performs
