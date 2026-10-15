@@ -169,7 +169,7 @@ summary(feols(Y ~ D |  T + id, cluster ~  id, data = obs_data))
 
 We see that the result is unbiased despite the treatment assignment
 being confounded with $`X`$. Let’s simulate the data again, but now the
-trends for $`Y_1(0)`$ depend linearly on $`X`$.
+trends for $`Y_2(0)`$ depend linearly on $`X`$.
 
 ``` r
 set.seed(123)
