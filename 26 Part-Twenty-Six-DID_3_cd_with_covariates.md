@@ -1,5 +1,5 @@
-# The First Casualty of Statistics: Part Twenty Five
-<big>**Differences-in-Differences: Classical Design with Control Variables**</big>
+# The First Casualty of Statistics: Part Twenty Six
+<big>**Differences-in-Differences: Classical Design with Pre-Treatment Covariates**</big>
 
 <br/>
 Jiří Fejlek
@@ -8,7 +8,7 @@ Jiří Fejlek
 <br/>
 
 <br/> In this part, we will continue our presentation of the classical differences-in-differences (DID) design by discussing how to incorporate 
-observed covariates to alleviate the violations of the parallel trend 
+observed pre-treatment covariates to alleviate the violations of the parallel trend 
 assumption. <br/>
 
 ## Table of Contents
@@ -38,9 +38,9 @@ library(WeightIt)
 library(cobalt)
 ```
 
-## TWFE with Covariates
+## TWFE with Pre-Treatment Covariates
 
-In the previous part, we discussed the classical DID design
+In the previous parts, we discussed the classical DID design
 (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026)
 ``` math
 D_{g,t} = I(t>T_0)I(g \in G_\text{treated})
@@ -56,39 +56,27 @@ conditionally on some covariates $`X`$.
 
 We will assume only two time periods. In addition, we will assume no
 *dynamic effects* $`Y_{g,t} (d_1, \ldots, d_t) = Y_{g,t}(d_t)`$.
-Let $`X_g`$ be the control variables; the *conditional parallel trends*
-assumption reduces to
+Let $`X_g`$ be the pre-treatment covariates; the *conditional parallel trends*
+assumption given $X_g$ reduces to
 ``` math
-\mathbb{E}(Y_{g,2}(0) - Y_{g,1}(0)) = m(X_g),
+\mathbb{E}(Y_{g,2}(0) - Y_{g,1}(0)) = m(X_{g_,1}).
 ```
-
-i.e., the expected difference in evolution without treatment depends
-only on observed covariates. Namely, we will assume that the dependence
+Namely, we will assume that the dependence
 of conditional trends on $`X_{g,1}`$ is linear
 ``` math
 \mathbb{E}(Y_{g,2}(0) - Y_{g,1}(0)) = \tilde\gamma_2 + X_{g,1}\tilde\theta.
 ```
-Alternatively, we could also consider the dependence to be
-``` math
-\mathbb{E}(Y_{g,2}(0) - Y_{g,1}(0)) = \tilde\gamma_2 + (X_{g,2} - X_{g,1})\tilde\theta.
-```
-
-Since the outcome model without treatment is linear, we could consider
-the following adjusted TWFE regression mode
+Consequently, we could consider the following adjusted TWFE regression model to estimate the treatment effect.
 ``` math
 Y_{g,t} = \alpha_g + \gamma_2  + X_{g,1}\theta I(t=2) + \beta D_{g,t} + \varepsilon_{g,t}
 ```
-or
-``` math
-Y_{g,t} = \alpha_g + \gamma_2  + (X_{g,2} - X_{g,1})\theta I(t=2) + \beta D_{g,t} + \varepsilon_{g,t},
-```
-respectively. One would expect that the OLS estimate of $`\beta`$ after
+One would expect that the OLS estimate of $`\beta`$ after
 adjusting for $`X_g`$ is an unbiased estimate of ATT. However, this is
 not the case in general (<span class="nocase">De Chaisemartin and
 d’Haultfoeuille</span> 2026).
 
 *Let us assume that the no-anticipation assumption holds and that the
-conditional parallel trends depend linearly on* $`X`$ *linearly, and
+conditional parallel trends depend on* $`X`$ *linearly, and
 let* $`X_{g,1}`$ *be of dimension one. Then,*
 ``` math
 \mathbb{E}\hat\beta_{\text{TWFE}, X} = \sum_{g \in G_\text{treated}}w_g \tau_{g,2},
@@ -120,10 +108,20 @@ Crucially, the weights are not necessarily positive. In other words,
 $`\hat\beta_{\text{TWFE}, X}`$ estimates a weighted sum of group-wise
 treatment effects, but because the weights are not always positive, this
 value does not have a causal interpretation as a weighted average of
-group-wise treatment effects. Another important observation is provided
-that $`\mu_{X,\text{treated}} = \mu_{X,\text{control}}`$, $`w_g`$
-simplifies to $`\frac{1}{|G_\text{treated}|}`$ and thus,
-$`\mathbb{E}\hat\beta_{\text{TWFE}, X} = \text{ATT}`$.
+group-wise treatment effects. 
+
+Secondly, we notice the so-called *weight reversal* (Caetano et al. 2022):
+the uncommon values of the covariates among the treated group are given 
+larger weights than common ones. We see it in this simple case as well, 
+since the weights are proportional to the difference 
+$\mu_{X,\text{treated}} - \mu_{X,\text{control}}$. This means that even 
+when all the weights are positive, the result can be far from ATT under 
+heterogeneous treatment effects. 
+
+Latly,  provided that $\mu_{X,\text{treated}} = \mu_{X,\text{control}}$, 
+$w_g$ simplifies to $\frac{1}{|G_\text{treated}|}$ and thus, 
+$\mathbb{E}\hat\beta_{\text{TWFE}, X} = \text{ATT}$. In other words,
+TWFE can estimate ATT in this case, provided the treated and control groups are balanced.
 
 ## DID Estimators
 
@@ -258,7 +256,7 @@ datasummary_skim(cps1re74)
             <td>16.0</td>
             <td>31.0</td>
             <td>55.0</td>
-            <td><img src="Part-Twenty-Five_files/067f76e27d29a6af62f025f4544e33acd50b6b35.png" height="16" alt="age histogram"></td>
+            <td><img src="Part-Twenty-Six_files/067f76e27d29a6af62f025f4544e33acd50b6b35.png" height="16" alt="age histogram"></td>
         </tr>
         <tr>
             <td>educ</td>
@@ -269,7 +267,7 @@ datasummary_skim(cps1re74)
             <td>0.0</td>
             <td>12.0</td>
             <td>18.0</td>
-            <td><img src="Part-Twenty-Five_files/7d8ebecf87b1110db85b8eca111cb9c2a739a68e.png" height="16" alt="educ histogram"></td>
+            <td><img src="Part-Twenty-Six_files/7d8ebecf87b1110db85b8eca111cb9c2a739a68e.png" height="16" alt="educ histogram"></td>
         </tr>
         <tr>
             <td>re74</td>
@@ -280,7 +278,7 @@ datasummary_skim(cps1re74)
             <td>0.0</td>
             <td>14900.0</td>
             <td>35040.1</td>
-            <td><img src="Part-Twenty-Five_files/4df8278f2f18ebac3e08cb3be711f5a786d61670.png" height="16" alt="re74 histogram"></td>
+            <td><img src="Part-Twenty-Six_files/4df8278f2f18ebac3e08cb3be711f5a786d61670.png" height="16" alt="re74 histogram"></td>
         </tr>
         <tr>
             <td>re75</td>
@@ -291,7 +289,7 @@ datasummary_skim(cps1re74)
             <td>0.0</td>
             <td>14400.0</td>
             <td>25200.0</td>
-            <td><img src="Part-Twenty-Five_files/5e14129593bf4806d22c306a7c1ba2ea73b4adf9.png" height="16" alt="re75 histogram"></td>
+            <td><img src="Part-Twenty-Six_files/5e14129593bf4806d22c306a7c1ba2ea73b4adf9.png" height="16" alt="re75 histogram"></td>
         </tr>
         <tr>
             <td>re78</td>
@@ -302,7 +300,7 @@ datasummary_skim(cps1re74)
             <td>0.0</td>
             <td>16200.0</td>
             <td>60307.9</td>
-            <td><img src="Part-Twenty-Five_files/38bb18ff26909bf5dac5909bc9e3ffcb0d64731e.png" height="16" alt="re78 histogram"></td>
+            <td><img src="Part-Twenty-Six_files/38bb18ff26909bf5dac5909bc9e3ffcb0d64731e.png" height="16" alt="re78 histogram"></td>
         </tr>
         <!-- Categorical Variables -->
         </table>
@@ -469,7 +467,7 @@ bal_cps1re74 <- bal.tab(treat ~ age + educ + black + hispan + married + nodegree
 love.plot(bal_cps1re74, thresholds = c(m = .05), stats = c("m"), abs = TRUE, var.order = "unadjusted")
 ```
 
-![](Part-Twenty-Five_files/figure-GFM/unnamed-chunk-7-1.png)<!-- -->
+![](Part-Twenty-Six_files/figure-GFM/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 bal_cps1re74 <- bal.tab(treat ~ age + educ + black + hispan + married + nodegree + un74, data = cps1re74, estimand = "ATT", binary = "std", stats = c("m", "ks", "v"))
@@ -659,7 +657,7 @@ bal.tab(prop_scores_model, data = cps1re74, estimand = "ATT", binary = "std", st
 love.plot(prop_scores_model, thresholds = c(m = .05), stats = c("m"), abs = TRUE, var.order = "unadjusted")
 ```
 
-![](Part-Twenty-Five_files/figure-GFM/unnamed-chunk-15-1.png)<!-- -->
+![](Part-Twenty-Six_files/figure-GFM/unnamed-chunk-15-1.png)<!-- -->
 
 We see that propensity scores did a decent job at balancing the
 covariates. Let’s compute the Horvitz-Thompson-type estimator first.
@@ -859,6 +857,14 @@ We see that all estimators yielded similar results.
 
 Abadie, Alberto. 2005. “Semiparametric Difference-in-Differences
 Estimators.” *The Review of Economic Studies* 72 (1): 1–19.
+
+</div>
+
+<div id="ref-caetano2022difference" class="csl-entry">
+
+Caetano, Carolina, Brantly Callaway, Stroud Payne, and Hugo Sant’Anna
+Rodrigues. 2022. “Difference in Differences with Time-Varying
+Covariates.” *arXiv Preprint arXiv:2202.02903*.
 
 </div>
 
