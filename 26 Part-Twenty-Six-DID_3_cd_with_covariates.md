@@ -114,7 +114,7 @@ Secondly, we notice the so-called *weight reversal* (Caetano et al. 2022):
 the uncommon values of the covariates among the treated group are given 
 larger weights than common ones. We see it in this simple case as well, 
 since the weights are proportional to the difference 
-$\mu_{X,\text{treated}} - \mu_{X,\text{control}}$. This means that even 
+$X_{g,1} - \mu_{X,\text{treated}}$. This means that even 
 when all the weights are positive, the result can be far from ATT under 
 heterogeneous treatment effects. 
 
