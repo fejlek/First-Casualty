@@ -2345,9 +2345,6 @@ The documentation for *MatchIt*
 also mentions another approach from (Austin and Cafri 2020) using
 two-way cluster-robust standard errors, which we will use here.
 
-Aside from the complications with inference, we can use the same
-methods. Let us start with nearest neighbor matching.
-
 ``` r
 match_mah_dist_repl <- matchit(treatment ~x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + x10 + x11 + x12 + x13 + x15 + x16 + x17 + x18 + x19 + x20 + x21 + x22 + x23 + x25, data = ihdp_model, method = "nearest", distance = 'glm', , mahvars = ~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + x10 + x11 + x12 + x13 + x15 + x16 + x17 + x18 + x19 + x20 + x21 + x22 + x23 + x25, caliper = 0.1, replace = TRUE)
 
