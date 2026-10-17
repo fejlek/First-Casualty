@@ -753,7 +753,7 @@ summary(pgmm(
     ## Wald test for time dummies: chisq(7) = 13.73376 (p-value = 0.056124)
 
 The estimate of 0.93 is significantly higher, but still comfortably
-lower than the estimate from the pooled. We can also check how much the
+lower than the estimate from the pooled model. We can also check how much the
 number of instruments used influences the result.
 
 ``` r
