@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Twenty Five
-<big>**Differences-in-Differences: TWFE and Lagged Dependent Variables**</big>
+<big>**Differences-in-Differences II: TWFE and Lagged Dependent Variables**</big>
 
 <br/>
 Jiří Fejlek

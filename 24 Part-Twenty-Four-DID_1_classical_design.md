@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Twenty Four
-<big>**Differences-in-Differences: Classical Design**</big>
+<big>**Differences-in-Differences I: Classical Design**</big>
 
 <br/>
 Jiří Fejlek

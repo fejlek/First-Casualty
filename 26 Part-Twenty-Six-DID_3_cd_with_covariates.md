@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Twenty Six
-<big>**Differences-in-Differences: Classical Design with Pre-Treatment Covariates**</big>
+<big>**Differences-in-Differences III: Classical Design with Pre-Treatment Covariates**</big>
 
 <br/>
 Jiří Fejlek
