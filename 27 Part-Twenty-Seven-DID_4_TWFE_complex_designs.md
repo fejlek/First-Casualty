@@ -8,7 +8,7 @@ Jiří Fejlek
 <br/>
 
 <br/> We learned in Part Twenty Four that the TWFE estimator reduces to a DID
-estimator under the classical design (non-absorbing binary treatment,
+estimator under the classical design (absorbing binary treatment,
 without variation in treatment timing) and, under the no anticipation
 and parallel trend assumptions, estimates ATT. However, the TWFE
 estimator is commonly used in other, more complicated settings
@@ -84,7 +84,7 @@ time periods, $`D_{.,t}`$ denotes the average treatment at period $`t`$
 across groups, and $`D_{.,.}`$ is the average treatment across groups
 and periods.
 
-For the classical design (non-absorbing binary treatment, without
+For the classical design (absorbing binary treatment, without
 variation in treatment timing), we get
 ``` math
 D_{g,t} = D_{g,.} = D_{.,t}
