@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Twenty Seven
-<big>**Differences-in-Differences IV: Differences-in-Differences IV: TWFE Estimator in Complex Designs**</big>
+<big>**Differences-in-Differences IV: TWFE Estimator in Complex Designs**</big>
 
 <br/>
 Jiří Fejlek
@@ -854,31 +854,6 @@ opposite sign. The second value indicates how much heterogeneity is
 needed for the treatment effects to be able to have opposite signs in
 each cell. We do not need much heterogeneity based on these results.
 
-Provided that we have some proxy variable likely to be correlated with
-$`\tau_{g,t}`$, we can test whether the weights are correlated with
-$`\tau_{g,t}`$. For example, say that the treatment effect is correlated
-with urbanization **lag_ishare_urb**.
-
-``` r
-cor.test(weights[gentzkowetal$numdailies != 0], gentzkowetal$lag_ishare_urb[gentzkowetal$numdailies != 0])
-```
-
-    ## 
-    ##  Pearson's product-moment correlation
-    ## 
-    ## data:  weights[gentzkowetal$numdailies != 0] and gentzkowetal$lag_ishare_urb[gentzkowetal$numdailies != 0]
-    ## t = 7.6852, df = 9726, p-value = 1.675e-14
-    ## alternative hypothesis: true correlation is not equal to 0
-    ## 95 percent confidence interval:
-    ##  0.05790865 0.09741326
-    ## sample estimates:
-    ##        cor 
-    ## 0.07769145
-
-We see that the correlation is positive and significant. The TWFE
-regression is more likely to upweight newspapers’ effects for more
-urbanized areas.
-
 Overall, TWFE seems to be too far from estimating the weighted average
 of treatment effects, rendering the estimate non-causal.
 
@@ -1383,7 +1358,7 @@ TWFE_ests
     ## Zambia       21.03136   9.271023              0.2500000
 
 We see that the estimates are very stable, suggesting that the treatment
-effect is homogeneous, which would make the TWFE estimate causally
+effect could be homogeneous, which would make the TWFE estimate causally
 interpretable. We can repeat the analysis of the effect on secondary
 school enrollment.
 
