@@ -21,7 +21,7 @@ $`\hat\beta_\text {TWFE}`$ actually estimates in general. <br/>
 
 - [TWFE Estimator in Complex
   Designs](#twfe-estimator-in-complex-designs)
-- [Gentzkow et al. Dataset](#gentzkow-et-al.-dataset)
+- [Gentzkow Dataset](#Gentzkow-Dataset)
 - [WDI_FPE Dataset](#wdi_fpe-dataset)
 - [References](#references)
 
@@ -117,7 +117,7 @@ most likely to have negatively weighted periods, and the period with the
 highest average treatment is most likely to include a group that is
 negatively weighted in that period.
 
-## Gentzkow et al. Dataset
+## Gentzkow Dataset
 
 We will consider a dataset used by (Gentzkow et al. 2011) to study the
 effect of newspapers on voters’ participation. The variables that are of
