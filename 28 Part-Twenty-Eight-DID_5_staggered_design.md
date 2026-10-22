@@ -186,6 +186,17 @@ datasummary_skim(wolfers2006[,c('year','div_rate','udl_factor','cohort_na', 'stp
   </tbody>
 </table>
 
+``` r
+ggplot(wolfers2006, aes(y = factor(state), x = cohort_na, color = factor(state))) +
+  geom_segment(aes(x = cohort_na, xend = 1988, y = factor(state), yend = factor(state),  color = factor(state)), linewidth = 1.2) +
+  geom_point(size = 3) +
+  labs(
+    x = "Treatment Timing",
+    y = "Country"
+  ) + theme_minimal() + theme(axis.text.y = element_text(size = 5), legend.position = "none")
+```
+
+![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-4-1.png)<!-- -->
 
 ## Binary and Staggered Design
 
@@ -571,7 +582,7 @@ ggplot(twfe_weights2$dat_result[twfe_weights2$dat_result$weight > 0,], aes(x = T
   geom_point() + labs(x = "Treatment Timings", y = "Treatment Effect Weights") + theme_minimal()
 ```
 
-![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-11-1.png)<!-- -->
+![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-12-1.png)<!-- -->
 
 We must remember that the weights are constructed only under the
 assumption that groups’ treatment effects do not change over time; the
@@ -655,7 +666,7 @@ iplot(twfe_es,
       ylab = "Beta_l")
 ```
 
-![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-14-1.png)<!-- -->
+![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-15-1.png)<!-- -->
 
 What is interesting for this dataset is that the effect of UDL appears
 to change sign. Early on, the effect is positive on the divorce rate,
@@ -1069,7 +1080,7 @@ sun_abraham <- feols(div_rate ~ sunab(cohort, year) | state + year, cluster ~  s
 iplot(sun_abraham)
 ```
 
-![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-17-1.png)<!-- -->
+![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-18-1.png)<!-- -->
 
 We see that the result is similar to the naive TWFE estimate. We can get
 the ATT estimate as follows.
@@ -1119,7 +1130,7 @@ callaway_santanna <- att_gt(
 ggdid(aggte(callaway_santanna, type = "dynamic")) +  theme(axis.text.x = element_text(angle = 90, vjust = 1, hjust = 1))
 ```
 
-![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-20-1.png)<!-- -->
+![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-21-1.png)<!-- -->
 
 The ATT estimate and cohort averages are obtained as follows.
 
@@ -1205,7 +1216,7 @@ ggplot(borusyak, aes(x = event_time, y = estimate)) +
   ) + theme_minimal()
 ```
 
-![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-23-1.png)<!-- -->
+![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-24-1.png)<!-- -->
 
 The results are similar across all methods.
 
