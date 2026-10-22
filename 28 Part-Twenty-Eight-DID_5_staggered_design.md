@@ -60,8 +60,8 @@ in USA states. The main variables of interest are as follows.
 
 - **state**
 - **year**
-- **cohort**: the year when the state adopted treatment
-- **udl**: the state has a UDL (1: Yes, 0: No)
+- **cohort**: the year when the state adopted UDL
+- **udl**: the state has UDL (1: Yes, 0: No)
 - **div_rate**: the number of divorces per 1,000 people
 - **stpop**: state population
 
