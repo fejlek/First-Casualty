@@ -55,8 +55,8 @@ library(cobalt)
 
 The dataset we will use in this presentation contains the data on the
 effect of unilateral divorce law (UDL) on the divorce rate
-(<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026)
-in USA states. The main variables of interest are as follows.
+in USA states (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026). 
+The main variables of interest are as follows.
 
 - **state**
 - **year**
