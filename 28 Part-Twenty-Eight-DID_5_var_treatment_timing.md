@@ -34,7 +34,6 @@ treatment timings. <br/>
     Dataset](#heterogeneity-robust-estimators-for-wolfers-dataset)
 - [References](#references)
 
-
 ``` r
 library(tidyr)
 library(dplyr)
