@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Twenty Seven
-<big>**Differences-in-Differences V: Variation in Treatment Timings**</big>
+<big>**Differences-in-Differences V: Variation in Treatment Timing**</big>
 
 <br/>
 Jiří Fejlek
