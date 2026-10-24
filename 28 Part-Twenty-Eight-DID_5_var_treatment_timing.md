@@ -239,8 +239,9 @@ then (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span>
 
 ## TWFE Estimator for BST Design
 
-We know from the previous part Twenty Seven that under the parallel
-trend assumption and the no anticipation assumption
+The main result from part Twenty Seven hold for a staggered desing, and thus, 
+under the parallel trend assumption and the no anticipation assumption 
+(<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026)
 ``` math
 \mathbb{E}\hat\beta_\text{TFWE} = \frac{1}{|D_{g,t} = 1|}\sum_{(g,t):D_{g,t} = 1} w_{g,t}\tau_{g,t},
 ```
