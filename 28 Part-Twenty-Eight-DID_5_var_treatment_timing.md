@@ -204,7 +204,7 @@ We will assume an absorbing binary and staggered design (BST), i.e.,
 ``` math
 D_{g,t} = I(t \geq F_g),
 ```
-with $`\min_{g: F_g > 1 } < \max_g F_g`$ (not all groups get treated at
+with $`\min_{g: F_g > 1 } F_g < \max_g F_g`$ (not all groups get treated at
 the same period). We define the treatment effect as
 ``` math
 \tau_{g,t} = \mathbb{E}(Y_{g,t} - Y_{g,t}(0_t)) = \mathbb{E}(Y_{g,t}(0_{F_g -1}, 1_{t-F_g + 1}) - Y_{g,t}(0_t))
@@ -221,13 +221,14 @@ d’Haultfoeuille</span> 2026)
 ```
 and
 ``` math
-\text{ATT}_l = \frac{1}{|G_{\text{treated},l}|} \sum_{g: F_g \geq 2, F_g-1+l\leq T} \tau_{g,l}^r,
+\text{ATT}_l = \frac{1}{|G_{\text{treated},l}|} \sum_{g: F_g \geq 2, F_g-1+l\leq \underline{T}} \tau_{g,l}^r,
 ```
 where $`|G_{\text{treated},l}|`$ is the number of groups that meet the
-condition in the sum. This treatment effect denotes the average
-treatment effect of having been exposed to treatment for $`l`$ periods,
-across all initially untreated groups that reach $`l`$ treatment periods
-before all groups are treated (<span class="nocase">De Chaisemartin and
+condition in the sum and where $\underline{T}$ denote the last period 
+when there is still at least one untreated group. This treatment effect 
+denotes the average treatment effect of having been exposed to treatment 
+for $`l`$ periods, across all initially untreated groups that reach $`l`$ 
+treatment periods before all groups are treated (<span class="nocase">De Chaisemartin and
 d’Haultfoeuille</span> 2026).
 
 If no group is treated at period one and there are never-treated groups,
@@ -239,7 +240,7 @@ then (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span>
 
 ## TWFE Estimator for BST Design
 
-The main result from part Twenty Seven hold for a staggered desing, and thus, 
+The main result from part Twenty Seven hold for a staggered design, and thus, 
 under the parallel trend assumption and the no anticipation assumption 
 (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026)
 ``` math
@@ -247,14 +248,13 @@ under the parallel trend assumption and the no anticipation assumption
 ```
 where
 ``` math
-w_{g,t} = \frac{\hat u_{g,t}}{\sum_{(g,t) :D_{g',t'} = 1 } \hat u_{g',t'}}.
+w_{g,t} = \frac{\hat u_{g,t}}{\sum_{(g',t') :D_{g',t'} = 1 } \hat u_{g',t'}}.
 ```
 And
 ``` math
 \hat u_{g,t} = D_{g,t} - D_{g,.} - D_{.,t} + D_{.,.},
 ```
-
-where $`D_{g,.} = \frac{T - F_g + 1}{T}`$ in our case. Hence, the groups
+where $`D_{g,.} = \frac{T - F_g + 1}{T}`$ in this case. Hence, the groups
 that are treated early are the most likely to be negatively weighted. We
 encountered this fact in the *WDI_FPE* dataset in Part Twenty Seven.
 
