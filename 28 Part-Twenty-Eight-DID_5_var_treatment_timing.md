@@ -1,4 +1,4 @@
-# The First Casualty of Statistics: Part Twenty Seven
+# The First Casualty of Statistics: Part Twenty Eight
 <big>**Differences-in-Differences V: Variation in Treatment Timing**</big>
 
 <br/>
