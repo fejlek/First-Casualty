@@ -53,8 +53,8 @@ library(cobalt)
 ## Wolfers Dataset
 
 The dataset we will use in this presentation contains the data on the
-effect of unilateral divorce law (UDL) on the divorce rate
-in USA states (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026). 
+effect of unilateral divorce law (UDL) on the divorce rate in USA states
+(<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026).
 The main variables of interest are as follows.
 
 - **state**
@@ -191,7 +191,7 @@ ggplot(wolfers2006, aes(y = factor(state), x = cohort_na, color = factor(state))
   geom_point(size = 3) +
   labs(
     x = "Treatment Timing",
-    y = "Country"
+    y = "State"
   ) + theme_minimal() + theme(axis.text.y = element_text(size = 5), legend.position = "none")
 ```
 
@@ -204,8 +204,8 @@ We will assume an absorbing binary and staggered design (BST), i.e.,
 ``` math
 D_{g,t} = I(t \geq F_g),
 ```
-with $`\min_{g: F_g > 1 } F_g < \max_g F_g`$ (not all groups get treated at
-the same period). We define the treatment effect as
+with $`\min_{g: F_g > 1 } F_g < \max_g F_g`$ (not all groups get treated
+at the same period). We define the treatment effect as
 ``` math
 \tau_{g,t} = \mathbb{E}(Y_{g,t} - Y_{g,t}(0_t)) = \mathbb{E}(Y_{g,t}(0_{F_g -1}, 1_{t-F_g + 1}) - Y_{g,t}(0_t))
 ```
@@ -224,12 +224,12 @@ and
 \text{ATT}_l = \frac{1}{|G_{\text{treated},l}|} \sum_{g: F_g \geq 2, F_g-1+l\leq \underline{T}} \tau_{g,l}^r,
 ```
 where $`|G_{\text{treated},l}|`$ is the number of groups that meet the
-condition in the sum and where $\underline{T}$ denote the last period 
-when there is still at least one untreated group. This treatment effect 
-denotes the average treatment effect of having been exposed to treatment 
-for $`l`$ periods, across all initially untreated groups that reach $`l`$ 
-treatment periods before all groups are treated (<span class="nocase">De Chaisemartin and
-d’Haultfoeuille</span> 2026).
+condition in the sum and where $`\underline{T}`$ denote the last period
+when there is still at least one untreated group. This treatment effect
+denotes the average treatment effect of having been exposed to treatment
+for $`l`$ periods, across all initially untreated groups that reach
+$`l`$ treatment periods before all groups are treated
+(<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026).
 
 If no group is treated at period one and there are never-treated groups,
 then (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span>
@@ -240,9 +240,10 @@ then (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span>
 
 ## TWFE Estimator for BST Design
 
-The main result from part Twenty Seven hold for a staggered design, and thus, 
-under the parallel trend assumption and the no anticipation assumption 
-(<span class="nocase">De Chaisemartin and d’Haultfoeuille</span> 2026)
+The main result from part Twenty Seven hold for a staggered design, and
+thus, under the parallel trend assumption and the no anticipation
+assumption (<span class="nocase">De Chaisemartin and
+d’Haultfoeuille</span> 2026)
 ``` math
 \mathbb{E}\hat\beta_\text{TFWE} = \frac{1}{|D_{g,t} = 1|}\sum_{(g,t):D_{g,t} = 1} w_{g,t}\tau_{g,t},
 ```
@@ -254,7 +255,8 @@ And
 ``` math
 \hat u_{g,t} = D_{g,t} - D_{g,.} - D_{.,t} + D_{.,.},
 ```
-where $`D_{g,.} = \frac{T - F_g + 1}{T}`$ in this case. Hence, the groups
+
+where $`D_{g,.} = \frac{T - F_g + 1}{T}`$ in our case. Hence, the groups
 that are treated early are the most likely to be negatively weighted. We
 encountered this fact in the *WDI_FPE* dataset in Part Twenty Seven.
 
@@ -977,7 +979,8 @@ where $`G_c`$ denotes the groups in adoption-cohort $`c`$ and
 $`\underline{F} =  \min c`$ (<span class="nocase">De Chaisemartin and
 d’Haultfoeuille</span> 2026).
 
-Based on these definitions, (Callaway and Sant’Anna 2021) proposed the DID estimator
+Based on these definitions, (Callaway and Sant’Anna 2021) and (Sun and
+Abraham 2021) proposed the DID estimator
 
 ``` math
 \hat\tau_{c,l}^\text{DID} = (\bar{Y}_{c,c-1+l} - \bar{Y}_{c,c-1}) - (\bar{Y}_{n,c-1+l} - \bar{Y}_{n,c-1}),
@@ -1027,7 +1030,7 @@ effects, and the relative time indicators are interacted with cohort
 fixed effects, thus allowing for heterogeneous effects across adoption
 cohorts (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span>
 2026). We should note that including covariates will result in biased
-estimates and hence, we must use IPW/doubly robust estimators proposed
+estimates and hence, we must use IPW/doubly-robust estimators proposed
 in (Callaway and Sant’Anna 2021), which are analogous to the estimators
 we explored in Part Twenty Six for the classical design.
 
@@ -1121,7 +1124,8 @@ callaway_santanna <- att_gt(
   idname = "state",                 
   gname = "cohort", 
   clustervars = "state", 
-  control_group = "notyettreated",
+  control_group = "nevertreated",
+  base_period = 'universal',
   data = wolfers2006,
   weightsname  = 'stpop'
 )
@@ -1131,7 +1135,21 @@ ggdid(aggte(callaway_santanna, type = "dynamic")) +  theme(axis.text.x = element
 
 ![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-21-1.png)<!-- -->
 
-The ATT estimate and cohort averages are obtained as follows.
+We obtain the following ATT estimate.
+
+``` r
+aggte(callaway_santanna, type = "dynamic")$overall.att
+```
+
+    ## [1] -0.1254783
+
+``` r
+aggte(callaway_santanna, type = "dynamic")$overall.se
+```
+
+    ## [1] 0.09910258
+
+Cohort averages are obtained as follows.
 
 ``` r
 aggte(callaway_santanna, type = "group")
@@ -1146,25 +1164,25 @@ aggte(callaway_santanna, type = "group")
     ## 
     ## Overall summary of ATT's based on group/cohort aggregation:  
     ##      ATT    Std. Error     [ 95%  Conf. Int.] 
-    ##  -0.0603        0.0983     -0.253      0.1325 
+    ##  -0.0611        0.1028    -0.2627      0.1404 
     ## 
     ## 
     ## Group Effects:
     ##  Group Estimate Std. Error [95% Simult.  Conf. Band]  
-    ##   1969   0.2363     0.1174       -0.0436      0.5161  
-    ##   1970  -0.2403     0.0906       -0.4563     -0.0244 *
-    ##   1971   0.1112     0.1117       -0.1548      0.3773  
-    ##   1972  -0.2072     0.0858       -0.4116     -0.0027 *
-    ##   1973  -0.2420     0.2753       -0.8979      0.4138  
-    ##   1974   0.2223     0.1038       -0.0250      0.4696  
-    ##   1975  -0.1063     0.0708       -0.2749      0.0624  
-    ##   1976   0.5656     0.0975        0.3333      0.7979 *
-    ##   1977   0.1943     0.1474       -0.1570      0.5455  
-    ##   1985   0.2840     0.0458        0.1748      0.3933 *
+    ##   1969   0.2236     0.1288       -0.0786      0.5258  
+    ##   1970  -0.2398     0.1011       -0.4771     -0.0025 *
+    ##   1971   0.1068     0.1093       -0.1497      0.3633  
+    ##   1972  -0.2097     0.0846       -0.4083     -0.0110 *
+    ##   1973  -0.2420     0.2866       -0.9147      0.4306  
+    ##   1974   0.2249     0.1063       -0.0246      0.4744  
+    ##   1975  -0.1059     0.0730       -0.2773      0.0655  
+    ##   1976   0.5654     0.1053        0.3182      0.8126 *
+    ##   1977   0.1954     0.1354       -0.1223      0.5131  
+    ##   1985   0.2840     0.0464        0.1752      0.3929 *
     ## ---
     ## Signif. codes: `*' confidence band does not cover 0
     ## 
-    ## Control Group:  Not Yet Treated,  Anticipation Periods:  0
+    ## Control Group:  Never Treated,  Anticipation Periods:  0
     ## Estimation Method:  Doubly Robust
 
 Lastly, we will use the (Borusyak et al. 2024) imputation estimator from
@@ -1187,8 +1205,8 @@ did_imputation(
     ##    <char>      <num>     <num>      <num>     <num>
     ## 1:  treat -0.1374946 0.1734921 -0.4775391 0.2025499
 
-To get the event-study plot, we have to specify the *horizon* and
-*pretrends* and plot it ourselves.
+To get the event-study plot, we have to specify the *horizon* and plot
+it ourselves.
 
 ``` r
 borusyak <- did_imputation(
@@ -1198,8 +1216,7 @@ borusyak <- did_imputation(
   tname = "year",
   idname = "state",
   wname = 'stpop',
-  horizon = 0:19, 
-  pretrends = -28:-1,
+  horizon = 0:19,
   cluster_var = "state", 
 )
 
@@ -1215,7 +1232,7 @@ ggplot(borusyak, aes(x = event_time, y = estimate)) +
   ) + theme_minimal()
 ```
 
-![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-24-1.png)<!-- -->
+![](Part-Twenty-Eight_files/figure-GFM/unnamed-chunk-25-1.png)<!-- -->
 
 The results are similar across all methods.
 
