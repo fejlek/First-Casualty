@@ -979,8 +979,7 @@ where $`G_c`$ denotes the groups in adoption-cohort $`c`$ and
 $`\underline{F} =  \min c`$ (<span class="nocase">De Chaisemartin and
 d’Haultfoeuille</span> 2026).
 
-Based on these definitions, (Callaway and Sant’Anna 2021) and (Sun and
-Abraham 2021) proposed the DID estimator
+Based on these definitions, (Callaway and Sant’Anna 2021) proposed the DID estimator
 
 ``` math
 \hat\tau_{c,l}^\text{DID} = (\bar{Y}_{c,c-1+l} - \bar{Y}_{c,c-1}) - (\bar{Y}_{n,c-1+l} - \bar{Y}_{n,c-1}),
