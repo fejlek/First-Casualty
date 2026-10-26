@@ -986,9 +986,9 @@ Based on these definitions, (Callaway and Sant’Anna 2021) proposed the DID est
 ```
 where $`\bar{Y}_{n,t}`$ denotes the average outcome at period $`t`$
 across the groups that remain untreated from period $`1`$ to $`T`$. We
-should note that (Callaway and Sant’Anna 2021) proposed using
-not-yet-treated as the controls for the comparisons rather than
-never-treated. This approach allows us to estimate treatment effects up
+should note that (Callaway and Sant’Anna 2021) also proposed using
+not-yet-treated as the controls for the comparisons when never-treated
+are absent. This approach allows us to estimate treatment effects up
 to the period where the last group is untreated.
 
 We notice that this DID estimator avoids forbidden comparisons by
