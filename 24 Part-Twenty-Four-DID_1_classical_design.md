@@ -79,7 +79,6 @@ d’Haultfoeuille</span> 2026)
 ``` math
 \mathbb{E}\left[ \frac{1}{|G_\text{control}|}  \sum_{g \in G_\text{control}} \mathbb{E}(Y_{g,t}(0) - Y_{g,t-1}(0)) \right] = \mathbb{E}\left[ \frac{1}{|G_\text{treated}|}  \sum_{g \in G_\text{treated}} \mathbb{E}(Y_{g,t}(0) - Y_{g,t-1}(0)) \right].
 ```
-Eventually, we will seek to relax the parallel assumption altogether.
 
 ## Classical DID Design
 
