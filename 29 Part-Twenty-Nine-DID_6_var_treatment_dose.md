@@ -221,7 +221,7 @@ variance with respect to the distribution of groups’ potential outcomes
 and treatments.
 
 Other than that, we will make the standard assumptions of no
-anticipation and no dynamic treatment. However, since the treatment is
+anticipation and no dynamic treatment effects. However, since the treatment is
 not binary, we have to replace the parallel trend assumption. Our “new”
 parallel trend assumption for non-binary treatment will be
 ``` math
