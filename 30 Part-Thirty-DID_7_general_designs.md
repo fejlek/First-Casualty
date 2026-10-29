@@ -1,14 +1,18 @@
----
-author: Jiří Fejlek
-bibliography: first_casualty.bib
-code_folding: hide
-date: 2025-10-28
-output:
-  md_document:
-    toc: true
-    variant: GFM
-title: "The First Casualty of Statistics: Part Thirty"
----
+# The First Casualty of Statistics: Part Thirty
+<big>**Differences-in-Differences VII: General Designs**</big>
+
+<br/>
+Jiří Fejlek
+
+2026-10-28
+<br/>
+
+<br/> In this last part dedicated to differences-in-differences, we will cover
+general designs in which treatment may be non-binary and/or
+non-absorbing, treatment timings may vary across groups, and where the
+outcome may be affected by treatment lags. <br/>
+
+## Table of Contents
 
 - [Gentzkow et al. Dataset](#gentzkow-et-al.-dataset)
 - [Static Two-Way Fixed Effects
@@ -23,12 +27,6 @@ title: "The First Casualty of Statistics: Part Thirty"
   Effects](#heterogeneity-robust-estimators-without-dynamic-effects)
 - [References](#references)
 
-Differences-in-Differences VII: General Designs
-
-In this last part dedicated to differences-in-differences, we will cover
-general designs in which treatment may be non-binary and/or
-non-absorbing, treatment timings may vary across groups, and where the
-outcome may be affected by treatment lags.
 
 ``` r
 library(tidyr)
