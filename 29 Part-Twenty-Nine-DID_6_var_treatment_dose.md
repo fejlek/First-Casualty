@@ -22,7 +22,7 @@ in staggered designs. <br/>
 - [WTFE Regression in HAD Designs](#wtfe-regression-in-had-designs)
   - [Constant-and-linear-effect
     Assumption](#constant-and-linear-effect-assumption)
-- [Heterogeneity-robust Estimators](#heterogeneity-robust-estimators)
+- [Heterogeneity-Robust Estimators](#heterogeneity-robust-estimators)
 - [References](#references)
 
 ``` r
@@ -701,7 +701,7 @@ pretest
     ## 1998 -0.02456367 0.02795912 -0.8785565 0.3817271
     ## 1997 -0.04636511 0.05479825 -0.8461056 0.3994940
 
-## Heterogeneity-robust Estimators
+## Heterogeneity-Robust Estimators
 
 Since the constant-and-linear-effect assumption is not guaranteed to
 hold, we will explore estimators that do not rely on this assumption to

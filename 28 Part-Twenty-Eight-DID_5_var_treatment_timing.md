@@ -27,11 +27,11 @@ treatment timings. <br/>
 - [TWFE Estimator for BST Design](#twfe-estimator-for-bst-design)
   - [Negative Weights in TWFE](#negative-weights-in-twfe)
   - [TWFE Event-Study Regression](#twfe-event-study-regression)
-- [Heterogeneity-robust Estimators](#heterogeneity-robust-estimators)
+- [Heterogeneity-Robust Estimators](#heterogeneity-robust-estimators)
   - [DID Estimators](#did-estimators)
   - [Imputation Estimators](#imputation-estimators)
-  - [Heterogeneity-robust Estimators for Wolfers
-    Dataset](#heterogeneity-robust-estimators-for-wolfers-dataset)
+  - [Heterogeneity-Robust Estimators in Wolfers
+    Dataset](#heterogeneity-robust-estimators-in-wolfers-dataset)
 - [References](#references)
 
 ``` r
@@ -952,7 +952,7 @@ twfe_weights3$mat
 the estimate upweights effects in states passing a law early, and
 downweights effects in states passing a law late.
 
-## Heterogeneity-robust Estimators
+## Heterogeneity-Robust Estimators
 
 We learned in the previous section that TWFE fails to estimate ATT in
 the BST design unbiasedly unless the treatment effect is homogeneous.
@@ -1070,7 +1070,7 @@ they readily generalize to include covariates; we add the covariates to
 the first stage (<span class="nocase">De Chaisemartin and
 d’Haultfoeuille</span> 2026).
 
-### Heterogeneity-robust Estimators for Wolfers Dataset
+### Heterogeneity-Robust Estimators in Wolfers Dataset
 
 Let’s use the heterogeneity-robust estimators we discussed on the
 Wolfers Dataset. We start with the (Sun and Abraham 2021) DID estimator,
