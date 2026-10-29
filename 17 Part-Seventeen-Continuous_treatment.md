@@ -415,7 +415,7 @@ confounding.
 
 ## Regression Adjustment
 
-Let us start with a regression adjustment, which does not really work
+Let us start with a regression adjustment, which does not really change
 when dealing with continuous treatment. The overall distribution of the
 response is fairly symmetric,
 
