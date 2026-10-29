@@ -131,8 +131,8 @@ d’Haultfoeuille</span> 2026).
   (outcome)
 - **numdailies**: number of daily newspapers circulating in county $`g`$
   and election-year $`t`$ (treatment)
-- **lag_ishare_urb**: the lagged urbanization rate of county *g* at *t*
-  (its urbanization at t−1);
+- **lag_ishare_urb**: the lagged urbanization rate of county $`g`$ at $`t`$
+  (its urbanization at $`t−1`$);
 
 ``` r
 gentzkowetal <- read.csv("C:/Users/elini/Desktop/first casualty/gentzkowetal.csv")
