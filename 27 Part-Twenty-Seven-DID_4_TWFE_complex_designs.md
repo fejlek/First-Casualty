@@ -131,8 +131,6 @@ d’Haultfoeuille</span> 2026).
   (outcome)
 - **numdailies**: number of daily newspapers circulating in county $`g`$
   and election-year $`t`$ (treatment)
-- **lag_ishare_urb**: the lagged urbanization rate of county $`g`$ at $`t`$
-  (its urbanization at $`t−1`$);
 
 ``` r
 gentzkowetal <- read.csv("C:/Users/elini/Desktop/first casualty/gentzkowetal.csv")
@@ -200,17 +198,6 @@ datasummary_skim(gentzkowetal[c(1,2,3,4,5,10)])
             <td>1.0</td>
             <td>45.0</td>
             <td><img src="Part-Twenty-Seven_files/d975bc98fd55c7ddfcbb54e95733daf62cfd8c16.png" height="16" alt="numdailies histogram"></td>
-        </tr>
-        <tr>
-            <td><strong>lag_ishare_urb</strong></td>
-            <td>1807</td>
-            <td>9</td>
-            <td>0.1</td>
-            <td>0.2</td>
-            <td>0.0</td>
-            <td>0.0</td>
-            <td>0.8</td>
-            <td><img src="Part-Twenty-Seven_files/863e1fe4001db66a6d02c3c9de4d64aac7f9df69.png" height="16" alt="lag_ishare_urb histogram"></td>
         </tr>
         <tr>
             <td><strong>st</strong></td>
