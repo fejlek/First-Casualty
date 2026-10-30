@@ -596,8 +596,8 @@ draw(warfarin_gam, residuals = TRUE)
 
 Overall, we found no evidence for significant nonlinearities. Let’s try
 to improve the model specification by considering a gamma distribution
-for the errors (the outcome is always positive) instead of a normal
-distribution.
+for the errors instead of a normal distribution (the outcome is always 
+positive after all).
 
 ``` r
 warfarin_gm <- glm(INR~ A + Weight + Height  + Age + Enzyme + Amiodarone + Gender + Black + Asian + VKORC1.AG + VKORC1.AA + CYP2C9.12 + CYP2C9.13 + CYP2C9.other, data = warfarin, family = Gamma(link = 'log'))
@@ -722,7 +722,7 @@ quantile(abs(gps_weights$weights - f_T/f_TX),  c(0.001,0.01, 0.1, 0.9, 0.99, 0.9
     ##         0.1%           1%          10%          90%          99%        99.9% 
     ## 0.0002167873 0.0003017675 0.0023833187 0.0212137480 0.1974082259 6.2365359598
 
-But the discrepancies are small given for the vast number of observations.
+But the discrepancies are small given for the number of observations.
 
 The crucial thing to check, especially when dealing with weights for
 continuous treatment, is their size.
@@ -805,8 +805,7 @@ the precision of the estimate. We could truncate further and improve the
 ESS, but we would worsen the balance and, with it, the observed
 confounding bias.
 
-Some correlations are pretty high (say greater than 0.1). Let us check
-our treatment model.
+Some correlations are pretty high. Let us check our treatment model.
 
 ``` r
 appraise(lm_TX)
@@ -1850,7 +1849,7 @@ plot(simulationOutput)
 
 ![](Part-Seventeen_files/figure-GFM/unnamed-chunk-71-1.png)<!-- -->
 
-The fit is decent comparable to our other models.
+The fit is decent compared to our other models.
 
 ``` r
 cont_ate <- predictions(
