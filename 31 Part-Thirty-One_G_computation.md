@@ -131,8 +131,9 @@ dag <- dagify(Y ~ X1 + X0 + D1 + D0 + U1 + U0, D1 ~ D0, X1 ~ D0 + X0 + U0 + U1, 
 ggdag_status(dag) + theme_dag() + theme(legend.position = "none")
 ```
 
-![](Part-Thirty-One_files/figure-GFM/unnamed-chunk-5-1.png)<!-- --> We
-will demonstrate that standard adjustment methods cannot be used to
+![](Part-Thirty-One_files/figure-GFM/unnamed-chunk-5-1.png)<!-- --> 
+
+We will demonstrate that standard adjustment methods cannot be used to
 adjust for observed confounders due to *treatment-confounder feedback*:
 we note from the DAG that there is an arrow from $`X_k`$ to $`D_k`$, but
 there is also an arrow from $`D_{k-1}`$ to $`X_k`$. That is, the
