@@ -131,14 +131,14 @@ dag <- dagify(Y ~ X1 + X0 + D1 + D0 + U1 + U0, D1 ~ D0, X1 ~ D0 + X0 + U0 + U1, 
 ggdag_status(dag) + theme_dag() + theme(legend.position = "none")
 ```
 
-![](Part-Thirty-One_files/figure-GFM/unnamed-chunk-5-1.png)<!-- --> 
+![](Part-Thirty-One_files/figure-GFM/unnamed-chunk-5-1.png)<!-- -->
 
 We will demonstrate that standard adjustment methods cannot be used to
-adjust for observed confounders due to *treatment-confounder feedback*:
-we note from the DAG that there is an arrow from $`X_k`$ to $`D_k`$, but
-there is also an arrow from $`D_{k-1}`$ to $`X_k`$. That is, the
-confounder affects the treatment and the treatment affects the
-confounder (Hernán and Robins 2020).
+adjust for observed confounders due to **treatment-confounder
+feedback**: the DAG shows an arrow from $`X_k`$ to $`D_k`$, but also
+from $`D_{k-1}`$ to $`X_k`$. That is, the confounder affects the
+treatment and the treatment affects the confounder (Hernán and Robins
+2020).
 
 To illustrate the issues that treatment-confounder feedback can cause,
 let us simplify the DAG.
@@ -506,8 +506,8 @@ summary(lm(Y ~ D0 + D1 + X1))
 ## G-formula for Time-Varying Treatments
 
 We learned in the previous section that naively applying the
-stratification/regression adjustment for estimating the effect of
-time-varying treatment strategies feedback does not work due to
+stratification/regression adjustment to estimate the effect of
+time-varying treatment-strategy feedback does not work due to
 treatment-confounder feedback. Let us return to our simple DAG
 
 ``` r
@@ -536,9 +536,9 @@ on the history of the system, which reduces in our case to
 ```
 One way to understand this formula is to see it as the simulation of
 potential outcomes. Before we can compute the expected potential outcome
-$`Y`$, we first need to determine the distribution of $`X_1`$ given that
-the individual previously received the treatment $`D_0 = d_0`$ (Hernán
-and Robins 2020).
+$`Y`$, we need to determine the distribution of $`X_1`$ conditional on
+the individual having previously received the treatment $`D_0 = d_0`$
+(Hernán and Robins 2020).
 
 Let’s check the result for our simulated data.
 
@@ -630,9 +630,18 @@ head(df_long)
     ## 5:     3     0    NA     1        NA
     ## 6:     3     1     0     0  9.143101
 
-We can now use *gfoRmula*.
+We can now use the *gfoRmula* package
+(<https://cran.r-project.org/web/packages/gfoRmula/index.html>), which
+uses the so-called *noniterative conditional expectation (NICE)*
+algorithm. It first fits models to estimate
+$`f(x_k \mid \bar d_{k-1}, \bar x_{k-1})`$. Then it approximates the
+expected potential outcome of a given treatment strategy $`g`$ using
+multiple Monte Carlo simulations starting from the observed baseline
+confounders, via the models
+$`\hat f(x_k \mid \bar d_{k-1}, \bar x_{k-1})`$.
 
 ``` r
+options(width=2000)
 id <- 'id'
 time_points <- 2
 time_name <- 't0'
