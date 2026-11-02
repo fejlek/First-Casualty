@@ -709,7 +709,7 @@ speaking, GAM is not a pure MLE estimator, since it maximizes penalized
 likelihood).
 
 Overall, we see that heterogeneous treatment effects do not change the
-sense in which ATE is estimated. All the methods we discussed throughout
+methods how ATE is estimated. All the methods we discussed throughout
 this whole series work the same way. What changes is the interpretation
 of ATE; ATE is no longer equal to the expected individual treatment
 effect. It is now tied to the population it was estimated on, and the
