@@ -47,13 +47,15 @@ library(cobalt)
 Let’s assume a binary, time-varying treatment path up to time period k
 is given by $`\bar D_k = (D_0, D_1, \ldots, D_k)`$. One particular
 difficulty to consider with time-varying treatments is that there are
-many contrasts $`\mathbb{E}(Y(\bar D_k) - Y(\bar D’_k))`$ we could
+many contrasts $`\mathbb{E}(Y(\bar D_k) - Y(\bar D’_k))`$ that we could
 investigate as measures of the treatment effect. For example, we could
 compare the treatment strategies “always treat” ($`\bar D_k = \bar 1`$)
 and “never treat” ($`\bar D’_k = \bar 0`$) (Hernán and Robins 2020). In
 addition, the treatment assignment strategy might be dynamic; i.e., the
 treatment assignment for $`D_k`$ may depend on the evolution of an
-individual’s time-varying covariates $`\bar X_k`$.
+individual’s time-varying covariates $`\bar X_k`$. Consequently, we must 
+always keep in mind that there is no single treatment effect; we are merely 
+comparing several of a multitude of possible treatment strategies.
 
 Overall, three main situations can occur in studies with time-varying
 treatments (Hernán and Robins 2020).
@@ -585,7 +587,7 @@ And we substitute into the formula.
 
 We get the effect close to zero as expected.
 
-The general g-formula of the potential outcomes under sequential
+The general *extended g-formula* of the potential outcomes under sequential
 exchangeability for any deterministic or random, static or dynamic,
 strategy $`d`$ derived by James Robins in 1986 (Robins 1986) is (Hernán
 and Robins 2020)
