@@ -657,23 +657,22 @@ covparams <- list(covlink = c('logit', 'logit'),
 covmodels = c(X ~ lag1_D,
 D ~ lag1_D + X))
 ymodel <- Y ~ X + D + lag1_D
-int_descript <- c('Never treat', 'Always treat')
 
-gform_basic <- gformula(obs_data = df_long, id = id,
-                        time_points = time_points,
-                        time_name = time_name, covnames = covnames,
-                        outcome_name = outcome_name,
-                        outcome_type = outcome_type, covtypes = covtypes,
-                        covparams = covparams, ymodel = ymodel,
-                        histories = histories, histvars = histvars,
-                        seed = 123, 
-                        nsamples = 100,
-                        intvars = list(c('D'), c('D')),
-                        interventions = list(
-                          list(c(static, rep(1, 2))),
-                          list(c(static, rep(0, 2)))),
-                        int_descr = c('Always Treat', 'Never Treat'))
-gform_basic
+gform <- gformula(obs_data = df_long, id = id,
+                  time_points = time_points,
+                  time_name = time_name, covnames = covnames,
+                  outcome_name = outcome_name,
+                  outcome_type = outcome_type, covtypes = covtypes,
+                  covparams = covparams, ymodel = ymodel,
+                  histories = histories, histvars = histvars,
+                  seed = 123, 
+                  nsamples = 100,
+                  intvars = list(c('D'), c('D')),
+                    interventions = list(
+                    list(c(static, rep(1, 2))),
+                    list(c(static, rep(0, 2)))),
+                  int_descr = c('Always Treat', 'Never Treat'))
+gform
 ```
 
     ## PREDICTED RISK UNDER MULTIPLE INTERVENTIONS
