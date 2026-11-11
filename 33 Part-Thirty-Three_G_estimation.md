@@ -244,7 +244,7 @@ head(sim_data_long)
     ## 5  2    1   1  1.6913902 1.448443 61.01745 1       0  0.0000000 0.000000  0.00000     0
     ## 6  2    2   1  5.1341195 2.407198 48.87379 1       1  1.6913902 1.448443 61.01745     1
 
-To perform g-computation, we will use the R package *gesttools*, which
+To perform g-estimation, we will use the R package *gesttools*, which
 estimates structural nested mean models using outcome regression models
 and propensity score (i.e., treatment) regression models. First, let us
 specify the models (we have to specify one propensity score model and
