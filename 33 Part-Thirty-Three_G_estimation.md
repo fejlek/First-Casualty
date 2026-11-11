@@ -85,13 +85,13 @@ second period, $`T = 1`$, conditional on the system’s history, and again
 assume a zero treatment strategy from that point forward.
 ``` math
 \begin{aligned}
-\mathbb{E}(Y(d_0,d_1, d_2 = 0, \ldots, d_K = 0) - &Y(d_0, d_1 = 0, \ldots, d_K = 0 ) \mid X_0 = x_0, D_0 = d_0) = \\ &= d_1\gamma(d_0, x_0, x_1; \beta) = d_1(\beta_{1,1} + \beta_{1,2}x_0 + \beta_{1,3}d_0 + \beta_{1,4}x_1 + \beta_{1,5}x_1x_0 + \beta_{1,6}x_1d_0 + \beta_{1,7}x_0d_0)
+\mathbb{E}(Y(d_0,d_1, d_2 = 0, \ldots, d_K = 0) -&Y(d_0, d_1 = 0, \ldots, d_K = 0 ) \mid X_0 = x_0, D_0 = d_0) = \\ &= d_1\gamma(d_0, x_0, x_1; \beta) = d_1(\beta_{1,1} + \beta_{1,2}x_0 + \beta_{1,3}d_0 + \beta_{1,4}x_1 + \beta_{1,5}x_1x_0 + \beta_{1,6}x_1d_0 + \beta_{1,7}x_0d_0)
 \end{aligned}
 ```
 For the third period, we would get
 ``` math
 \begin{aligned}
-\mathbb{E}(Y(d_0, d_1, d_2, d_3 = 0, \ldots, d_K = 0) - &Y(d_0, d_1, d_2 = 0, \ldots, d_K = 0) \mid X_0 = x_0, D_0 = d_0, X_1 = x_1, D_1 = d_1) = \\ &= d_2\gamma(d_0, d_1, x_0, x_1, x_2; \beta) = d_2(\beta_{2,1} + \beta_{2,2}x_0 + \beta_{2,3}d_0 + \beta_{2,4}x_1 + \beta_{2,5}d_1 + \beta_{2,6}x_2 + \cdots).
+\mathbb{E}(Y(d_0, d_1, d_2, d_3 = 0, \ldots, d_K = 0) -&Y(d_0, d_1, d_2 = 0, \ldots, d_K = 0) \mid X_0 = x_0, D_0 = d_0, X_1 = x_1, D_1 = d_1) = \\ &= d_2\gamma(d_0, d_1, x_0, x_1, x_2; \beta) = d_2(\beta_{2,1} + \beta_{2,2}x_0 + \beta_{2,3}d_0 + \beta_{2,4}x_1 + \beta_{2,5}d_1 + \beta_{2,6}x_2 + \cdots).
 \end{aligned}
 ```
 And so on. Functions $`\gamma(\bar d_{k-1}, \bar x_k; \beta)`$ are
