@@ -258,8 +258,9 @@ There is one important fact that is often glossed over. The
 randomization of $`Z`$ (i.e., $`Z`$ is independent of $`X, U`$ and
 $`Y`$) is a key assumption! If $`Z`$ is merely conditionally independent
 of $`Y`$ given observed confounders $`X`$, the 2SLS estimation can still
-be used. This is how instruments are often employed in practice, since
-it is rare to have one that is truly randomized.
+be used provided that the linear model is well-specified. This is how 
+instruments are often employed in practice, since it is rare to have an 
+instrument that is truly randomized.
 
 We can quickly demonstrate it by modifying a simulation from the
 previous presentation. Let’s assume the following linear model in which
@@ -300,7 +301,7 @@ coefficients(lm(Y~Z+X1+X2+X3))[2]/coefficients(lm(T~Z+X1+X2+X3))[2]
     ## 2.001826
 
 However, the theorem that the IV estimator estimates the LATE *no longer
-holds* in general for conditional instruments! It can be shown that, in
+holds in general* for conditional instruments! It can be shown that, in
 this case, the IV estimator now also depends on the treatment effects on
 always-takers and never-takers (i.e., on their counterfactuals).
 Consequently, the IV estimator does not have a causal interpretation
