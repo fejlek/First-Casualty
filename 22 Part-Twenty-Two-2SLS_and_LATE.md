@@ -385,7 +385,7 @@ quantile(late_est, c(0.025,0.5, 0.975))
 
 The bootstrap CI clearly does not include LATE nor ATE.
 
-We mentioned one case in which the IV estimate LATE: when the
+We mentioned one case in which the IV estimates LATE: when the
 instrument is randomized. In general, the 2SLS must be *saturated*
 (Blandhol et al. 2022)
 ``` math
@@ -475,7 +475,7 @@ since the instrument $`Z`$ has more levels than just two, there are more
 incentive and $`z_1`$ is the lowest level of the incentive (e.g., no
 incentive). Increasing the level from $`z_1`$ to $`z_2`$ causes some
 individuals to take the treatment $`T`$, making them compliers with
-respect to the transition $`z_1 \rightarrow z_2`$. If we increase the
+respect to the transition $`z_1 \rightarrow z_2.`$ If we increase the
 incentive further from $`z_2`$ to $`z_3`$, even more individuals will
 take the treatment, etc.
 
