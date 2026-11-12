@@ -385,7 +385,7 @@ quantile(late_est, c(0.025,0.5, 0.975))
 
 The bootstrap CI clearly does not include LATE nor ATE.
 
-We mentioned one case in which the IV estimate works: when the
+We mentioned one case in which the IV estimate LATE: when the
 instrument is randomized. In general, the 2SLS must be *saturated*
 (Blandhol et al. 2022)
 ``` math
