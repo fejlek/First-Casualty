@@ -62,7 +62,7 @@ instead of cumulative distribution function $`F(t)`$.
 Another commonly used function to describe survival probabilities is the
 hazard function
 ``` math
-h(t) = \lim_{\Delta t \rightarrow 0} \frac{P[ \leq T < t + \Delta t\mid T\geq t]}{\Delta t},
+h(t) = \lim_{\Delta t \rightarrow 0} \frac{P[t \leq T < t + \Delta t\mid T\geq t]}{\Delta t},
 ```
 where is $`f(t)`$ the probability density. The hazard function
 (intensity function or force of mortality) is the probability that an
