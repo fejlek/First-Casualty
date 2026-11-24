@@ -374,13 +374,13 @@ P[T > t] = S(t) =  \exp\left(-\int_0^t h(\tau) \text{ d}\tau \right),
 which we use to estimate the IPCW weights.
 
 ``` r
-control_long$cumhaz <- predict(cox_cens_control, type = "expected")
-control_long <- control_long %>%
-  group_by(id) %>%
-  mutate(
-    ipcw = 1 / exp(-lag(cumsum(cumhaz), default = 0)),
-  ) %>%
-  ungroup()
+cumhaz_c <- predict(
+  cox_cens_control, 
+  newdata = control_long %>% mutate(tstart = 0, time = tstart), 
+  type = "expected"
+)
+
+control_long$ipcw <- 1/exp(-cumhaz_c)
 ```
 
 Finally, we can compute the weighted Kaplan-Meier estimator and estimate
@@ -447,13 +447,13 @@ summary(cox_cens_treat)
     ## Score (logrank) test = 777.1  on 3 df,   p=<2e-16
 
 ``` r
-treat_long$cumhaz <- predict(cox_cens_treat, type = "expected")
-treat_long <- treat_long %>%
-  group_by(id) %>%
-  mutate(
-    ipcw = 1 / exp(-lag(cumsum(cumhaz), default = 0)),
-  ) %>%
-  ungroup()
+cumhaz_c <- predict(
+  cox_cens_treat, 
+  newdata = treat_long %>% mutate(tstart = 0, time = tstart), 
+  type = "expected"
+)
+
+treat_long$ipcw <- 1/exp(-cumhaz_c)
 
 km_ipcw_treat <- survfit(
   Surv(tstart, T, status) ~ 1,
