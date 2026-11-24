@@ -366,7 +366,7 @@ staggered designs.
 
 Let’s assume two patients: one is given a treatment dose of $`m`$ and
 the other is given a treatment dose of $`l`$, with $`m > l`$. The
-estimate $`\hat\beta\text{TWFE}`$ reduces to (<span class="nocase">De
+estimate $`\hat\beta_\text{TWFE}`$ reduces to (<span class="nocase">De
 Chaisemartin and d’Haultfoeuille</span> 2026)
 ``` math
 \hat\beta_\text{TWFE} = \frac{Y_{2,1}(m) - Y_{1,1} - (Y_{2,2}(l) - Y_{1,2})}{m -l}.
@@ -714,7 +714,7 @@ comparisons. To do that in HAD designs, we employ the following
 ``` math
 \mathbb{E} (Y_2(D_2) - Y_1(0) \mid D_2) = \mathbb{E} (Y_2(D_2) - Y_2(0) + Y_2(0) - Y_1(0) \mid D_2) = \gamma_2 + D_2\text{CAS}(D_2)
 ```
-We can directly estimate $`\gamma2`$ using the stayers (i.e., the
+We can directly estimate $`\gamma_2`$ using the stayers (i.e., the
 never-treated group) as
 $`\mathbb{E}_u(Y_2(D_2) - Y_1(0) \mid D_2 = 0)`$. In addition, under no
 anticipation, no dynamic effects, and parallel trend assumptions,
@@ -774,7 +774,7 @@ using observations with $`D_2`$ close to 0 (<span class="nocase">De
 Chaisemartin and d’Haultfoeuille</span> 2026).
 
 Since we do not have any stayers in the dataset, we will use this WATT
-estimate, which is implemented as did_had in the package *DIDHAD*
+estimate, which is implemented as *did_had* in the package *DIDHAD*
 (*bw_method* and *kernel* are parameters for local regression to
 estimate untreated counterfactuals; we select *trends_lin = TRUE* to
 adjust for violation of the parallel trend assumption we explored

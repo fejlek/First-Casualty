@@ -69,27 +69,13 @@ gentzkowetal <- read.csv("C:/Users/elini/Desktop/first casualty/gentzkowetal.csv
 head(gentzkowetal)
 ```
 
-    ##   cnty90 year prestout st numdailies styr lag_numdailies changedailies
-    ## 1   1005 1868    1.016  1          0   12             NA            NA
-    ## 2   1005 1872    0.849  1          0   13              0             0
-    ## 3   1005 1876    0.586  1          0   14              0             0
-    ## 4   1005 1880    0.580  1          0   15              0             0
-    ## 5   1005 1884    0.428  1          2   16              0             2
-    ## 6   1005 1888    0.623  1          2   17              2             0
-    ##   changeprestout lag_ishare_urb share_urb_baseline first_change
-    ## 1             NA             NA                  0         1884
-    ## 2   -0.166999996              0                  0         1884
-    ## 3   -0.263000071              0                  0         1884
-    ## 4   -0.005999982              0                  0         1884
-    ## 5   -0.151999980              0                  0         1884
-    ## 6    0.194999963              0                  0         1884
-    ##   same_treat_after_first_change
-    ## 1                             1
-    ## 2                             1
-    ## 3                             1
-    ## 4                             1
-    ## 5                             1
-    ## 6                             1
+    ##   cnty90 year prestout st numdailies styr lag_numdailies changedailies changeprestout lag_ishare_urb share_urb_baseline first_change same_treat_after_first_change
+    ## 1   1005 1868    1.016  1          0   12             NA            NA             NA             NA                  0         1884                             1
+    ## 2   1005 1872    0.849  1          0   13              0             0   -0.166999996              0                  0         1884                             1
+    ## 3   1005 1876    0.586  1          0   14              0             0   -0.263000071              0                  0         1884                             1
+    ## 4   1005 1880    0.580  1          0   15              0             0   -0.005999982              0                  0         1884                             1
+    ## 5   1005 1884    0.428  1          2   16              0             2   -0.151999980              0                  0         1884                             1
+    ## 6   1005 1888    0.623  1          2   17              2             0    0.194999963              0                  0         1884                             1
 
 ## Static Two-Way Fixed Effects Estimator
 
