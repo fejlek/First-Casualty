@@ -19,7 +19,7 @@ in staggered designs. <br/>
 - [Pierce and Schott Dataset](#pierce-and-schott-dataset)
 - [Heterogeneous Adoption Design](#heterogeneous-adoption-design)
   - [Treatment Effects](#treatment-effects)
-- [WTFE Regression in HAD Designs](#wtfe-regression-in-had-designs)
+- [TWFE Regression in HAD Designs](#tWfe-regression-in-had-designs)
   - [Constant-and-linear-effect
     Assumption](#constant-and-linear-effect-assumption)
 - [Heterogeneity-Robust Estimators](#heterogeneity-robust-estimators)
@@ -234,7 +234,7 @@ mean-independent of their period-two treatment.
 ### Treatment Effects
 
 We denote group-specific treatment effects
-(*“actual-versus-no-treatment* slopes) as
+(*actual-versus-no-treatment* slopes) as
 ``` math
 \tau_2 = \frac{Y(D_2) - Y(0)}{D_2}
 ```
@@ -298,7 +298,7 @@ only if (<span class="nocase">De Chaisemartin and d’Haultfoeuille</span>
 \text{WATT} > c.
 ```
 
-## WTFE Regression in HAD Designs
+## TWFE Regression in HAD Designs
 
 Let’s assume the TWFE regression model for the HAD
 ``` math
