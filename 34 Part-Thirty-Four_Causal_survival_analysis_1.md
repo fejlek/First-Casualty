@@ -248,7 +248,6 @@ the Kaplan-Meier estimator implemented in the *survival* package.
 library(survival)
 library(ggsurvfit)
 
-km <- survfit(Surv(T, status) ~ D, data = sim_surv_data_obs, conf.type ='log-log')
 survfit2(Surv(T, status) ~ D, data = sim_surv_data_obs,conf.type ='log-log') %>% 
   ggsurvfit() +
   labs(
