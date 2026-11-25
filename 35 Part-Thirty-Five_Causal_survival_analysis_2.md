@@ -251,7 +251,7 @@ r^\text{IPCW}_i = \sum_{j = 1}^n \frac{I(T_j = t_i, C_j = 0)}{P[C_j \geq t_i \mi
 ```
 and
 ``` math
-n^\text{IPCW}_i = \sum_{j = 1}^n \frac{I(T_j \geq t_i)}{P[C_j \geq t_i \mid X_i]}.
+n^\text{IPCW}_i = \sum_{j = 1}^n \frac{I(T_j \geq t_i)}{P[C_j \geq t_i \mid X_j]}.
 ```
 To determine $`P[C \geq t_i \mid X_i]`$, we need to fit a model to the
 observed data for censoring times, e.g., a Cox model.
@@ -367,11 +367,11 @@ summary(cox_cens_control)
 
 We note that we recovered the true coefficients we used to generate the
 dataset. Lastly, we predict the hazard function using our Cox model and
-use the fact that
+using the fact that
 ``` math
 P[T > t] = S(t) =  \exp\left(-\int_0^t h(\tau) \text{ d}\tau \right),
 ```
-which we use to estimate the IPCW weights.
+which we compute the IPCW weights.
 
 ``` r
 cumhaz_c <- predict(
