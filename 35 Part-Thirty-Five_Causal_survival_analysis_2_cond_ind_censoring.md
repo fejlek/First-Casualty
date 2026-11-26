@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Thirty Five
-<big>**Causal Survival Analysis II**</big>
+<big>**Causal Survival Analysis II: Conditionally Independent Censoring**</big>
 
 <br/>
 Jiří Fejlek

@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Thirty Four
-<big>**Causal Survival Analysis I**</big>
+<big>**Causal Survival Analysis I: Introduction**</big>
 
 <br/>
 Jiří Fejlek

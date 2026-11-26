@@ -1,5 +1,5 @@
 # The First Casualty of Statistics: Part Thirty Six
-<big>**Causal Survival Analysis III**</big>
+<big>**Causal Survival Analysis III: Observational Studies**</big>
 
 <br/>
 Jiří Fejlek
