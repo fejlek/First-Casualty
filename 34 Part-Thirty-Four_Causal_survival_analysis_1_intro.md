@@ -145,7 +145,7 @@ $`\min (T, \tau )`$. The treatment effect then is
 \text{RMST} =  \mathbb{E}(T(1) \wedge \tau) - \mathbb{E}(T(0) \wedge \tau).
 ```
 It can be shown that the *Kaplan–Meier* estimator consistently estimates
-RMST under our assumption (Voinot et al. 2025).
+RMST under our assumptions (Voinot et al. 2025).
 
 Let’s simulate some survival data to demonstrate the result. We can
 simulate survival data in R using the package *simsurv*. We will assume
@@ -201,7 +201,7 @@ sim_surv_data$D <- rbinom(n_sample, 1, 0.5)
 sim_surv_data$status <- ifelse(sim_surv_data$D == 0,sim_surv_data$status_0,sim_surv_data$status_1) 
 
 # randomized censoring
-cens_times <- pmin(rexp(n_sample, 0.01),100)
+cens_times <- pmin(rexp(n_sample, 0.01),maxt)
 sim_surv_data$cens_times <- cens_times
 sim_surv_data$T <- ifelse(sim_surv_data$D == 0,sim_surv_data$T_0,sim_surv_data$T_1)
 sim_surv_data$C <- (sim_surv_data$T >= cens_times) + 0
@@ -447,7 +447,7 @@ sim_surv_data_nonprop$status <- ifelse(sim_surv_data_nonprop$D == 0,
                                        sim_surv_data_nonprop$status_0,sim_surv_data_nonprop$status_1) 
 
 # randomized censoring
-cens_times <- pmin(rexp(n_sample, 0.005),100)
+cens_times <- pmin(rexp(n_sample, 0.005),maxt)
 sim_surv_data_nonprop$cens_times <- cens_times
 sim_surv_data_nonprop$T <- ifelse(sim_surv_data_nonprop$D == 0,
                                   sim_surv_data_nonprop$T_0,sim_surv_data_nonprop$T_1)

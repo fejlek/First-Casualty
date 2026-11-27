@@ -23,7 +23,6 @@ propensity score) weighting. <br/>
   Censoring](#observational-study-with-conditionally-independent-censoring)
 - [References](#references)
 
-
 ``` r
 library(tidyr)
 library(dplyr)
@@ -106,7 +105,7 @@ sim_surv_data$D <- (plogis(2.5*covariates$X1 + covariates$X2 - 1.5*covariates$X3
 sim_surv_data$status <- ifelse(sim_surv_data$D == 0,sim_surv_data$status_0,sim_surv_data$status_1) 
 
 # randomized censoring
-cens_times <- rexp(n_sample, 0.01)
+cens_times <- pmin(rexp(n_sample, 0.01),maxt)
 sim_surv_data$cens_times <- cens_times
 sim_surv_data$T <- ifelse(sim_surv_data$D == 0,sim_surv_data$T_0,sim_surv_data$T_1)
 sim_surv_data$C <- (sim_surv_data$T >= cens_times) + 0
@@ -119,9 +118,9 @@ head(sim_surv_data)
     ## 1 45.639992 100.000000        1        0 0      0   33.73728 33.737279 1
     ## 2  3.211537   2.495525        1        1 1      1   92.71287  2.495525 0
     ## 3  7.810661  40.691408        1        1 1      1   47.28301 40.691408 0
-    ## 4  2.145434  45.706122        1        1 1      1  261.96566 45.706122 0
-    ## 5  2.908381  20.343071        1        1 1      1  200.75746 20.343071 0
-    ## 6  9.687689  27.526637        1        1 0      1  209.01920  9.687689 0
+    ## 4  2.145434  45.706122        1        1 1      1  100.00000 45.706122 0
+    ## 5  2.908381  20.343071        1        1 1      1  100.00000 20.343071 0
+    ## 6  9.687689  27.526637        1        1 0      1  100.00000  9.687689 0
 
 To remind ourselves, the true treatment effect in terms of the
 restricted mean survival time (RMST) is as follows.
