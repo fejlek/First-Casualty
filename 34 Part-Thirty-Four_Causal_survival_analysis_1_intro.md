@@ -24,6 +24,7 @@ censoring, and no competing events. <br/>
 - [On Causality of Hazards Ratios](#on-causality-of-hazards-ratios)
 - [References](#references)
 
+
 ``` r
 library(tidyr)
 library(dplyr)
@@ -62,7 +63,7 @@ instead of cumulative distribution function $`F(t)`$.
 Another commonly used function to describe survival probabilities is the
 hazard function
 ``` math
-h(t) = \lim_{\Delta t \rightarrow 0} \frac{P[t \leq T < t + \Delta t\mid T\geq t]}{\Delta t},
+h(t) = \lim_{\Delta t \rightarrow 0} \frac{P[t\leq T<t+\Delta t \mid T\geq t]}{\Delta t},
 ```
 where is $`f(t)`$ the probability density. The hazard function
 (intensity function or force of mortality) is the probability that an
@@ -200,7 +201,7 @@ sim_surv_data$D <- rbinom(n_sample, 1, 0.5)
 sim_surv_data$status <- ifelse(sim_surv_data$D == 0,sim_surv_data$status_0,sim_surv_data$status_1) 
 
 # randomized censoring
-cens_times <- rexp(n_sample, 0.01)
+cens_times <- pmin(rexp(n_sample, 0.01),100)
 sim_surv_data$cens_times <- cens_times
 sim_surv_data$T <- ifelse(sim_surv_data$D == 0,sim_surv_data$T_0,sim_surv_data$T_1)
 sim_surv_data$C <- (sim_surv_data$T >= cens_times) + 0
@@ -213,9 +214,9 @@ head(sim_surv_data)
     ## 1 45.639992 100.000000        1        0 1      0   33.73728 33.737279 1
     ## 2  3.211537   2.495525        1        1 1      1   92.71287  2.495525 0
     ## 3  7.810661  40.691408        1        1 0      1   47.28301  7.810661 0
-    ## 4  2.145434  45.706122        1        1 1      1  261.96566 45.706122 0
-    ## 5  2.908381  20.343071        1        1 0      1  200.75746  2.908381 0
-    ## 6  9.687689  27.526637        1        1 0      1  209.01920  9.687689 0
+    ## 4  2.145434  45.706122        1        1 1      1  100.00000 45.706122 0
+    ## 5  2.908381  20.343071        1        1 0      1  100.00000  2.908381 0
+    ## 6  9.687689  27.526637        1        1 0      1  100.00000  9.687689 0
 
 The data we would actually observe are as follows.
 
@@ -446,7 +447,7 @@ sim_surv_data_nonprop$status <- ifelse(sim_surv_data_nonprop$D == 0,
                                        sim_surv_data_nonprop$status_0,sim_surv_data_nonprop$status_1) 
 
 # randomized censoring
-cens_times <- rexp(n_sample, 0.005)
+cens_times <- pmin(rexp(n_sample, 0.005),100)
 sim_surv_data_nonprop$cens_times <- cens_times
 sim_surv_data_nonprop$T <- ifelse(sim_surv_data_nonprop$D == 0,
                                   sim_surv_data_nonprop$T_0,sim_surv_data_nonprop$T_1)
@@ -619,8 +620,8 @@ measure *all* relevant covariates, not just confounders.
 
 Now, our solution in the past was to estimate marginal effects, which we
 can estimate under no confounding. However, the value 0.73 we got from
-the marginal Cox model *is not* an actual estimate of the marginal hazard ratio. 
-The reason is that the true model was
+the marginal Cox model *is not* an actual estimate of the marginal
+hazard ratio. The reason is that the true model was
 ``` math
 h(t) = h_0(t)e^{X\beta + \alpha D}
 ```
@@ -630,8 +631,8 @@ h_i(t) = h_{0,i}(t; X_i)e^{\alpha D}.
 ```
 The model is no longer proportional! This is because the new baseline
 hazard is specific to each individual. This means that the marginal Cox
-model is misspecified. The actual marginal hazard ratio at 
-$`T = 0`$ (when the whole population is part of the experiment) is
+model is misspecified. The actual marginal hazard ratio at $`T = 0`$
+(when the whole population is part of the experiment) is
 ``` math
 \text{MHR}(0) = \frac{\sum_i e^{X_i\beta + \alpha}}{\sum_i e^{X_i\beta}}.
 ```
@@ -675,11 +676,10 @@ ggplot(data.frame(T_seq = T_seq, marg_hazard = marg_hazard), aes(x = T_seq, y = 
 
 ![](Part-Thirty-Four_files/figure-GFM/unnamed-chunk-19-1.png)<!-- -->
 
-We see that the marginal hazard ratio is *time-varying* and
-tends to increase in time. The single value the marginal Cox model
-actually estimates (denoted by the red line) is a *weighted average* of
-the observed time-varying marginal hazard ratios (Xu and O’Quigley
-2000).
+We see that the marginal hazard ratio is *time-varying* and tends to
+increase in time. The single value the marginal Cox model actually
+estimates (denoted by the red line) is a *weighted average* of the
+observed time-varying marginal hazard ratios (Xu and O’Quigley 2000).
 
 However, the issues with marginal hazard ratios do not end here. We said
 that marginal hazard ratios depend on individuals at risk at the given
