@@ -132,7 +132,7 @@ summary(feols(Y ~ Y_lag1| id, cluster ~  id, data = obs_data))
     ## RMSE: 0.88623     Adj. R2: 0.97227
     ##                 Within R2: 0.80842
 
-The fixed effect noticeably underestimates. What is observed is, in
+The fixed effect noticeably underestimates. What we observed is, in
 fact, a general result. In a large enough sample, OLS estimates should
 be biased upwards (because $`Y_{g,t-1}`$ is positively correlated with
 $`\varepsilon_{g,t}`$) and the fixed effects estimate should be biased
@@ -294,7 +294,7 @@ Anderson-Hsiao IV Estimator).
 The main weakness of the Arellano and Bond estimator is that the
 instruments it uses might be weak provided that the correlations between
 subsequent outcomes are not strong enough (when the time series are
-close to random walks). Hence, many other variants build on the Arellano
+close to random walks). Hence, there are many other variants build on the Arellano
 and Bond estimator (see (Baltagi 2021) for the full genesis) that we
 will refer to collectively as *the System GMM estimator*. The core idea
 is to include more instruments, namely  
@@ -345,7 +345,7 @@ summary(pgmm(
     ## Wald test for coefficients: chisq(1) = 479216.8 (p-value = < 2.22e-16)
 
 We see that the estimate is clearly biased, and the Hansen–Sargan test
-is strongly rejected,, indicating that some instruments are invalid.
+is strongly rejected, indicating that some instruments are invalid.
 
 Now, we can demonstrate that the lack of stationarity caused the issue
 by simulating a new dataset. Instead of generating $`Y_0`$ randomly
